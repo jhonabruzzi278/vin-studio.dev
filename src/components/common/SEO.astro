@@ -1,0 +1,77 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  type?: string;
+  keywords?: string;
+  noindex?: boolean;
+}
+
+const siteName = 'VIN Studio';
+const siteUrl = 'https://vin-studio.dev';
+
+const {
+  title = 'VIN Studio - Desarrollo Web Profesional y Consultoría Tecnológica',
+  description = 'Transformamos ideas en experiencias digitales excepcionales. Desarrollo web personalizado, consultoría tecnológica y soluciones digitales innovadoras. Servicios 100% online.',
+  image = '/og-image.jpg',
+  url = Astro.url.href,
+  type = 'website',
+  keywords = 'desarrollo web, consultoría tecnológica, diseño web, soluciones digitales, páginas web profesionales, desarrollo frontend, desarrollo backend, Astro, React, TailwindCSS',
+  noindex = false,
+} = Astro.props;
+
+const siteTitle = title.includes('VIN Studio') ? title : `${title} | VIN Studio`;
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="es_CL" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:title" content={siteTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageUrl} />
+<meta name="twitter:creator" content="@vinstudio" />
+
+<!-- Additional Meta Tags -->
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="author" content="VIN Studio" />
+<meta name="language" content="Spanish" />
+<meta name="geo.region" content="CL" />
+<meta name="geo.placename" content="Chile" />
+<link rel="canonical" href={url} />
+
+<!-- Schema.org for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "VIN Studio",
+  "url": "https://vin-studio.dev",
+  "logo": "https://vin-studio.dev/logo.png",
+  "description": "Desarrollo web profesional y consultoría tecnológica",
+  "email": "jonathan.guerra@vin-studio.dev",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CL"
+  },
+  "sameAs": []
+}
+</script>

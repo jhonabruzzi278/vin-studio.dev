@@ -1,0 +1,72 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vin-studio.dev/#organization",
+      "name": "VIN Studio",
+      "url": "https://vin-studio.dev",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vin-studio.dev/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Desarrollo web profesional y consultoría tecnológica. Transformamos ideas en experiencias digitales excepcionales.",
+      "email": "jonathan.guerra@vin-studio.dev",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CL"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "jonathan.guerra@vin-studio.dev",
+        "availableLanguage": ["es", "en"]
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vin-studio.dev/#website",
+      "url": "https://vin-studio.dev",
+      "name": "VIN Studio",
+      "description": "Desarrollo web profesional y consultoría tecnológica",
+      "publisher": {
+        "@id": "https://vin-studio.dev/#organization"
+      },
+      "inLanguage": "es"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://vin-studio.dev/#service",
+      "name": "VIN Studio - Desarrollo Web",
+      "url": "https://vin-studio.dev",
+      "logo": "https://vin-studio.dev/logo.png",
+      "image": "https://vin-studio.dev/og-image.jpg",
+      "description": "Servicios de desarrollo web profesional, consultoría tecnológica y soluciones digitales personalizadas.",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CL"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Chile"
+      },
+      "serviceType": [
+        "Desarrollo Web",
+        "Consultoría Tecnológica",
+        "Diseño Web",
+        "Desarrollo Frontend",
+        "Desarrollo Backend",
+        "E-commerce",
+        "Landing Pages",
+        "Sitios Corporativos"
+      ],
+      "provider": {
+        "@id": "https://vin-studio.dev/#organization"
+      }
+    }
+  ]
+}

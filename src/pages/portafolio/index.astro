@@ -1,0 +1,72 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
+
+const projects = [
+  {
+    title: "E-commerce Moderno",
+    description: "Tienda online completa con pasarela de pagos y panel de administración",
+    image: "/placeholder-project.jpg",
+    tags: ["Next.js", "Stripe", "TailwindCSS"],
+    slug: "ecommerce-moderno"
+  },
+  {
+    title: "Dashboard Analytics",
+    description: "Panel de análisis de datos en tiempo real para startup SaaS",
+    image: "/placeholder-project.jpg",
+    tags: ["React", "D3.js", "Node.js"],
+    slug: "dashboard-analytics"
+  },
+  {
+    title: "App de Reservas",
+    description: "Sistema de reservas online para restaurantes y eventos",
+    image: "/placeholder-project.jpg",
+    tags: ["Vue.js", "Firebase", "PWA"],
+    slug: "app-reservas"
+  },
+  {
+    title: "Portfolio Creativo",
+    description: "Sitio web portfolio para agencia de diseño con animaciones",
+    image: "/placeholder-project.jpg",
+    tags: ["Astro", "GSAP", "Three.js"],
+    slug: "portfolio-creativo"
+  },
+  {
+    title: "Blog Corporativo",
+    description: "Blog empresarial con CMS headless y optimización SEO",
+    image: "/placeholder-project.jpg",
+    tags: ["Astro", "Strapi", "SEO"],
+    slug: "blog-corporativo"
+  },
+  {
+    title: "Plataforma Educativa",
+    description: "LMS completo para cursos online con video streaming",
+    image: "/placeholder-project.jpg",
+    tags: ["Next.js", "Prisma", "AWS"],
+    slug: "plataforma-educativa"
+  }
+];
+---
+
+<Layout 
+  title="Portafolio" 
+  description="Explora nuestros proyectos y casos de éxito"
+>
+  <section class="container mx-auto px-4 py-20">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Nuestro Portafolio
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Descubre algunos de los proyectos en los que hemos trabajado y los 
+        resultados que hemos logrado para nuestros clientes
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </section>
+</Layout>

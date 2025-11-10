@@ -1,0 +1,63 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+---
+
+<Layout 
+  title="Sobre Nosotros - Quiénes Somos" 
+  description="Conoce VIN Studio: equipo de desarrollo web especializado en crear soluciones digitales innovadoras. Visión, Integridad y Notoriedad son nuestros pilares fundamentales."
+  keywords="sobre vin studio, equipo desarrollo web, agencia digital chile, desarrolladores web profesionales, quiénes somos"
+>
+  <section class="container mx-auto px-4 py-20">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Sobre Nosotros
+      </h1>
+      <p class="text-xl text-muted-foreground mb-12">
+        Somos un equipo apasionado por la tecnología y el diseño, dedicados a 
+        crear soluciones digitales que marcan la diferencia.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <Card>
+          <CardHeader>
+            <CardTitle>Nuestra Misión</CardTitle>
+            <CardDescription>
+              Transformar ideas en experiencias digitales excepcionales que impulsen 
+              el crecimiento de nuestros clientes.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Nuestra Visión</CardTitle>
+            <CardDescription>
+              Ser el socio tecnológico de confianza para empresas que buscan 
+              innovar y destacarse en el mundo digital.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </div>
+
+      <div class="prose prose-lg dark:prose-invert max-w-none">
+        <h2>¿Quiénes Somos?</h2>
+        <p>
+          En VIN Studio, combinamos creatividad, experiencia técnica y pasión por 
+          la innovación para ayudar a nuestros clientes a alcanzar sus objetivos 
+          digitales. Con años de experiencia en desarrollo web y consultoría tecnológica, 
+          hemos ayudado a empresas de todos los tamaños a establecer su presencia online 
+          y optimizar sus procesos digitales.
+        </p>
+
+        <h2>Nuestro Enfoque</h2>
+        <p>
+          Creemos en la colaboración estrecha con nuestros clientes. No somos solo 
+          proveedores de servicios, somos socios estratégicos que se comprometen con 
+          el éxito de cada proyecto. Utilizamos metodologías ágiles y las últimas 
+          tecnologías para entregar soluciones de alta calidad que superan expectativas.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

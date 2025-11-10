@@ -1,0 +1,131 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
+
+// Esta página será dinámica para cada proyecto
+// El slug se obtiene de los parámetros de la ruta
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: "ecommerce-moderno" } },
+    { params: { slug: "dashboard-analytics" } },
+    { params: { slug: "app-reservas" } },
+    { params: { slug: "portfolio-creativo" } },
+    { params: { slug: "blog-corporativo" } },
+    { params: { slug: "plataforma-educativa" } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// En un proyecto real, aquí cargarías los datos del proyecto desde un CMS o base de datos
+const projectData = {
+  title: "Proyecto Demo",
+  description: "Esta es una página de ejemplo para un proyecto del portafolio",
+  client: "Cliente XYZ",
+  year: "2024",
+  services: ["Diseño Web", "Desarrollo Frontend", "SEO"],
+  technologies: ["Astro", "React", "TailwindCSS"],
+  image: "/placeholder-project.jpg",
+};
+---
+
+<Layout 
+  title={projectData.title} 
+  description={projectData.description}
+>
+  <article class="container mx-auto px-4 py-20">
+    <!-- Hero del proyecto -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <a href="/portafolio" class="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-6 transition-colors">
+        ← Volver al portafolio
+      </a>
+      
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        {projectData.title}
+      </h1>
+      
+      <div class="flex flex-wrap gap-6 text-muted-foreground mb-8">
+        <div>
+          <span class="font-semibold">Cliente:</span> {projectData.client}
+        </div>
+        <div>
+          <span class="font-semibold">Año:</span> {projectData.year}
+        </div>
+      </div>
+
+      <div class="aspect-video bg-muted rounded-xl overflow-hidden mb-12">
+        <img 
+          src={projectData.image} 
+          alt={projectData.title}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Contenido del proyecto -->
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-12">
+      <div class="md:col-span-2 prose prose-lg dark:prose-invert max-w-none">
+        <h2>Descripción del Proyecto</h2>
+        <p>
+          Este proyecto fue desarrollado para {projectData.client}, con el objetivo 
+          de crear una solución digital moderna y eficiente que mejorara su presencia 
+          online y optimizara sus procesos de negocio.
+        </p>
+
+        <h2>El Desafío</h2>
+        <p>
+          El cliente necesitaba una plataforma robusta que pudiera escalar con su 
+          crecimiento y ofrecer una excelente experiencia de usuario en todos los 
+          dispositivos.
+        </p>
+
+        <h2>La Solución</h2>
+        <p>
+          Desarrollamos una solución completa utilizando tecnologías modernas, 
+          implementando las mejores prácticas de desarrollo y diseño para garantizar 
+          un producto de alta calidad.
+        </p>
+
+        <h2>Resultados</h2>
+        <ul>
+          <li>Incremento del 150% en conversiones</li>
+          <li>Mejora del 80% en velocidad de carga</li>
+          <li>100% de mejora en métricas de SEO</li>
+          <li>95+ puntuación en Google Lighthouse</li>
+        </ul>
+      </div>
+
+      <div class="space-y-8">
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Servicios</h3>
+          <div class="space-y-2">
+            {projectData.services.map((service) => (
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-primary"></span>
+                <span>{service}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Tecnologías</h3>
+          <div class="flex flex-wrap gap-2">
+            {projectData.technologies.map((tech) => (
+              <span class="px-3 py-1 bg-muted rounded-full text-sm">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="pt-6 border-t">
+          <Button client:load className="w-full" size="lg">
+            Comenzar tu Proyecto
+          </Button>
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>

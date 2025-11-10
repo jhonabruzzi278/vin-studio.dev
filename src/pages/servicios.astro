@@ -1,0 +1,107 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PricingTier from "@/components/services/PricingTier.astro";
+---
+
+<Layout 
+  title="Servicios de Desarrollo Web y Consultoría" 
+  description="Planes de desarrollo web profesional: Landing Pages, Sitios Corporativos y E-commerce. Consultoría tecnológica, mantenimiento y soporte 100% online. Precios transparentes."
+  keywords="servicios desarrollo web, planes web, desarrollo landing page, sitio corporativo, e-commerce, consultoría tecnológica, mantenimiento web, precios desarrollo web"
+>
+  <section class="container mx-auto px-4 py-12 sm:py-20">
+    <div class="text-center mb-12 sm:mb-16">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+        Nuestros Servicios
+      </h1>
+      <p class="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+        Planes diseñados para adaptarse a las necesidades de tu negocio
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+      <PricingTier
+        tier="standard"
+        title="Standard"
+        price="$999"
+        description="Ideal para pequeñas empresas y startups"
+        features={[
+          "Diseño web responsivo",
+          "Hasta 5 páginas",
+          "Optimización SEO básica",
+          "Formulario de contacto",
+          "2 revisiones",
+          "Entrega en 2-3 semanas",
+        ]}
+      />
+
+      <PricingTier
+        tier="business"
+        title="Business"
+        price="$2,499"
+        description="Para empresas en crecimiento"
+        features={[
+          "Todo lo de Standard",
+          "Hasta 15 páginas",
+          "CMS personalizado",
+          "Integración con APIs",
+          "Blog integrado",
+          "5 revisiones",
+          "Entrega en 4-6 semanas",
+          "Soporte 3 meses",
+        ]}
+        popular={true}
+      />
+
+      <PricingTier
+        tier="enterprise"
+        title="Enterprise"
+        price="Personalizado"
+        description="Soluciones a medida para grandes proyectos"
+        features={[
+          "Todo lo de Business",
+          "Páginas ilimitadas",
+          "Desarrollo personalizado",
+          "Aplicaciones web complejas",
+          "Panel de administración",
+          "Revisiones ilimitadas",
+          "Soporte prioritario 12 meses",
+          "Consultoría estratégica",
+        ]}
+      />
+    </div>
+
+    <div class="mt-16 sm:mt-20 max-w-4xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Servicios Adicionales</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div class="p-6 border rounded-xl">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Consultoría Tecnológica</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Asesoría estratégica para optimizar tu infraestructura tecnológica 
+            y procesos digitales.
+          </p>
+        </div>
+        <div class="p-6 border rounded-xl">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Mantenimiento Web</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Actualizaciones, mejoras y soporte continuo para mantener tu sitio 
+            web funcionando perfectamente.
+          </p>
+        </div>
+        <div class="p-6 border rounded-xl">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Optimización SEO</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Mejora tu visibilidad en buscadores y atrae más tráfico orgánico 
+            a tu sitio web.
+          </p>
+        </div>
+        <div class="p-6 border rounded-xl">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Migración Web</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Migración segura de tu sitio web a nuevas plataformas o 
+            tecnologías modernas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

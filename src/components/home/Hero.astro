@@ -1,0 +1,49 @@
+---
+import { Button } from "@/components/ui/button";
+---
+
+<!-- HERO: El Manifiesto Visual - Portada de revista de arquitectura -->
+<section class="relative min-h-screen flex items-center bg-white">
+  <div class="container mx-auto px-4 py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto">
+      <!-- Línea de Visión: Elemento distintivo VIN Studio -->
+      <div class="flex gap-8 lg:gap-16 items-start">
+        <div class="hidden lg:block pt-2">
+          <div class="w-px h-24 bg-zinc-900"></div>
+        </div>
+        
+        <div class="flex-1 space-y-8 sm:space-y-12">
+          <!-- Titular Gigante: Notoriedad Máxima -->
+          <div class="space-y-4 sm:space-y-6">
+            <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-zinc-900 leading-[0.9] tracking-tighter">
+              DE IDEA
+              <br />
+              <span class="block">A REALIDAD.</span>
+            </h1>
+            
+            <!-- Subtítulo en gris: Integridad sin ruido -->
+            <p class="text-lg sm:text-xl md:text-2xl text-zinc-500 max-w-2xl leading-relaxed font-light">
+              Desarrollo web y consultoría tecnológica con precisión técnica.
+              <br class="hidden sm:block" />
+              Sin ruido. Solo resultados.
+            </p>
+          </div>
+
+          <!-- Botones: Inversión elegante al hover -->
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+            <a href="/contacto">
+              <Button client:load size="lg" className="w-full sm:w-auto">
+                Empezar Proyecto
+              </Button>
+            </a>
+            <a href="/portafolio">
+              <Button client:load variant="outline" size="lg" className="w-full sm:w-auto">
+                Ver Portafolio
+              </Button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

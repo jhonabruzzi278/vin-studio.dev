@@ -1,0 +1,166 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const faqs = [
+  {
+    question: "¿Cuánto tiempo toma desarrollar un sitio web?",
+    answer: "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar 2-3 semanas, mientras que proyectos más complejos pueden requerir 6-12 semanas. Proporcionamos un cronograma detallado en cada cotización."
+  },
+  {
+    question: "¿Cuál es su proceso de trabajo?",
+    answer: "Nuestro proceso incluye: 1) Consulta inicial y análisis de requisitos, 2) Propuesta y cotización, 3) Diseño y aprobación, 4) Desarrollo, 5) Pruebas y ajustes, 6) Lanzamiento y entrega. Mantenemos comunicación constante durante todo el proceso."
+  },
+  {
+    question: "¿Ofrecen servicios de mantenimiento?",
+    answer: "Sí, ofrecemos planes de mantenimiento mensual que incluyen actualizaciones de seguridad, backups, soporte técnico y pequeñas modificaciones. También proporcionamos 30 días de garantía post-lanzamiento sin costo adicional."
+  },
+  {
+    question: "¿Qué tecnologías utilizan?",
+    answer: "Trabajamos con tecnologías modernas y probadas como React, Astro, Next.js, TailwindCSS, Node.js, y más. Seleccionamos la stack tecnológica más adecuada para cada proyecto según sus requisitos específicos."
+  },
+  {
+    question: "¿Cómo son los términos de pago?",
+    answer: "Generalmente requerimos un 50% de anticipo al iniciar el proyecto y el 50% restante al finalizar. Para proyectos grandes podemos ofrecer planes de pago en etapas. Todos los detalles se especifican en el contrato."
+  },
+  {
+    question: "¿Proporcionan el código fuente?",
+    answer: "Sí, una vez completado el pago total, el cliente recibe todo el código fuente del proyecto. Eres dueño completo de tu sitio web y puedes hacer con él lo que desees."
+  },
+  {
+    question: "¿Trabajan con clientes internacionales?",
+    answer: "Absolutamente. Trabajamos 100% online y hemos colaborado con clientes de diversos países. Nos adaptamos a diferentes zonas horarias y ofrecemos comunicación fluida por email, WhatsApp y videollamadas."
+  },
+  {
+    question: "¿Qué pasa si no estoy satisfecho con el resultado?",
+    answer: "Trabajamos en iteraciones y mantenemos comunicación constante para asegurar tu satisfacción. Incluimos revisiones en cada etapa del proyecto. Si hay algo que no cumple tus expectativas, lo ajustamos hasta que estés conforme."
+  },
+  {
+    question: "¿Necesito tener conocimientos técnicos?",
+    answer: "No es necesario. Nos encargamos de todo el aspecto técnico y te guiamos paso a paso. Si lo deseas, también podemos capacitarte para que puedas gestionar tu sitio de forma independiente."
+  },
+  {
+    question: "¿Incluyen hosting y dominio?",
+    answer: "Podemos ayudarte a configurar hosting y dominio, pero generalmente estos son costos separados que el cliente paga directamente al proveedor. Esto te da control total y evita dependencia de terceros."
+  },
+  {
+    question: "¿Hacen diseño responsive?",
+    answer: "Todos nuestros sitios son 100% responsive y se ven perfectos en dispositivos móviles, tablets y desktop. Esto es estándar en todos nuestros proyectos, no un extra."
+  },
+  {
+    question: "¿Pueden ayudar con SEO?",
+    answer: "Sí, implementamos las mejores prácticas de SEO técnico en todos nuestros proyectos: estructura correcta, metadatos, velocidad de carga optimizada, etc. También podemos recomendar estrategias de contenido SEO."
+  },
+  {
+    question: "¿Qué información necesitan para empezar?",
+    answer: "Para una cotización inicial necesitamos: 1) Descripción general del proyecto, 2) Funcionalidades deseadas, 3) Referencias o inspiración de diseño, 4) Timeline aproximado. Luego profundizamos en los detalles."
+  },
+  {
+    question: "¿Hacen rediseños de sitios existentes?",
+    answer: "Sí, podemos rediseñar y mejorar sitios web existentes. Analizamos tu sitio actual, identificamos áreas de mejora y proponemos soluciones modernas que mantengan tu contenido e identidad."
+  },
+  {
+    question: "¿Cómo garantizan la seguridad del sitio?",
+    answer: "Implementamos las mejores prácticas de seguridad: HTTPS, validación de formularios, protección contra ataques comunes, actualizaciones regulares, y backups automáticos. La seguridad es prioritaria en todos nuestros proyectos."
+  }
+];
+---
+
+<Layout 
+  title="Preguntas Frecuentes (FAQ) - Dudas sobre Desarrollo Web"
+  description="Respuestas a las preguntas más frecuentes sobre desarrollo web, procesos de trabajo, plazos, pagos, tecnologías y servicios de VIN Studio. Encuentra tu respuesta aquí."
+  keywords="preguntas frecuentes desarrollo web, FAQ diseño web, dudas desarrollo web, cuánto cuesta una página web, tiempo desarrollo web, SEO"
+>
+  <div class="min-h-screen bg-white py-20 sm:py-32">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Header -->
+        <div class="mb-16 sm:mb-24 text-center">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <div class="w-12 h-px bg-zinc-900"></div>
+            <span class="text-xs font-semibold tracking-wider uppercase text-zinc-900">Ayuda</span>
+            <div class="w-12 h-px bg-zinc-900"></div>
+          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-zinc-900 mb-6 tracking-tight">
+            Preguntas Frecuentes
+          </h1>
+          <p class="text-lg text-zinc-500 max-w-2xl mx-auto">
+            Respuestas rápidas a las preguntas más comunes sobre nuestros servicios
+          </p>
+        </div>
+
+        <!-- FAQs -->
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="border border-zinc-200 hover:border-zinc-900 transition-colors">
+              <details class="group">
+                <summary class="cursor-pointer p-6 sm:p-8 flex items-start justify-between gap-4">
+                  <div class="flex items-start gap-4 flex-1">
+                    <span class="text-xs font-bold tracking-wider uppercase text-zinc-400 mt-1 shrink-0">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 class="text-lg sm:text-xl font-bold text-zinc-900 leading-tight">
+                      {faq.question}
+                    </h3>
+                  </div>
+                  <svg 
+                    class="w-6 h-6 text-zinc-900 shrink-0 transition-transform group-open:rotate-180" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div class="px-6 sm:px-8 pb-6 sm:pb-8 pl-16 sm:pl-20">
+                  <p class="text-zinc-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </details>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-16 sm:mt-24 text-center border-t-2 border-zinc-900 pt-16">
+          <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-4 tracking-tight">
+            ¿No encontraste tu respuesta?
+          </h2>
+          <p class="text-zinc-600 mb-8 max-w-2xl mx-auto">
+            Estamos aquí para ayudarte. Contáctanos y responderemos todas tus dudas en menos de 48 horas.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="/contacto"
+              class="w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white font-medium hover:bg-zinc-800 transition-colors text-center"
+            >
+              Contactar Ahora
+            </a>
+            <button 
+              onclick="navigator.clipboard.writeText('jonathan.guerra@vin-studio.dev').then(() => { this.textContent = '✓ Email Copiado'; setTimeout(() => this.textContent = 'Copiar Email', 2000); })"
+              class="w-full sm:w-auto px-8 py-3 border-2 border-zinc-900 text-zinc-900 font-medium hover:bg-zinc-50 transition-colors cursor-pointer"
+            >
+              Copiar Email
+            </button>
+          </div>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="mt-16 text-center">
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-2 text-zinc-900 hover:text-zinc-600 transition-colors font-semibold"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver al Inicio
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</Layout>

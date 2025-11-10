@@ -1,0 +1,111 @@
+---
+import { Button } from "@/components/ui/button";
+---
+
+<!-- CTA: Alto contraste con borde superior -->
+<section class="relative border-t-2 border-zinc-900 bg-white">
+  <!-- Línea vertical decorativa -->
+  <div class="absolute left-1/2 top-0 w-px h-16 bg-zinc-900 -translate-x-1/2"></div>
+  
+  <div class="container mx-auto px-4 py-20 sm:py-28 lg:py-32">
+    <div class="max-w-5xl mx-auto">
+      <!-- Grid de 2 columnas en desktop -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Lado izquierdo: Mensaje -->
+        <div class="space-y-6 lg:space-y-8">
+          <div class="space-y-4">
+            <div class="inline-block">
+              <span class="text-xs font-semibold tracking-widest uppercase text-zinc-500 bg-zinc-100 px-4 py-2">
+                Siguiente Paso
+              </span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1.1]">
+              Transformemos
+              <br />
+              tu visión en
+              <br />
+              <span class="text-zinc-500">realidad digital</span>
+            </h2>
+          </div>
+          
+          <p class="text-lg sm:text-xl text-zinc-600 leading-relaxed max-w-xl">
+            Sin vueltas. Sin promesas vacías. Solo resultados tangibles construidos con precisión técnica.
+          </p>
+
+          <!-- Micro stats -->
+          <div class="flex gap-8 pt-4 border-t border-zinc-200">
+            <div>
+              <div class="text-2xl font-bold text-zinc-900">48h</div>
+              <div class="text-sm text-zinc-500">Respuesta garantizada</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-zinc-900">100%</div>
+              <div class="text-sm text-zinc-500">Transparencia total</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado derecho: Acciones -->
+        <div class="lg:pl-8 space-y-6">
+          <div class="bg-zinc-50 border-2 border-zinc-900 p-8 sm:p-10 space-y-6">
+            <div class="space-y-4">
+              <h3 class="text-xl font-bold text-zinc-900 tracking-tight">
+                ¿Comenzamos tu proyecto?
+              </h3>
+              <p class="text-sm text-zinc-600 leading-relaxed">
+                Cuéntanos tu idea. Respuesta en menos de 48 horas. Sin costo. Sin compromiso. Solo claridad sobre cómo podemos ayudarte.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <a href="/contacto" class="block">
+                <Button 
+                  client:load 
+                  size="lg"
+                  className="w-full"
+                >
+                  Contactar Ahora
+                </Button>
+              </a>
+              <a href="/portafolio" class="block">
+                <Button 
+                  client:load 
+                  variant="outline" 
+                  size="lg"
+                  className="w-full"
+                >
+                  Ver Portfolio Completo
+                </Button>
+              </a>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="pt-6 border-t border-zinc-200">
+              <div class="flex items-center justify-center gap-2 text-xs text-zinc-500">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                <span>Tus datos están seguros. No spam. Respuesta garantizada.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact info alternativa -->
+          <div class="text-center lg:text-left">
+            <p class="text-sm text-zinc-500">
+              ¿Prefieres escribir directamente? 
+              <button 
+                onclick="navigator.clipboard.writeText('jonathan.guerra@vin-studio.dev').then(() => { const orig = this.textContent; this.textContent = '✓ Copiado'; setTimeout(() => this.textContent = orig, 2000); })"
+                class="text-zinc-900 font-semibold underline hover:no-underline ml-1 cursor-pointer"
+              >
+                jonathan.guerra@vin-studio.dev
+              </button>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

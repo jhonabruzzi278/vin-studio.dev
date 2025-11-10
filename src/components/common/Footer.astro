@@ -1,0 +1,64 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<!-- Footer: Estructura limpia con líneas divisorias -->
+<footer class="border-t border-zinc-200 bg-white">
+  <div class="container mx-auto px-4 py-16">
+    <!-- Grid superior -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <!-- Company Info -->
+      <div class="md:col-span-2 space-y-6">
+        <h3 class="text-2xl font-bold text-zinc-900 tracking-tight">
+          VIN<span class="font-light">Studio</span>
+        </h3>
+        <p class="text-zinc-500 leading-relaxed max-w-md">
+          Desarrollo web y consultoría tecnológica con precisión técnica.
+          De idea a realidad.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-semibold text-zinc-900 mb-4 text-sm uppercase tracking-wider">Enlaces</h4>
+        <ul class="space-y-3">
+          <li><a href="/nosotros" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm">Nosotros</a></li>
+          <li><a href="/servicios" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm">Servicios</a></li>
+          <li><a href="/portafolio" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm">Portafolio</a></li>
+          <li><a href="/contacto" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold text-zinc-900 mb-4 text-sm uppercase tracking-wider">Contacto</h4>
+        <ul class="space-y-3 text-sm text-zinc-500">
+          <li>
+            <button 
+              onclick="navigator.clipboard.writeText('jonathan.guerra@vin-studio.dev').then(() => { this.textContent = '✓ Copiado'; setTimeout(() => this.textContent = 'jonathan.guerra@vin-studio.dev', 2000); })"
+              class="hover:text-zinc-900 transition-colors cursor-pointer text-left"
+            >
+              jonathan.guerra@vin-studio.dev
+            </button>
+          </li>
+          <li>
+            <a href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20desarrollo%20web.%20Me%20gustar%C3%ADa%20conversar%20sobre%20mi%20proyecto." target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 transition-colors">
+              +56 9 3898 0598
+            </a>
+          </li>
+          <li>Servicios 100% Online</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Línea divisoria -->
+    <div class="border-t border-zinc-200 mb-8"></div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col md:flex-row justify-center md:justify-center items-center gap-4">
+      <p class="text-sm text-zinc-500">
+        © {currentYear} VIN Studio. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

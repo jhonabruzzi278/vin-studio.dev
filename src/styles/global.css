@@ -1,0 +1,196 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
+@import "tw-animate-css";
+
+/* 
+  VIN STUDIO - SISTEMA DE DISEÑO
+  Filosofía: Lujo Técnico Minimalista
+  80% Espacio Negativo | 20% Contenido de Alto Contraste
+*/
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Radio de bordes minimalista - Esquinas rectas = Precisión técnica */
+  --radius-sm: 0.125rem;  /* 2px - Casi recto */
+  --radius-md: 0.25rem;   /* 4px - Sutil */
+  --radius-lg: 0.375rem;  /* 6px - Máximo permitido */
+  --radius-xl: 0.5rem;    /* 8px - Solo para elementos grandes */
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  /* LUJO TÉCNICO - Paleta Monocromática Estricta */
+  --radius: 0.25rem;
+  
+  /* Lienzo: Blanco puro pero suave para los ojos */
+  --background: #FAFAFA;              /* Zinc-50 - Elegancia sin fatiga visual */
+  --foreground: #09090B;              /* Zinc-950 - Negro profundo, no agresivo */
+  
+  /* Tarjetas y superficies elevadas */
+  --card: #FFFFFF;                    /* Blanco puro para contraste */
+  --card-foreground: #09090B;
+  
+  /* Elementos emergentes */
+  --popover: #FFFFFF;
+  --popover-foreground: #09090B;
+  
+  /* Primary = Negro (Autoridad y Notoriedad) */
+  --primary: #09090B;                 /* Negro principal */
+  --primary-foreground: #FAFAFA;      /* Texto blanco sobre negro */
+  
+  /* Secondary = Blanco con borde (Inversión elegante) */
+  --secondary: #FFFFFF;
+  --secondary-foreground: #09090B;
+  
+  /* Muted = Elementos secundarios (Integridad sin ruido) */
+  --muted: #F4F4F5;                   /* Zinc-100 - Fondos sutiles */
+  --muted-foreground: #71717A;        /* Zinc-500 - Texto secundario */
+  
+  /* Accent = Gris medio para hover states */
+  --accent: #E4E4E7;                  /* Zinc-200 */
+  --accent-foreground: #18181B;       /* Zinc-900 */
+  
+  /* Destructive = Usar negro para mantener monocromía */
+  --destructive: #18181B;
+  
+  /* Estructura: Líneas finas y precisas */
+  --border: #E4E4E7;                  /* Zinc-200 - 1px lines */
+  --input: #E4E4E7;
+  --ring: #09090B;                    /* Focus en negro puro */
+}
+
+.dark {
+  /* Modo oscuro: Inversión elegante */
+  --background: #09090B;
+  --foreground: #FAFAFA;
+  --card: #18181B;                    /* Zinc-900 */
+  --card-foreground: #FAFAFA;
+  --popover: #18181B;
+  --popover-foreground: #FAFAFA;
+  --primary: #FAFAFA;                 /* Blanco en modo oscuro */
+  --primary-foreground: #09090B;
+  --secondary: #27272A;               /* Zinc-800 */
+  --secondary-foreground: #FAFAFA;
+  --muted: #27272A;
+  --muted-foreground: #A1A1AA;        /* Zinc-400 */
+  --accent: #3F3F46;                  /* Zinc-700 */
+  --accent-foreground: #FAFAFA;
+  --destructive: #FAFAFA;
+  --border: #27272A;
+  --input: #27272A;
+  --ring: #FAFAFA;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Tipografía de precisión técnica */
+    font-feature-settings: "cv11", "ss01";
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Jerarquía tipográfica por peso y tamaño */
+  h1 {
+    @apply text-foreground font-extrabold tracking-tight;
+    letter-spacing: -0.02em; /* Tighter para headlines grandes */
+  }
+  
+  h2, h3 {
+    @apply text-foreground font-semibold tracking-tight;
+  }
+  
+  p {
+    @apply text-zinc-700 leading-relaxed;
+  }
+  
+  /* Línea de Visión: Elemento distintivo VIN Studio */
+  .vision-line {
+    @apply w-px bg-zinc-900 h-16;
+  }
+  
+  /* Eliminar casi todas las sombras - Usar bordes */
+  .card-minimal {
+    @apply border border-zinc-200 bg-white;
+    box-shadow: none;
+  }
+  
+  /* Micro-interacciones: El movimiento es nuestro color */
+  .btn-primary {
+    @apply bg-zinc-900 text-white border border-zinc-900 transition-all duration-200;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-white text-zinc-900;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-zinc-900 border border-zinc-900 transition-all duration-200;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-zinc-900 text-white;
+  }
+  
+  /* Animaciones sutiles de aparición */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  /* Inputs de alta precisión */
+  input:focus,
+  textarea:focus {
+    @apply ring-2 ring-zinc-900 border-zinc-900;
+  }
+}
+
+/* Fuente principal: Inter para precisión técnica */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://rsms.me/inter/font-files/Inter-roman.var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://rsms.me/inter/font-files/Inter-italic.var.woff2') format('woff2');
+}

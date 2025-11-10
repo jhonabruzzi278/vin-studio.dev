@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Página No Encontrada - Error 404"
+  description="La página que buscas no existe o ha sido movida. Explora nuestros servicios, portafolio o contáctanos para encontrar lo que necesitas."
+  noindex={true}
+>
+  <div class="min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-2xl w-full text-center">
+      <!-- 404 Number -->
+      <div class="relative mb-12">
+        <h1 class="text-[10rem] md:text-[14rem] lg:text-[18rem] font-bold text-zinc-900 leading-none select-none">
+          404
+        </h1>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="text-zinc-200 text-[11rem] md:text-[15rem] lg:text-[19rem] font-bold leading-none -z-10">
+            404
+          </div>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="space-y-6 mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-zinc-900">
+          Página No Encontrada
+        </h2>
+        <p class="text-zinc-500 max-w-md mx-auto">
+          La página que buscas no existe o ha sido movida. 
+          Verifica la URL o regresa al inicio.
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="w-24 h-px bg-zinc-900 mx-auto mb-12"></div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href="/"
+          class="w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white font-medium hover:bg-zinc-800 transition-colors text-center"
+        >
+          Volver al Inicio
+        </a>
+        <a 
+          href="/contacto"
+          class="w-full sm:w-auto px-8 py-3 border-2 border-zinc-900 text-zinc-900 font-medium hover:bg-zinc-50 transition-colors text-center"
+        >
+          Contactar
+        </a>
+      </div>
+
+      <!-- Additional Links -->
+      <div class="mt-16 pt-8 border-t border-zinc-200">
+        <p class="text-sm text-zinc-400 mb-4">Enlaces útiles:</p>
+        <div class="flex flex-wrap gap-6 justify-center text-sm">
+          <a href="/servicios" class="text-zinc-500 hover:text-zinc-900 transition-colors">
+            Servicios
+          </a>
+          <a href="/portafolio" class="text-zinc-500 hover:text-zinc-900 transition-colors">
+            Portafolio
+          </a>
+          <a href="/blog" class="text-zinc-500 hover:text-zinc-900 transition-colors">
+            Blog
+          </a>
+          <a href="/sobre-nosotros" class="text-zinc-500 hover:text-zinc-900 transition-colors">
+            Sobre Nosotros
+          </a>
+        </div>
+      </div>
+
+      <!-- Decorative element -->
+      <div class="mt-16">
+        <div class="inline-flex items-center gap-2 text-xs text-zinc-400 uppercase tracking-wider">
+          <span class="w-8 h-px bg-zinc-900"></span>
+          <span>VIN Studio</span>
+          <span class="w-8 h-px bg-zinc-900"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

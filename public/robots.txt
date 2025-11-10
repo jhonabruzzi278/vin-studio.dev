@@ -1,0 +1,24 @@
+# Robots.txt para VIN Studio
+# https://vin-studio.dev
+
+User-agent: *
+Allow: /
+
+# Páginas no indexables
+Disallow: /404
+Disallow: /terminos
+Disallow: /privacidad
+
+# Sitemap
+Sitemap: https://vin-studio.dev/sitemap.xml
+
+# Rastreadores específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay para otros bots
+User-agent: *
+Crawl-delay: 10
