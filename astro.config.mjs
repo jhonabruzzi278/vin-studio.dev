@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel/serverless';
 
 import tailwindcss from '@tailwindcss/vite';
 import flowbiteReact from "flowbite-react/plugin/astro";
@@ -11,8 +11,10 @@ import flowbiteReact from "flowbite-react/plugin/astro";
 export default defineConfig({
   site: 'https://vin-studio.dev',
   output: 'server', // Modo servidor para API routes
-  adapter: node({
-    mode: 'standalone'
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
   }),
   integrations: [
     react(), 
