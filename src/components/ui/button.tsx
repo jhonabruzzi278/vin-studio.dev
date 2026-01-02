@@ -9,11 +9,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary: Negro sólido -> Gris oscuro al hover
-        default: "bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800",
+        // Primary: Negro sólido -> hover inverso
+        default: "bg-zinc-900 text-white border-2 border-zinc-900 hover:bg-white hover:text-zinc-900",
         
-        // Secondary: Blanco con borde -> Fondo gris claro al hover
-        outline: "bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-50",
+        // Secondary: Blanco con borde -> hover inverso
+        outline: "bg-white text-zinc-900 border-2 border-zinc-900 hover:bg-zinc-900 hover:text-white",
         
         // Ghost: Transparente -> Gris claro al hover
         ghost: "hover:bg-zinc-100 hover:text-zinc-900",
@@ -22,12 +22,12 @@ const buttonVariants = cva(
         link: "text-zinc-900 underline-offset-4 hover:underline",
         
         // Destructive: Mantener monocromía
-        destructive: "bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800",
+        destructive: "bg-zinc-900 text-white border-2 border-zinc-900 hover:bg-white hover:text-zinc-900",
       },
       size: {
         default: "h-11 px-6 py-2.5",
         sm: "h-9 px-4 text-xs",
-        lg: "h-14 px-10 text-base",
+        lg: "h-12 px-8 py-3",
         icon: "size-11",
       },
     },

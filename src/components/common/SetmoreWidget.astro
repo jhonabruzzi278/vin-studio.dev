@@ -1,0 +1,65 @@
+---
+interface Props {
+  variant?: 'inline' | 'button' | 'minimal';
+  text?: string;
+  className?: string;
+}
+
+const { 
+  variant = 'minimal', 
+  text = 'Agendar llamada',
+  className = ''
+} = Astro.props;
+---
+
+<!-- Inline variant: Botón negro sólido -->
+{variant === 'inline' && (
+  <a 
+    id="Setmore_button_iframe" 
+    href="https://vinstudio.setmore.com"
+    class={`inline-flex items-center justify-center gap-2 px-8 py-3 bg-zinc-900 text-white border-2 border-zinc-900 hover:bg-white hover:text-zinc-900 transition-all duration-200 font-semibold text-sm ${className}`}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    {text}
+  </a>
+)}
+
+<!-- Button variant: Botón outline blanco -->
+{variant === 'button' && (
+  <a 
+    id="Setmore_button_iframe" 
+    href="https://vinstudio.setmore.com"
+    class={`inline-flex items-center justify-center gap-2 px-8 py-3 bg-white text-zinc-900 border-2 border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-200 font-semibold text-sm ${className}`}
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    {text}
+  </a>
+)}
+
+<!-- Minimal variant: Enlace minimalista con icono -->
+{variant === 'minimal' && (
+  <a 
+    id="Setmore_button_iframe" 
+    href="https://vinstudio.setmore.com"
+    class={`inline-flex items-center gap-2 text-zinc-900 hover:text-zinc-500 transition-colors font-semibold group ${className}`}
+  >
+    <svg class="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    {text}
+  </a>
+)}
+
+<!-- Script de Setmore (se carga una sola vez globalmente) -->
+<script id="setmore_script" type="text/javascript" src="https://assets.setmore.com/integration/static/setmoreIframeLive.js" is:inline></script>
+
+<style>
+  /* Asegurar que el iframe de Setmore respete el diseño */
+  :global(#setmore_iframe_container) {
+    z-index: 9999 !important;
+  }
+</style>

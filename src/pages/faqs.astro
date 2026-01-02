@@ -1,66 +1,67 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import SetmoreWidget from '@/components/common/SetmoreWidget.astro';
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo toma desarrollar un sitio web?",
-    answer: "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar 2-3 semanas, mientras que proyectos más complejos pueden requerir 6-12 semanas. Proporcionamos un cronograma detallado en cada cotización."
+    question: "¿Cuál es el tiempo de desarrollo para una página web corporativa o un e-commerce?",
+    answer: "El tiempo de desarrollo varía según la complejidad. Un sitio web básico puede tomar 2-3 semanas, mientras que proyectos más complejos (como e-commerce) pueden requerir 6-12 semanas. Proporcionamos un cronograma detallado en cada cotización."
   },
   {
-    question: "¿Cuál es su proceso de trabajo?",
-    answer: "Nuestro proceso incluye: 1) Consulta inicial y análisis de requisitos, 2) Propuesta y cotización, 3) Diseño y aprobación, 4) Desarrollo, 5) Pruebas y ajustes, 6) Lanzamiento y entrega. Mantenemos comunicación constante durante todo el proceso."
+    question: "¿Cuál es su proceso de trabajo en desarrollo web?",
+    answer: "Nuestro proceso incluye 6 etapas claras: 1) Consulta inicial y análisis, 2) Propuesta y cotización, 3) Diseño y aprobación, 4) Desarrollo, 5) Pruebas y ajustes, 6) Lanzamiento y entrega. Mantenemos comunicación constante durante todo el proceso."
   },
   {
-    question: "¿Ofrecen servicios de mantenimiento?",
+    question: "¿Ofrecen servicios de mantenimiento web y soporte?",
     answer: "Sí, ofrecemos planes de mantenimiento mensual que incluyen actualizaciones de seguridad, backups, soporte técnico y pequeñas modificaciones. También proporcionamos 30 días de garantía post-lanzamiento sin costo adicional."
   },
   {
-    question: "¿Qué tecnologías utilizan?",
-    answer: "Trabajamos con tecnologías modernas y probadas como React, Astro, Next.js, TailwindCSS, Node.js, y más. Seleccionamos la stack tecnológica más adecuada para cada proyecto según sus requisitos específicos."
+    question: "¿Desarrollan sitios web modernos con React, Astro y Next.js?",
+    answer: "Trabajamos con tecnologías modernas y probadas como React, Astro, Next.js, TailwindCSS, Node.js, y más. Seleccionamos la stack tecnológica más adecuada para asegurar la velocidad y escalabilidad de tu proyecto."
   },
   {
-    question: "¿Cómo son los términos de pago?",
-    answer: "Generalmente requerimos un 50% de anticipo al iniciar el proyecto y el 50% restante al finalizar. Para proyectos grandes podemos ofrecer planes de pago en etapas. Todos los detalles se especifican en el contrato."
+    question: "¿Cómo son los términos de pago para un proyecto web?",
+    answer: "Generalmente requerimos un 50% de anticipo al iniciar el proyecto y el 50% restante al finalizar. Para proyectos grandes (Enterprise) podemos ofrecer planes de pago en etapas. Todos los detalles se especifican en el contrato."
   },
   {
-    question: "¿Proporcionan el código fuente?",
-    answer: "Sí, una vez completado el pago total, el cliente recibe todo el código fuente del proyecto. Eres dueño completo de tu sitio web y puedes hacer con él lo que desees."
+    question: "¿Entregan el código fuente y la propiedad intelectual?",
+    answer: "Sí, absolutamente. Una vez completado el pago total, el cliente recibe todo el código fuente del proyecto. Eres dueño completo de tu sitio web y puedes hacer con él lo que desees."
   },
   {
-    question: "¿Trabajan con clientes internacionales?",
+    question: "¿Trabajan con clientes internacionales de forma remota?",
     answer: "Absolutamente. Trabajamos 100% online y hemos colaborado con clientes de diversos países. Nos adaptamos a diferentes zonas horarias y ofrecemos comunicación fluida por email, WhatsApp y videollamadas."
   },
   {
     question: "¿Qué pasa si no estoy satisfecho con el resultado?",
-    answer: "Trabajamos en iteraciones y mantenemos comunicación constante para asegurar tu satisfacción. Incluimos revisiones en cada etapa del proyecto. Si hay algo que no cumple tus expectativas, lo ajustamos hasta que estés conforme."
+    answer: "Trabajamos en iteraciones y mantenemos comunicación constante para asegurar tu satisfacción. Incluimos revisiones en cada etapa. Si hay algo que no cumple tus expectativas, lo ajustamos hasta que estés conforme."
   },
   {
     question: "¿Necesito tener conocimientos técnicos?",
-    answer: "No es necesario. Nos encargamos de todo el aspecto técnico y te guiamos paso a paso. Si lo deseas, también podemos capacitarte para que puedas gestionar tu sitio de forma independiente."
+    answer: "No es necesario. Nos encargamos de todo el aspecto técnico y te guiamos paso a paso. Si lo deseas, también podemos capacitarte para que puedas gestionar tu contenido de forma independiente."
   },
   {
-    question: "¿Incluyen hosting y dominio?",
-    answer: "Podemos ayudarte a configurar hosting y dominio, pero generalmente estos son costos separados que el cliente paga directamente al proveedor. Esto te da control total y evita dependencia de terceros."
+    question: "¿Incluyen hosting y dominio en sus servicios?",
+    answer: "Podemos ayudarte a configurar hosting y dominio, pero recomendamos que el cliente los pague directamente al proveedor para tener control total y evitar dependencias de terceros (te asesoramos en cuál elegir)."
   },
   {
-    question: "¿Hacen diseño responsive?",
-    answer: "Todos nuestros sitios son 100% responsive y se ven perfectos en dispositivos móviles, tablets y desktop. Esto es estándar en todos nuestros proyectos, no un extra."
+    question: "¿Mis sitios web estarán optimizados para móviles (Mobile-First) y SEO?",
+    answer: "Todos nuestros sitios son 100% responsive y se ven perfectos en dispositivos móviles, tablets y desktop. Además, implementamos las mejores prácticas de SEO técnico desde el inicio del desarrollo."
   },
   {
-    question: "¿Pueden ayudar con SEO?",
-    answer: "Sí, implementamos las mejores prácticas de SEO técnico en todos nuestros proyectos: estructura correcta, metadatos, velocidad de carga optimizada, etc. También podemos recomendar estrategias de contenido SEO."
+    question: "¿Pueden ayudar con estrategias de SEO?",
+    answer: "Sí, la estructura base ya incluye SEO técnico (velocidad, metadatos, estructura). También podemos recomendar estrategias de contenido para mejorar tu posicionamiento en Google a largo plazo."
   },
   {
-    question: "¿Qué información necesitan para empezar?",
+    question: "¿Qué información necesitan para cotizar un proyecto?",
     answer: "Para una cotización inicial necesitamos: 1) Descripción general del proyecto, 2) Funcionalidades deseadas, 3) Referencias o inspiración de diseño, 4) Timeline aproximado. Luego profundizamos en los detalles."
   },
   {
-    question: "¿Hacen rediseños de sitios existentes?",
-    answer: "Sí, podemos rediseñar y mejorar sitios web existentes. Analizamos tu sitio actual, identificamos áreas de mejora y proponemos soluciones modernas que mantengan tu contenido e identidad."
+    question: "¿Hacen rediseños o migraciones de sitios existentes?",
+    answer: "Sí, realizamos rediseños completos. Analizamos tu sitio actual, identificamos áreas de mejora en rendimiento y conversión, y proponemos soluciones modernas que mantengan tu identidad."
   },
   {
-    question: "¿Cómo garantizan la seguridad del sitio?",
-    answer: "Implementamos las mejores prácticas de seguridad: HTTPS, validación de formularios, protección contra ataques comunes, actualizaciones regulares, y backups automáticos. La seguridad es prioritaria en todos nuestros proyectos."
+    question: "¿Cómo garantizan la seguridad del sitio web?",
+    answer: "Implementamos las mejores prácticas de seguridad: HTTPS, validación de formularios, protección contra ataques comunes, actualizaciones regulares, y backups automáticos. La seguridad es prioritaria."
   }
 ];
 ---
@@ -134,13 +135,14 @@ const faqs = [
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
               href="/contacto"
-              class="w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white font-medium hover:bg-zinc-800 transition-colors text-center"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-zinc-900 text-white border-2 border-zinc-900 font-semibold hover:bg-white hover:text-zinc-900 transition-all duration-200 text-sm"
             >
               Contactar Ahora
             </a>
+            <SetmoreWidget variant="button" text="Agendar Llamada" />
             <button 
               onclick="navigator.clipboard.writeText('jonathan.guerra@vin-studio.dev').then(() => { this.textContent = '✓ Email Copiado'; setTimeout(() => this.textContent = 'Copiar Email', 2000); })"
-              class="w-full sm:w-auto px-8 py-3 border-2 border-zinc-900 text-zinc-900 font-medium hover:bg-zinc-50 transition-colors cursor-pointer"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-white text-zinc-900 border-2 border-zinc-900 font-semibold hover:bg-zinc-900 hover:text-white transition-all duration-200 text-sm cursor-pointer"
             >
               Copiar Email
             </button>

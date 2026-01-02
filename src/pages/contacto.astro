@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import ContactForm from "@/components/forms/ContactForm";
 import LabelDemo from "@/components/ui/LabelDemo";
+import SetmoreWidget from "@/components/common/SetmoreWidget.astro";
 ---
 
 <Layout 
@@ -104,6 +105,17 @@ import LabelDemo from "@/components/ui/LabelDemo";
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- Setmore Widget - Agendar Llamada -->
+            <div class="border-t border-zinc-200 pt-8 sm:pt-12">
+              <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-4 tracking-tight">
+                Agenda una Llamada
+              </h2>
+              <p class="text-zinc-500 mb-6">
+                Reserva un espacio en mi calendario para conversar sobre tu proyecto sin compromisos.
+              </p>
+              <SetmoreWidget variant="inline" text="Agendar Llamada" className="w-full sm:w-auto" />
             </div>
           </div>
         </div>

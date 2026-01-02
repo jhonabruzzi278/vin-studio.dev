@@ -1,5 +1,6 @@
 ---
 import { Button } from "@/components/ui/button";
+import SetmoreWidget from "@/components/common/SetmoreWidget.astro";
 ---
 
 <!-- CTA: Alto contraste con borde superior -->
@@ -68,6 +69,7 @@ import { Button } from "@/components/ui/button";
                   Contactar Ahora
                 </Button>
               </a>
+              <SetmoreWidget variant="button" text="Agendar Llamada" className="w-full block" />
               <a href="/portafolio" class="block">
                 <Button 
                   client:load 
@@ -75,7 +77,7 @@ import { Button } from "@/components/ui/button";
                   size="lg"
                   className="w-full"
                 >
-                  Ver Portfolio Completo
+                  Ver Portfolio
                 </Button>
               </a>
             </div>
