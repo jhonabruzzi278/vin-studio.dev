@@ -1,62 +1,146 @@
----
+﻿---
 import Layout from "@/layouts/Layout.astro";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+
+const principles = [
+  {
+    title: "Precision tecnica",
+    text: "Disenamos y desarrollamos con foco en rendimiento, mantenimiento y escalabilidad real.",
+  },
+  {
+    title: "Criterio comercial",
+    text: "No construimos por construir. Cada decision busca mejorar conversion, claridad y crecimiento.",
+  },
+  {
+    title: "Trabajo transparente",
+    text: "Objetivos, alcance y avance siempre visibles. Sin letra chica ni promesas infladas.",
+  },
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Descubrimiento",
+    text: "Entendemos negocio, contexto y objetivos para definir una ruta realista.",
+  },
+  {
+    step: "02",
+    title: "Estrategia y diseño",
+    text: "Traducimos la direccion en experiencia, arquitectura y priorizacion.",
+  },
+  {
+    step: "03",
+    title: "Implementacion",
+    text: "Construimos con estandares de calidad, performance y control de versiones.",
+  },
+  {
+    step: "04",
+    title: "Iteracion",
+    text: "Medimos resultados y ajustamos para sostener crecimiento en el tiempo.",
+  },
+];
 ---
 
-<Layout 
-  title="Sobre Nosotros - Quiénes Somos" 
-  description="Conoce VIN Studio: equipo de desarrollo web especializado en crear soluciones digitales innovadoras. Visión, Integridad y Notoriedad son nuestros pilares fundamentales."
-  keywords="sobre vin studio, equipo desarrollo web, agencia digital chile, desarrolladores web profesionales, quiénes somos"
+<Layout
+  title="Nosotros | VIN Studio"
+  description="Conoce a VIN Studio: estudio digital enfocado en desarrollo web, ecommerce y soluciones cloud para empresas que buscan crecer con claridad."
+  keywords="nosotros vin studio, estudio digital chile, desarrollo web profesional, agencia tecnologica"
 >
-  <section class="container mx-auto px-4 py-20">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">
-        Sobre Nosotros
-      </h1>
-      <p class="text-xl text-muted-foreground mb-12">
-        Somos un equipo apasionado por la tecnología y el diseño, dedicados a 
-        crear soluciones digitales que marcan la diferencia.
-      </p>
+  <section class="relative bg-white overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(24,24,27,0.05),transparent_38%)]"></div>
 
-      <div class="grid md:grid-cols-2 gap-8 mb-16">
-        <Card>
-          <CardHeader>
-            <CardTitle>Nuestra Misión</CardTitle>
-            <CardDescription>
-              Transformar ideas en experiencias digitales excepcionales que impulsen 
-              el crecimiento de nuestros clientes.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+    <div class="container relative mx-auto px-4 py-14 sm:py-20 lg:py-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-end border-b border-zinc-200 pb-10 sm:pb-12">
+          <div class="space-y-6">
+            <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">
+              Sobre VIN Studio
+            </p>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-zinc-900 leading-[0.95]">
+              Construimos
+              <br />
+              productos digitales
+              <br />
+              con criterio.
+            </h1>
+          </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Nuestra Visión</CardTitle>
-            <CardDescription>
-              Ser el socio tecnológico de confianza para empresas que buscan 
-              innovar y destacarse en el mundo digital.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
+          <div class="space-y-5 lg:pb-2">
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed">
+              Somos un estudio enfocado en desarrollo web, ecommerce y soluciones cloud para pymes y empresas medianas.
+            </p>
+            <p class="text-sm sm:text-base text-zinc-500 leading-relaxed">
+              Nuestra forma de trabajar combina direccion estrategica, diseno funcional y ejecucion tecnica para entregar resultados medibles.
+            </p>
+          </div>
+        </div>
 
-      <div class="prose prose-lg dark:prose-invert max-w-none">
-        <h2>¿Quiénes Somos?</h2>
-        <p>
-          En VIN Studio, combinamos creatividad, experiencia técnica y pasión por 
-          la innovación para ayudar a nuestros clientes a alcanzar sus objetivos 
-          digitales. Con años de experiencia en desarrollo web y consultoría tecnológica, 
-          hemos ayudado a empresas de todos los tamaños a establecer su presencia online 
-          y optimizar sus procesos digitales.
-        </p>
+        <div class="grid md:grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-12">
+          <article class="border border-zinc-200 bg-white p-6 sm:p-7 transition-colors hover:border-zinc-900">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-4">Mision</p>
+            <p class="text-zinc-800 leading-relaxed text-sm sm:text-base">
+              Transformar objetivos de negocio en plataformas digitales claras, solidas y listas para crecer.
+            </p>
+          </article>
 
-        <h2>Nuestro Enfoque</h2>
-        <p>
-          Creemos en la colaboración estrecha con nuestros clientes. No somos solo 
-          proveedores de servicios, somos socios estratégicos que se comprometen con 
-          el éxito de cada proyecto. Utilizamos metodologías ágiles y las últimas 
-          tecnologías para entregar soluciones de alta calidad que superan expectativas.
-        </p>
+          <article class="border border-zinc-200 bg-zinc-900 p-6 sm:p-7">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-4">Vision</p>
+            <p class="text-zinc-100 leading-relaxed text-sm sm:text-base">
+              Ser el partner tecnologico de referencia para empresas que valoran calidad, velocidad y enfoque comercial.
+            </p>
+          </article>
+
+          <article class="border border-zinc-200 bg-white p-6 sm:p-7 transition-colors hover:border-zinc-900">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-4">Compromiso</p>
+            <p class="text-zinc-800 leading-relaxed text-sm sm:text-base">
+              Transparencia total en alcance, tiempos y decisiones para construir relaciones de largo plazo.
+            </p>
+          </article>
+        </div>
+
+        <div class="mt-14 sm:mt-16 grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-start">
+          <div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-900 tracking-tight">
+              Nuestros principios de trabajo
+            </h2>
+          </div>
+
+          <div class="space-y-6">
+            {principles.map((item) => (
+              <div class="border-b border-zinc-200 pb-5">
+                <h3 class="text-lg sm:text-xl font-semibold text-zinc-900">{item.title}</h3>
+                <p class="mt-2 text-sm sm:text-base text-zinc-600 leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-14 sm:mt-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-900 tracking-tight mb-6 sm:mb-8">
+            Como trabajamos
+          </h2>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {process.map((item) => (
+              <article class="border border-zinc-200 p-5 sm:p-6 bg-white hover:border-zinc-900 transition-colors">
+                <p class="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-zinc-400">{item.step}</p>
+                <h3 class="mt-4 text-lg font-semibold text-zinc-900">{item.title}</h3>
+                <p class="mt-2 text-sm text-zinc-600 leading-relaxed">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-14 sm:mt-16 border-t border-zinc-200 pt-8 sm:pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+          <p class="text-zinc-600 text-sm sm:text-base">
+            Si buscas un equipo tecnico con enfoque de negocio, conversemos.
+          </p>
+          <a
+            href="/contacto"
+            class="inline-flex items-center justify-center h-11 px-7 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors"
+          >
+            Hablemos de tu proyecto
+          </a>
+        </div>
       </div>
     </div>
   </section>

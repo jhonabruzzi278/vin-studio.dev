@@ -1,0 +1,134 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PricingTier from "@/components/services/PricingTier.astro";
+---
+
+<Layout
+  title="Pricing Cloud para Pymes y Medianas Empresas | VIN Studio"
+  description="Planes cloud a medida para empresas en Chile: infraestructura segura, monitoreo, backups y soporte continuo. Pricing claro para crecer sin friccion."
+  keywords="soluciones cloud chile, pricing cloud pymes, migracion cloud, infraestructura cloud, soporte cloud empresas"
+>
+  <section class="container mx-auto px-4 py-12 sm:py-20">
+    <div class="text-center mb-12 sm:mb-16">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+        Soluciones Cloud a Medida
+      </h1>
+      <p class="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+        Implementamos, optimizamos y operamos tu infraestructura cloud para que tu equipo se enfoque en vender y crecer.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 sm:gap-8 max-w-6xl mx-auto">
+      <PricingTier
+        tier="standard"
+        title="Cloud Base"
+        price="$390.000 CLP"
+        priceSuffix="/mes"
+        description="Ideal para pymes que necesitan estabilidad, seguridad y soporte inicial"
+        features={[
+          "Infraestructura cloud base (app + base de datos + backups)",
+          "Hardening inicial y accesos seguros",
+          "Monitoreo basico de disponibilidad",
+          "Actualizaciones mensuales de mantenimiento",
+          "Soporte tecnico en horario laboral",
+          "Reporte mensual de estado",
+        ]}
+        ctaLabel="Quiero Cloud Base"
+        ctaHref="/contacto?plan=cloud-base"
+      />
+
+      <PricingTier
+        tier="business"
+        title="Cloud Growth"
+        price="$790.000 CLP"
+        priceSuffix="/mes"
+        description="Para empresas en crecimiento que requieren rendimiento y continuidad"
+        features={[
+          "Todo lo de Cloud Base",
+          "Ambientes separados (produccion y staging)",
+          "Monitoreo avanzado con alertas proactivas",
+          "Estrategia de escalamiento y costos",
+          "Backups diarios y pruebas de restauracion",
+          "Soporte prioritario y mesa de ayuda",
+        ]}
+        popular={true}
+        ctaLabel="Quiero Cloud Growth"
+        ctaHref="/contacto?plan=cloud-growth"
+      />
+
+      <PricingTier
+        tier="enterprise"
+        title="Cloud Scale"
+        price="Desde $1.490.000 CLP"
+        priceSuffix="/mes"
+        description="Para medianas empresas con operacion critica y necesidades avanzadas"
+        features={[
+          "Todo lo de Cloud Growth",
+          "Arquitectura multi-servicio a medida",
+          "Alta disponibilidad y recuperacion ante desastres",
+          "Automatizacion CI/CD y despliegues seguros",
+          "Politicas de compliance y auditoria tecnica",
+          "Acompanamiento estrategico continuo",
+        ]}
+        ctaLabel="Cotizar Cloud Scale"
+        ctaHref="/contacto?plan=cloud-scale"
+      />
+    </div>
+
+    <div class="mt-16 sm:mt-20 max-w-5xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
+        Beneficios de usar soluciones cloud
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div class="p-6 border rounded-xl bg-white">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Escalabilidad real</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Tu infraestructura crece con la demanda sin rehacer todo cada vez que aumenta el trafico.
+          </p>
+        </div>
+
+        <div class="p-6 border rounded-xl bg-white">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Menos riesgo operativo</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Backups, monitoreo y alertas reducen caidas y mejoran la continuidad del negocio.
+          </p>
+        </div>
+
+        <div class="p-6 border rounded-xl bg-white">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Control de costos</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Pagas por capacidad usada y optimizamos consumos para evitar gastos innecesarios.
+          </p>
+        </div>
+
+        <div class="p-6 border rounded-xl bg-white">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3">Seguridad desde el inicio</h3>
+          <p class="text-sm sm:text-base text-muted-foreground">
+            Definimos accesos, buenas practicas y politicas para proteger datos y operaciones.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center space-y-4">
+      <p class="text-sm text-zinc-500">Necesitas una propuesta exacta para tu operacion actual?</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-8 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors"
+        >
+          Solicitar Diagnostico Cloud
+        </a>
+        <a
+          href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20quiero%20evaluar%20una%20solucion%20cloud%20a%20medida."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-8 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors"
+        >
+          Hablar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

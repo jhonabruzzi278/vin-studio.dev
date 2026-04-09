@@ -76,6 +76,9 @@ export default function NavbarComponent() {
         <NavbarLink href="/servicios">
           Servicios
         </NavbarLink>
+        <NavbarLink href="/cloud">
+          Cloud
+        </NavbarLink>
         <NavbarLink href="/portafolio">
           Portafolio
         </NavbarLink>
