@@ -1,407 +1,207 @@
 ﻿---
 import Layout from "@/layouts/Layout.astro";
-import PricingTier from "@/components/services/PricingTier.astro";
+
+const implementationPlans = [
+  {
+    name: "Plan Express",
+    price: "$99.990 CLP",
+    description: "Entrada rapida para lanzar una tienda funcional.",
+    features: [
+      "Tienda funcional basica",
+      "Hasta 10 productos",
+      "1 metodo de pago",
+      "Configuracion simple",
+    ],
+  },
+  {
+    name: "Plan Completa",
+    price: "$249.990 CLP",
+    description: "Estructura mas ordenada para comenzar a vender con base solida.",
+    features: [
+      "Hasta 20 productos",
+      "Estructura optimizada de tienda",
+      "Emails automaticos basicos",
+      "Navegacion mejorada",
+    ],
+    featured: true,
+  },
+  {
+    name: "Plan Pro",
+    price: "$399.990 CLP",
+    description: "Para negocios que buscan mayor rendimiento comercial desde el inicio.",
+    features: [
+      "Hasta 50 productos",
+      "Apps de conversion",
+      "Pixel + catalogo Meta",
+      "SEO basico",
+    ],
+  },
+  {
+    name: "Plan Elite",
+    price: "$649.990 CLP",
+    description: "Implementacion avanzada para operaciones mas completas.",
+    features: [
+      "Hasta 100 productos",
+      "Migracion basica",
+      "Landing pages",
+      "Fotografia + contenido visual",
+      "Integraciones avanzadas",
+    ],
+  },
+];
+
+const notIncluded = [
+  "Desarrollo personalizado incluido en plan base",
+  "Rediseno completo",
+  "Branding",
+  "Copywriting avanzado",
+  "Publicidad (Meta, Google, TikTok)",
+  "Automatizaciones avanzadas",
+  "Integraciones complejas",
+  "Apps pagadas",
+];
 ---
 
 <Layout
-  title="Planes Ecommerce en Chile | VIN Studio"
-  description="Modelos de trabajo por proyecto y mensual recomendado para ecommerce en Chile. Planes claros, soporte en horario laboral y politicas comerciales transparentes."
-  keywords="ecommerce chile, planes ecommerce, soporte ecommerce, mantenimiento tienda online"
+  title="Modelo Ecommerce Shopify | VIN Studio"
+  description="Modelo de servicio ecommerce con Shopify: implementacion por unica vez y continuidad mensual Soporte+."
+  keywords="shopify chile, implementacion ecommerce, soporte shopify, planes ecommerce"
 >
   <section class="container mx-auto px-4 py-12 sm:py-20">
-    <div class="text-center mb-10 sm:mb-12">
+    <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-        Planes Ecommerce para Chile
+        Modelo de Servicio Ecommerce con Shopify
       </h1>
-      <p class="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-        Dos modalidades de contratacion para perfiles distintos: autonomia por proyecto o gestion mensual acompanada.
+      <p class="text-lg sm:text-xl text-zinc-600 leading-relaxed">
+        Un modelo claro con dos etapas: implementacion (pago unico) y continuidad operativa (suscripcion mensual Soporte+).
       </p>
-      <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-        <span class="text-xs sm:text-sm border border-zinc-300 bg-white px-3 py-1.5 rounded-full text-zinc-700">Soporte en horario laboral</span>
-        <span class="text-xs sm:text-sm border border-zinc-300 bg-white px-3 py-1.5 rounded-full text-zinc-700">Anticipo del 50% para iniciar</span>
-        <span class="text-xs sm:text-sm border border-zinc-300 bg-white px-3 py-1.5 rounded-full text-zinc-700">Modelo por proyecto o mensual</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 sm:mb-16">
+      <div class="border rounded-xl p-6 bg-white">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-3">Parte 1</p>
+        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-2">Implementacion (Pago Unico)</h2>
+        <p class="text-sm sm:text-base text-zinc-600">Creacion y configuracion de la tienda online segun el plan elegido.</p>
+      </div>
+      <div class="border rounded-xl p-6 bg-white">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-3">Parte 2</p>
+        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-2">Continuidad (Soporte+ Mensual)</h2>
+        <p class="text-sm sm:text-base text-zinc-600">Operacion, soporte y uso de plataforma para mantener la tienda estable y creciendo.</p>
       </div>
     </div>
 
-    <div class="max-w-4xl mx-auto mb-10 sm:mb-12">
-      <div class="border border-zinc-200 bg-zinc-50 p-2 rounded-xl flex flex-col sm:flex-row gap-2 shadow-sm" role="tablist" aria-label="Modelo de cobro">
-        <button
-          id="btn-proyecto"
-          type="button"
-          data-model-target="proyecto"
-          class="w-full sm:w-1/2 h-11 px-4 text-sm font-semibold rounded-lg bg-zinc-900 text-white transition-colors"
-          aria-pressed="true"
-        >
-          Proyecto (Cliente Autonomo)
-        </button>
-        <button
-          id="btn-mensual"
-          type="button"
-          data-model-target="mensual"
-          class="w-full sm:w-1/2 h-11 px-4 text-sm font-semibold rounded-lg bg-white text-zinc-900 border border-zinc-200 transition-colors"
-          aria-pressed="false"
-        >
-          Mensual con Acompanamiento
-        </button>
-      </div>
-    </div>
-
-    <div class="max-w-5xl mx-auto mb-10 sm:mb-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="border rounded-xl p-5 bg-white">
-          <p class="text-sm font-semibold text-zinc-900 mb-1">Proyecto (Autonomia)</p>
-          <p class="text-sm text-zinc-600">Ideal si ya cuentas con conocimientos o equipo interno para operar la tienda despues de la entrega.</p>
-        </div>
-        <div class="border border-zinc-900 rounded-xl p-5 bg-white">
-          <p class="text-sm font-semibold text-zinc-900 mb-1">Mensual con Acompanamiento</p>
-          <p class="text-sm text-zinc-700">Ideal si necesitas un partner operativo mes a mes: gestion continua, cambios rapidos y seguimiento cercano.</p>
-        </div>
-      </div>
-    </div>
-
-    <div data-pricing-model="proyecto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 sm:gap-8 max-w-6xl mx-auto">
-        <PricingTier
-          tier="standard"
-          title="Ecommerce Inicio"
-          price="$390.000 CLP"
-          description="Para emprendedores y pymes que quieren lanzar una tienda online profesional"
-          features={[
-            "Implementacion completa de tienda ecommerce",
-            "Hasta 40 productos cargados",
-            "Integracion de pasarela de pago",
-            "Configuracion de despacho",
-            "Diseño responsive y optimizacion movil",
-            "Panel autoadministrable para productos y pedidos",
-            "Capacitacion para autogestion",
-            "Tiempo estimado: 10 a 15 dias habiles",
-          ]}
-          ctaLabel="Quiero plan Inicio"
-          ctaHref="/contacto?plan=inicio"
-        />
-
-        <PricingTier
-          tier="business"
-          title="Ecommerce Crecimiento"
-          price="$690.000 CLP"
-          description="Para negocios que necesitan una tienda mas completa, con mejor estructura y gestion"
-          features={[
-            "Todo lo de Ecommerce Inicio",
-            "Hasta 150 productos y variantes",
-            "Configuracion avanzada de categorias y menus",
-            "Configuracion de variantes (talla, color, formato, etc.)",
-            "Politicas de tienda (cambios, devoluciones, privacidad)",
-            "Paginas informativas (nosotros, contacto, preguntas frecuentes)",
-            "Soporte y mejoras por 45 dias",
-            "Tiempo estimado: 3 a 5 semanas",
-          ]}
-          popular={true}
-          ctaLabel="Quiero plan Crecimiento"
-          ctaHref="/contacto?plan=crecimiento"
-        />
-
-        <PricingTier
-          tier="enterprise"
-          title="Ecommerce Escala"
-          price="Desde $1.190.000 CLP"
-          description="Para operaciones con mayor complejidad, mas productos y necesidades operativas avanzadas"
-          features={[
-            "Todo lo de Ecommerce Crecimiento",
-            "Integraciones operativas avanzadas (inventario / facturacion / ERP)",
-            "Multi-bodega y reglas de despacho",
-            "Reglas de stock y variantes complejas",
-            "Configuracion de roles de administracion",
-            "SLA de soporte prioritario",
-            "Plan de mejoras tecnicas por etapas",
-            "Tiempo estimado segun alcance",
-          ]}
-          ctaLabel="Cotizar plan Escala"
-          ctaHref="/contacto?plan=escala"
-        />
-      </div>
-
-      <div class="mt-16 sm:mt-20 max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-center">Detalle de diferencias por plan (Proyecto)</h2>
-        <p class="text-sm sm:text-base text-zinc-500 text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-          Comparacion especifica para clientes que necesitan mas informacion antes de decidir.
-        </p>
-
-        <div class="md:hidden grid grid-cols-1 gap-4">
-          <article class="border rounded-xl bg-white p-5">
-            <h3 class="text-base font-semibold text-zinc-900 mb-3">Ecommerce Inicio</h3>
-            <div class="space-y-2 text-sm text-zinc-600">
-              <p><span class="font-medium text-zinc-900">Catalogo:</span> Hasta 40 productos</p>
-              <p><span class="font-medium text-zinc-900">Checkout:</span> Optimizado + 1 pasarela</p>
-              <p><span class="font-medium text-zinc-900">Soporte:</span> 1 mes en horario laboral</p>
-              <p><span class="font-medium text-zinc-900">Plazo:</span> 10 a 15 dias habiles</p>
-              <p><span class="font-medium text-zinc-900">Inversion:</span> $390.000 CLP</p>
-            </div>
+    <div class="mb-14 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Planes de Implementacion</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
+        {implementationPlans.map((plan) => (
+          <article class={`border rounded-xl p-6 bg-white h-full flex flex-col ${plan.featured ? "border-zinc-900 shadow-lg shadow-zinc-900/10" : "border-zinc-200"}`}>
+            {plan.featured && (
+              <div class="mb-4">
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] bg-zinc-900 text-white px-3 py-1 rounded-full">Mas Recomendado</span>
+              </div>
+            )}
+            <h3 class="text-xl font-semibold text-zinc-900 mb-2">{plan.name}</h3>
+            <p class="text-3xl font-bold text-zinc-900 leading-none mb-3">{plan.price}</p>
+            <p class="text-sm text-zinc-600 mb-4">{plan.description}</p>
+            <ul class="space-y-2 text-sm text-zinc-600 flex-1">
+              {plan.features.map((item) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-900"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/contacto" class="mt-5 inline-flex items-center justify-center h-10 w-full text-sm font-semibold border border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
+              Solicitar este plan
+            </a>
           </article>
-          <article class="border rounded-xl bg-white p-5">
-            <h3 class="text-base font-semibold text-zinc-900 mb-3">Ecommerce Crecimiento</h3>
-            <div class="space-y-2 text-sm text-zinc-600">
-              <p><span class="font-medium text-zinc-900">Catalogo:</span> Hasta 150 productos y variantes</p>
-              <p><span class="font-medium text-zinc-900">Checkout:</span> Optimizado + analitica de conversion</p>
-              <p><span class="font-medium text-zinc-900">Soporte:</span> 1 mes en horario laboral + mejoras</p>
-              <p><span class="font-medium text-zinc-900">Plazo:</span> 3 a 5 semanas</p>
-              <p><span class="font-medium text-zinc-900">Inversion:</span> $690.000 CLP</p>
-            </div>
-          </article>
-          <article class="border rounded-xl bg-white p-5">
-            <h3 class="text-base font-semibold text-zinc-900 mb-3">Ecommerce Escala</h3>
-            <div class="space-y-2 text-sm text-zinc-600">
-              <p><span class="font-medium text-zinc-900">Catalogo:</span> Alto volumen y estructura avanzada</p>
-              <p><span class="font-medium text-zinc-900">Checkout:</span> Flujos personalizados</p>
-              <p><span class="font-medium text-zinc-900">Soporte:</span> 1 mes en horario laboral + SLA prioritario</p>
-              <p><span class="font-medium text-zinc-900">Plazo:</span> Segun alcance definido en discovery</p>
-              <p><span class="font-medium text-zinc-900">Inversion:</span> Desde $1.190.000 CLP</p>
-            </div>
-          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="border rounded-xl p-6 sm:p-8 bg-zinc-50 max-w-6xl mx-auto mb-14 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-6">Soporte+ (Modelo de Continuidad)</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div class="border rounded-xl bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500 mb-3">Precio</p>
+          <p class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">$100 USD / mes</p>
+          <p class="text-sm text-zinc-600">Incluye plataforma Shopify (referencial ~ $65 USD) + soporte tecnico y operativo + mantenimiento y ajustes.</p>
         </div>
 
-        <div class="hidden md:block overflow-x-auto border rounded-xl bg-white">
-          <table class="w-full min-w-[780px] text-sm">
-            <thead class="bg-zinc-50 border-b">
-              <tr>
-                <th class="text-left p-4 font-semibold text-zinc-900">Criterio</th>
-                <th class="text-left p-4 font-semibold text-zinc-900">Ecommerce Inicio</th>
-                <th class="text-left p-4 font-semibold text-zinc-900">Ecommerce Crecimiento</th>
-                <th class="text-left p-4 font-semibold text-zinc-900">Ecommerce Escala</th>
-              </tr>
-            </thead>
-            <tbody class="[&>tr:not(:last-child)]:border-b">
-              <tr>
-                <td class="p-4 font-medium text-zinc-900">Catalogo inicial</td>
-                <td class="p-4 text-zinc-600">Hasta 40 productos</td>
-                <td class="p-4 text-zinc-600">Hasta 150 productos y variantes</td>
-                <td class="p-4 text-zinc-600">Alto volumen y estructura avanzada</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium text-zinc-900">Checkout, pagos y flujo de compra</td>
-                <td class="p-4 text-zinc-600">Checkout optimizado + 1 pasarela</td>
-                <td class="p-4 text-zinc-600">Checkout optimizado + configuracion avanzada de carrito</td>
-                <td class="p-4 text-zinc-600">Checkout optimizado con flujos personalizados</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium text-zinc-900">Estructura de tienda</td>
-                <td class="p-4 text-zinc-600">Estructura base de paginas y categorias</td>
-                <td class="p-4 text-zinc-600">Categorias, menus y contenido informativo ampliado</td>
-                <td class="p-4 text-zinc-600">Arquitectura avanzada para catalogos grandes</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium text-zinc-900">Soporte incluido</td>
-                <td class="p-4 text-zinc-600">1 mes en horario laboral</td>
-                <td class="p-4 text-zinc-600">1 mes en horario laboral + mejoras</td>
-                <td class="p-4 text-zinc-600">1 mes en horario laboral + SLA prioritario</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium text-zinc-900">Plazo estimado</td>
-                <td class="p-4 text-zinc-600">10 a 15 dias habiles</td>
-                <td class="p-4 text-zinc-600">3 a 5 semanas</td>
-                <td class="p-4 text-zinc-600">Segun alcance definido en discovery</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium text-zinc-900">Inversion</td>
-                <td class="p-4 text-zinc-900 font-semibold">$390.000 CLP</td>
-                <td class="p-4 text-zinc-900 font-semibold">$690.000 CLP</td>
-                <td class="p-4 text-zinc-900 font-semibold">Desde $1.190.000 CLP</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="border rounded-xl bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500 mb-3">Funcionamiento</p>
+          <ul class="space-y-2 text-sm text-zinc-600">
+            <li><strong class="text-zinc-900">Meses 1 a 3:</strong> Soporte+ incluido sin costo adicional.</li>
+            <li><strong class="text-zinc-900">Desde mes 4:</strong> el cliente decide si continua con $100 USD/mes.</li>
+            <li><strong class="text-zinc-900">Si continua:</strong> mantiene plataforma + soporte + operacion asistida.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 border rounded-xl bg-white p-6">
+        <h3 class="text-lg sm:text-xl font-semibold text-zinc-900 mb-4">Que incluye Soporte+</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-zinc-600">
+          <p>Soporte tecnico continuo</p>
+          <p>Hasta 10 solicitudes de cambio mensuales</p>
+          <p>Ajustes operativos (textos, imagenes, estructura simple)</p>
+          <p>Capacitacion inicial</p>
+          <p>Atencion por WhatsApp (08:30 a 17:30)</p>
+          <p>Tiempo de respuesta: hasta 30 minutos</p>
+          <p>Supervision basica de funcionamiento</p>
         </div>
       </div>
     </div>
 
-    <div data-pricing-model="mensual" class="hidden">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 sm:gap-8 max-w-6xl mx-auto">
-        <PricingTier
-          tier="standard"
-          title="Ecommerce Gestionada Base"
-          price="$99.000 CLP"
-          priceSuffix="/mes"
-          description="Implementacion inicial + gestion mensual para mantener la tienda activa y ordenada"
-          features={[
-            "Implementacion inicial de tienda ecommerce",
-            "Acompanamiento en horario laboral todo el mes",
-            "Hasta 2 horas mensuales de cambios y ajustes",
-            "Ayuda operativa en administracion diaria",
-            "Respuesta por WhatsApp y correo",
-            "Informe mensual de tareas ejecutadas",
-          ]}
-          ctaLabel="Quiero acompanamiento Base"
-          ctaHref="/contacto?plan=mensual-base"
-        />
-
-        <PricingTier
-          tier="business"
-          title="Ecommerce Gestionada Growth"
-          price="$189.000 CLP"
-          priceSuffix="/mes"
-          description="Recomendado para negocios que necesitan ejecucion continua y apoyo de gestion semanal"
-          features={[
-            "Todo lo del plan Base",
-            "Hasta 6 horas mensuales de cambios y mejoras",
-            "Ayuda en administracion, pedidos y catalogo",
-            "Prioridad de atencion en horario laboral",
-            "Reunion de seguimiento mensual",
-            "Backlog de mejoras con priorizacion",
-          ]}
-          popular={true}
-          ctaLabel="Quiero acompanamiento Growth"
-          ctaHref="/contacto?plan=mensual-growth"
-        />
-
-        <PricingTier
-          tier="enterprise"
-          title="Ecommerce Gestionada Partner"
-          price="$390.000 CLP"
-          priceSuffix="/mes"
-          description="Para operaciones que requieren acompanamiento permanente, alta capacidad de respuesta y evolucion continua"
-          features={[
-            "Todo lo del plan Growth",
-            "Hasta 12 horas mensuales de ejecucion",
-            "Atencion prioritaria en horario laboral",
-            "Acompanamiento quincenal de operacion",
-            "Gestion de cambios repentinos",
-            "Roadmap tecnico mensual",
-          ]}
-          ctaLabel="Quiero acompanamiento Partner"
-          ctaHref="/contacto?plan=mensual-partner"
-        />
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto mb-14 sm:mb-16">
+      <div class="border rounded-xl p-6 bg-white">
+        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-4">Funcionalidades a Medida</h2>
+        <p class="text-sm sm:text-base text-zinc-600">Se pueden desarrollar mediante codigo y se cotizan por separado. No estan incluidas en el plan base.</p>
       </div>
 
-      <div class="mt-16 sm:mt-20 max-w-5xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Como funciona el modelo mensual con acompanamiento</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          <div class="p-6 border rounded-xl">
-            <h3 class="text-lg sm:text-xl font-semibold mb-3">Implementacion + operacion</h3>
-            <p class="text-sm sm:text-base text-muted-foreground">
-              No es solo soporte. Incluye creacion inicial y gestion continua mientras el plan este activo.
-            </p>
-          </div>
-          <div class="p-6 border rounded-xl">
-            <h3 class="text-lg sm:text-xl font-semibold mb-3">Ejecucion mensual priorizada</h3>
-            <p class="text-sm sm:text-base text-muted-foreground">
-              Definimos prioridades, ejecutamos ajustes y mantenemos el backlog activo para no frenar el negocio.
-            </p>
-          </div>
-          <div class="p-6 border rounded-xl">
-            <h3 class="text-lg sm:text-xl font-semibold mb-3">Acompanamiento de administracion</h3>
-            <p class="text-sm sm:text-base text-muted-foreground">
-              Te apoyamos en pedidos, catalogo, stock y cambios operativos para que no dependas de resolverlo solo.
-            </p>
-          </div>
-        </div>
+      <div class="border rounded-xl p-6 bg-white">
+        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-4">Que NO incluye</h2>
+        <ul class="space-y-2 text-sm text-zinc-600">
+          {notIncluded.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-900"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
 
-    <div class="mt-16 sm:mt-20 max-w-6xl mx-auto">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-center">Sistema Ecommerce VIN (8 capas)</h2>
-      <p class="text-sm sm:text-base text-zinc-500 text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-        No vendemos una web suelta. Implementamos un sistema comercial completo para vender, operar y escalar.
+    <div class="border rounded-xl p-6 sm:p-8 bg-white max-w-6xl mx-auto mb-14 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-5">Condiciones del Servicio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-zinc-600">
+        <p>Contrato minimo: 3 meses</p>
+        <p>Pago inicial: implementacion</p>
+        <p>Soporte incluido durante periodo inicial</p>
+        <p>Desde mes 4: servicio opcional</p>
+        <p>Servicio digital no reembolsable</p>
+      </div>
+    </div>
+
+    <div class="border border-zinc-900 rounded-xl p-6 sm:p-8 bg-zinc-900 text-white max-w-6xl mx-auto mb-10 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Propuesta de Valor</h2>
+      <p class="text-zinc-200 leading-relaxed text-sm sm:text-base mb-4">
+        No vendemos solo una tienda. Vendemos un sistema completo donde el cliente lanza su ecommerce, lo deja funcionando y luego decide si quiere seguir creciendo con acompanamiento.
       </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">1) Conversion</h3>
-          <p class="text-sm text-zinc-600">Home optimizada, producto de alta conversion, carrito claro y checkout sin friccion.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">2) Automatizacion</h3>
-          <p class="text-sm text-zinc-600">Flujos de bienvenida, carrito abandonado, post-compra y recompra diseniados para vender mas.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">3) Operacion</h3>
-          <p class="text-sm text-zinc-600">Pagos, envios, gestion de productos y panel simple para operar sin caos.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">4) Datos</h3>
-          <p class="text-sm text-zinc-600">Metricas clave e insights accionables para tomar decisiones de negocio.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">5) Soporte</h3>
-          <p class="text-sm text-zinc-600">Acompanamiento en horario laboral para mantener continuidad y crecimiento.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">6) Implementacion</h3>
-          <p class="text-sm text-zinc-600">Proceso estandarizado con checklist de entrega y pruebas reales de compra.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-white">
-          <h3 class="text-lg font-semibold mb-2 text-zinc-900">7) Estandar operativo</h3>
-          <p class="text-sm text-zinc-600">Mini guias de uso para pedidos, catalogo, stock y atencion de clientes.</p>
-        </div>
-        <div class="p-6 border rounded-xl bg-zinc-900 border-zinc-900">
-          <h3 class="text-lg font-semibold mb-2 text-white">8) Oferta clara</h3>
-          <p class="text-sm text-zinc-300">Resultado final: ecommerce operativo, automatizado y listo para vender desde el dia uno.</p>
-        </div>
-      </div>
+      <p class="text-zinc-300 text-sm sm:text-base">
+        Este modelo combina producto (tienda), servicio (soporte) y suscripcion (ingreso recurrente) para pasar de vender proyectos a operar ecommerce de clientes de forma continua.
+      </p>
     </div>
 
-    <div class="mt-16 sm:mt-20 max-w-6xl mx-auto border rounded-xl p-6 sm:p-8 bg-zinc-50">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-5 text-zinc-900">Condiciones comerciales</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 text-sm sm:text-base text-zinc-600">
-        <div>
-          <p class="font-semibold text-zinc-900 mb-2">Forma de pago</p>
-          <p>Todo proyecto nuevo se inicia con anticipo del 50%. El 50% restante se paga al finalizar la implementacion acordada.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-zinc-900 mb-2">Soporte</p>
-          <p>Todos los planes incluyen soporte en horario laboral durante 1 mes despues del lanzamiento. El modelo mensual extiende ese soporte mientras el plan este activo.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-zinc-900 mb-2">Entrega tecnica</p>
-          <p>Se entrega la tienda completamente configurada y operativa, con acceso administrativo para gestion diaria. No se entrega codigo fuente.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-zinc-900 mb-2">Tiempos estimados</p>
-          <p>Los tiempos publicados son referenciales y pueden variar segun alcance, aprobaciones y volumen de informacion entregada por el cliente.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-10 text-center">
+    <div class="text-center">
       <a
-        href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20quiero%20cotizar%20un%20ecommerce%20para%20Chile."
+        href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20quiero%20evaluar%20el%20modelo%20ecommerce%20con%20Shopify."
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-8 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors"
       >
-        Hablar por WhatsApp
+        Solicitar propuesta
       </a>
     </div>
   </section>
-
-  <script is:inline>
-    (() => {
-      const buttons = Array.from(document.querySelectorAll('[data-model-target]'));
-      const sections = Array.from(document.querySelectorAll('[data-pricing-model]'));
-
-      const setModel = (model) => {
-        sections.forEach((section) => {
-          const isActive = section.getAttribute('data-pricing-model') === model;
-          section.classList.toggle('hidden', !isActive);
-        });
-
-        buttons.forEach((btn) => {
-          const active = btn.getAttribute('data-model-target') === model;
-          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-          btn.classList.toggle('bg-zinc-900', active);
-          btn.classList.toggle('text-white', active);
-          btn.classList.toggle('bg-white', !active);
-          btn.classList.toggle('text-zinc-900', !active);
-          btn.classList.toggle('border', !active);
-          btn.classList.toggle('border-zinc-200', !active);
-        });
-      };
-
-      buttons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const model = btn.getAttribute('data-model-target');
-          if (model) setModel(model);
-        });
-      });
-
-      setModel('proyecto');
-    })();
-  </script>
 </Layout>
