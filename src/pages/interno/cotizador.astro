@@ -163,6 +163,7 @@ const extras = [
               <p><span class="font-semibold text-zinc-900">Implementacion:</span> <span id="outImplementacion" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Extras:</span> <span id="outExtras" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Descuento:</span> <span id="outDescuento" class="text-zinc-600">$0 CLP</span></p>
+              <p><span class="font-semibold text-zinc-900">Motivo descuento:</span> <span id="outMotivoDescuento" class="text-zinc-600">-</span></p>
               <p class="text-lg pt-2"><span class="font-bold text-zinc-900">Total inicial:</span> <span id="outTotal" class="font-bold text-zinc-900">$0 CLP</span></p>
             </div>
 
@@ -175,7 +176,21 @@ const extras = [
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
               <p><span class="font-semibold text-zinc-900">Continuidad:</span> $100 USD / mes (Soporte+)</p>
-              <p><span class="font-semibold text-zinc-900">Importante:</span> el pago de plataforma esta incluido durante los primeros 3 meses.</p>
+              <p><span class="font-semibold text-zinc-900">Plataforma:</span> costo referencial $65.000 CLP/mes.</p>
+              <p><span class="font-semibold text-zinc-900">Importante:</span> durante los meses 1 y 2 de contratacion el costo de plataforma lo asumimos nosotros. Desde el 3er mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</p>
+            </div>
+
+            <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
+              <p class="font-semibold text-zinc-900">Alcance del Soporte+ (global)</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Soporte tecnico continuo</li>
+                <li>Hasta 20 solicitudes de cambio mensuales</li>
+                <li>Ajustes operativos (textos, imagenes, estructura simple)</li>
+                <li>Capacitacion inicial</li>
+                <li>Atencion por WhatsApp (08:30 a 17:30)</li>
+                <li>Tiempo de respuesta: hasta 30 minutos</li>
+                <li>Supervision basica de funcionamiento</li>
+              </ul>
             </div>
 
             <div class="border-t pt-4">
@@ -244,10 +259,10 @@ const extras = [
           name: 'Plan Express',
           price: 99990,
           scope: [
-            'Tienda funcional basica',
-            'Hasta 10 productos',
-            '1 metodo de pago',
-            'Configuracion simple de tienda',
+            'Tienda funcional basica lista para vender',
+            'Hasta 10 productos cargados',
+            'Configuracion general de catalogo y navegacion',
+            'Configuracion simple de envios',
           ],
         },
         completa: {
@@ -257,7 +272,7 @@ const extras = [
             'Hasta 20 productos',
             'Estructura optimizada de tienda',
             'Emails automaticos basicos',
-            'Navegacion mejorada',
+            'Navegacion y categorias mejoradas',
           ],
         },
         pro: {
@@ -265,9 +280,9 @@ const extras = [
           price: 399990,
           scope: [
             'Hasta 50 productos',
-            'Apps de conversion',
-            'Pixel + catalogo Meta',
-            'SEO basico',
+            'Configuracion de conversion (carrito y checkout)',
+            'Categorias, fichas y estructura comercial optimizada',
+            'SEO base de tienda y productos',
           ],
         },
         elite: {
@@ -278,7 +293,7 @@ const extras = [
             'Migracion basica',
             'Landing pages',
             'Fotografia + contenido visual',
-            'Integraciones avanzadas',
+            'Integraciones operativas avanzadas',
           ],
         },
       };
@@ -302,6 +317,7 @@ const extras = [
       const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, planScope, extrasNames, extrasTotal, discountTotal, total }) => {
         const extrasLine = extrasNames.length ? extrasNames.join(', ') : 'Sin extras';
         const scopeLines = (planScope || []).map((line) => `- ${line}`);
+        const discountReason = discountTotal > 0 ? 'Descuento por implementacion sin pasarela de pago.' : 'Sin descuento aplicado.';
         return [
           'Cotizacion Ecommerce - VIN Studio',
           '',
@@ -317,15 +333,31 @@ const extras = [
           '',
           `Extras (${extrasLine}): ${formatClp(extrasTotal)}`,
           `Descuento: -${formatClp(discountTotal).replace('$', '$')}`,
+          `Motivo descuento: ${discountReason}`,
           '',
           `Total inicial estimado: ${formatClp(total)}`,
           '',
           'Continuidad:',
           '$100 USD / mes (Soporte+)',
-          'Pago de plataforma incluido durante los primeros 3 meses.',
+          'Costo de plataforma referencial: $65.000 CLP/mes.',
+          'Durante los meses 1 y 2 de contratacion el costo de plataforma lo asumimos nosotros.',
+          'A partir del 3er mes el cliente paga la plataforma.',
+          'El cliente no esta obligado a mantener el plan de soporte.',
+          '',
+          'Alcance Soporte+ (global):',
+          '- Soporte tecnico continuo',
+          '- Hasta 20 solicitudes de cambio mensuales',
+          '- Ajustes operativos (textos, imagenes, estructura simple)',
+          '- Capacitacion inicial',
+          '- Atencion por WhatsApp (08:30 a 17:30)',
+          '- Tiempo de respuesta: hasta 30 minutos',
+          '- Supervision basica de funcionamiento',
           '',
           'Condiciones:',
           '- Contrato minimo: 3 meses',
+          '- Mientras corre el plazo de suscripcion, la operacion se gestiona bajo este modelo',
+          '- Al terminar el plazo, se entrega acceso a la plataforma de desarrollo',
+          '- Todo lo que quede fuera del alcance se cotiza por separado',
           '- Funcionalidades a medida se cotizan por separado',
           '- Servicio digital no reembolsable',
         ].join('\n');
@@ -357,6 +389,9 @@ const extras = [
 
         const sinPasarela = document.getElementById('sinPasarela').checked;
         const discountTotal = sinPasarela ? PASARELA_DISCOUNT : 0;
+        const discountReason = sinPasarela
+          ? 'Descuento por implementacion sin pasarela de pago.'
+          : '-';
         const total = selectedPlan.price + extrasTotal - discountTotal;
 
         document.getElementById('outCliente').textContent = cliente || '-';
@@ -365,6 +400,7 @@ const extras = [
         document.getElementById('outImplementacion').textContent = formatClp(selectedPlan.price);
         document.getElementById('outExtras').textContent = formatClp(extrasTotal);
         document.getElementById('outDescuento').textContent = discountTotal ? `- ${formatClp(discountTotal)}` : '$0 CLP';
+        document.getElementById('outMotivoDescuento').textContent = discountReason;
         document.getElementById('outTotal').textContent = formatClp(total);
 
         const scopeList = document.getElementById('outScopeList');
@@ -419,6 +455,7 @@ const extras = [
         document.getElementById('outImplementacion').textContent = '$0 CLP';
         document.getElementById('outExtras').textContent = '$0 CLP';
         document.getElementById('outDescuento').textContent = '$0 CLP';
+        document.getElementById('outMotivoDescuento').textContent = '-';
         document.getElementById('outTotal').textContent = '$0 CLP';
         document.getElementById('outScopeList').innerHTML = '<li>Selecciona un plan para ver detalle.</li>';
         document.getElementById('outputTexto').value = '';
