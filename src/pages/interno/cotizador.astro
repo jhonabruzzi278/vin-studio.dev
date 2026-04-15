@@ -172,9 +172,6 @@ const extras = [
   </section>
 
   <script type="module">
-    import { jsPDF } from 'jspdf';
-    import autoTable from 'jspdf-autotable';
-
     (() => {
       const btnCalcular = document.getElementById('btnCalcular');
       if (!btnCalcular) return;
@@ -504,6 +501,20 @@ const extras = [
           'Luego se realiza una revisión de conformidad.',
           'Posterior a la conformidad se cancela el 50% restante de implementación + soporte mensual (si fue incluido).',
         ];
+
+        let jsPDF;
+        let autoTable;
+        try {
+          const [{ jsPDF: JsPdfCtor }, { default: autoTableFn }] = await Promise.all([
+            import('jspdf'),
+            import('jspdf-autotable'),
+          ]);
+          jsPDF = JsPdfCtor;
+          autoTable = autoTableFn;
+        } catch {
+          alert('No fue posible cargar el generador de PDF. Intenta nuevamente.');
+          return;
+        }
 
         const doc = new jsPDF({ unit: 'pt', format: 'a4' });
         const pageWidth = doc.internal.pageSize.getWidth();
