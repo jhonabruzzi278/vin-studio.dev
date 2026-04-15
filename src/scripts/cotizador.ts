@@ -1,6 +1,8 @@
-(() => {
+const initCotizador = () => {
   const btnCalcular = document.getElementById('btnCalcular');
   if (!btnCalcular) return;
+  if ((btnCalcular as HTMLButtonElement).dataset.cotizadorBound === '1') return;
+  (btnCalcular as HTMLButtonElement).dataset.cotizadorBound = '1';
 
   const formatClp = (value: number) => `$${Number(value || 0).toLocaleString('es-CL')} CLP`;
   const planMap = {
@@ -403,4 +405,12 @@
     (document.getElementById('outExclusionsList') as HTMLElement).innerHTML = '<li>Selecciona un plan para ver exclusiones.</li>';
     (document.getElementById('outputTexto') as HTMLTextAreaElement).value = '';
   });
-})();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCotizador, { once: true });
+} else {
+  initCotizador();
+}
+
+document.addEventListener('astro:page-load', initCotizador);

@@ -1,0 +1,3030 @@
+﻿<!DOCTYPE html><html lang="es" class="antialiased" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.1"><!-- Fuente Inter desde Google Fonts para mejor rendimiento --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><!-- Primary Meta Tags --><title>Cotizador Interno | VIN Studio</title><meta name="title" content="Cotizador Interno | VIN Studio"><meta name="description" content="Herramienta interna para generar cotizaciones ecommerce de forma rÃ¡pida y consistente."><meta name="keywords" content="desarrollo web, consultorÃ­a tecnolÃ³gica, diseÃ±o web, soluciones digitales, pÃ¡ginas web profesionales, desarrollo frontend, desarrollo backend, Astro, React, TailwindCSS"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="http://127.0.0.1:4321/interno/cotizador"><meta property="og:title" content="Cotizador Interno | VIN Studio"><meta property="og:description" content="Herramienta interna para generar cotizaciones ecommerce de forma rÃ¡pida y consistente."><meta property="og:image" content="https://vin-studio.dev/og-image.jpg"><meta property="og:site_name" content="VIN Studio"><meta property="og:locale" content="es_CL"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="http://127.0.0.1:4321/interno/cotizador"><meta name="twitter:title" content="Cotizador Interno | VIN Studio"><meta name="twitter:description" content="Herramienta interna para generar cotizaciones ecommerce de forma rÃ¡pida y consistente."><meta name="twitter:image" content="https://vin-studio.dev/og-image.jpg"><meta name="twitter:creator" content="@vinstudio"><!-- Additional Meta Tags --><meta name="robots" content="noindex, nofollow"><meta name="googlebot" content="noindex, nofollow"><meta name="author" content="VIN Studio"><meta name="language" content="Spanish"><meta name="geo.region" content="CL"><meta name="geo.placename" content="Chile"><link rel="canonical" href="http://127.0.0.1:4321/interno/cotizador"><!-- Schema.org for Google --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "VIN Studio",
+  "url": "https://vin-studio.dev",
+  "logo": "https://vin-studio.dev/logo.png",
+  "description": "Desarrollo web profesional y consultorÃ­a tecnolÃ³gica",
+  "email": "jonathan.guerra@vin-studio.dev",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CL"
+  },
+  "sameAs": []
+}
+</script><style data-vite-dev-id="C:/Trabajos/vin-studio.dev/src/styles/global.css">/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-zinc-50: oklch(98.5% 0 0);
+    --color-zinc-100: oklch(96.7% 0.001 286.375);
+    --color-zinc-200: oklch(92% 0.004 286.32);
+    --color-zinc-300: oklch(87.1% 0.006 286.286);
+    --color-zinc-400: oklch(70.5% 0.015 286.067);
+    --color-zinc-500: oklch(55.2% 0.016 285.938);
+    --color-zinc-600: oklch(44.2% 0.017 285.786);
+    --color-zinc-700: oklch(37% 0.013 285.805);
+    --color-zinc-800: oklch(27.4% 0.006 286.033);
+    --color-zinc-900: oklch(21% 0.006 285.885);
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --container-sm: 24rem;
+    --container-md: 28rem;
+    --container-xl: 36rem;
+    --container-2xl: 42rem;
+    --container-3xl: 48rem;
+    --container-4xl: 56rem;
+    --container-5xl: 64rem;
+    --container-6xl: 72rem;
+    --container-7xl: 80rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
+    --text-6xl: 3.75rem;
+    --text-6xl--line-height: 1;
+    --text-7xl: 4.5rem;
+    --text-7xl--line-height: 1;
+    --text-8xl: 6rem;
+    --text-8xl--line-height: 1;
+    --text-9xl: 8rem;
+    --text-9xl--line-height: 1;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
+    --tracking-tighter: -0.05em;
+    --tracking-tight: -0.025em;
+    --tracking-wide: 0.025em;
+    --tracking-wider: 0.05em;
+    --tracking-widest: 0.1em;
+    --leading-tight: 1.25;
+    --leading-relaxed: 1.625;
+    --radius-sm: 0.125rem;
+    --radius-md: 0.25rem;
+    --radius-lg: 0.375rem;
+    --radius-2xl: 1rem;
+    --aspect-video: 16 / 9;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .\@container\/card-header {
+    container-type: inline-size;
+    container-name: card-header;
+  }
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .collapse {
+    visibility: collapse;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .relative {
+    position: relative;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
+  .inset-x-0 {
+    inset-inline: calc(var(--spacing) * 0);
+  }
+  .-top-4 {
+    top: calc(var(--spacing) * -4);
+  }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
+  .left-1\/2 {
+    left: calc(1 / 2 * 100%);
+  }
+  .-z-10 {
+    z-index: calc(10 * -1);
+  }
+  .z-50 {
+    z-index: 50;
+  }
+  .col-start-2 {
+    grid-column-start: 2;
+  }
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+  .row-start-1 {
+    grid-row-start: 1;
+  }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * 0.5);
+  }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+  .mt-1\.5 {
+    margin-top: calc(var(--spacing) * 1.5);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
+  .mt-12 {
+    margin-top: calc(var(--spacing) * 12);
+  }
+  .mt-14 {
+    margin-top: calc(var(--spacing) * 14);
+  }
+  .mt-16 {
+    margin-top: calc(var(--spacing) * 16);
+  }
+  .mt-auto {
+    margin-top: auto;
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
+  .mb-8 {
+    margin-bottom: calc(var(--spacing) * 8);
+  }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
+  .mb-12 {
+    margin-bottom: calc(var(--spacing) * 12);
+  }
+  .mb-14 {
+    margin-bottom: calc(var(--spacing) * 14);
+  }
+  .mb-16 {
+    margin-bottom: calc(var(--spacing) * 16);
+  }
+  .ml-1 {
+    margin-left: calc(var(--spacing) * 1);
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .aspect-video {
+    aspect-ratio: var(--aspect-video);
+  }
+  .size-11 {
+    width: calc(var(--spacing) * 11);
+    height: calc(var(--spacing) * 11);
+  }
+  .h-1\.5 {
+    height: calc(var(--spacing) * 1.5);
+  }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-6 {
+    height: calc(var(--spacing) * 6);
+  }
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-11 {
+    height: calc(var(--spacing) * 11);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-14 {
+    height: calc(var(--spacing) * 14);
+  }
+  .h-24 {
+    height: calc(var(--spacing) * 24);
+  }
+  .h-28 {
+    height: calc(var(--spacing) * 28);
+  }
+  .h-full {
+    height: 100%;
+  }
+  .h-px {
+    height: 1px;
+  }
+  .min-h-11 {
+    min-height: calc(var(--spacing) * 11);
+  }
+  .min-h-60 {
+    min-height: calc(var(--spacing) * 60);
+  }
+  .min-h-\[120px\] {
+    min-height: 120px;
+  }
+  .min-h-\[150px\] {
+    min-height: 150px;
+  }
+  .min-h-\[calc\(100svh-4rem\)\] {
+    min-height: calc(100svh - 4rem);
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
+  .w-1\.5 {
+    width: calc(var(--spacing) * 1.5);
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-6 {
+    width: calc(var(--spacing) * 6);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-12 {
+    width: calc(var(--spacing) * 12);
+  }
+  .w-24 {
+    width: calc(var(--spacing) * 24);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .w-px {
+    width: 1px;
+  }
+  .max-w-2xl {
+    max-width: var(--container-2xl);
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+  .max-w-5xl {
+    max-width: var(--container-5xl);
+  }
+  .max-w-6xl {
+    max-width: var(--container-6xl);
+  }
+  .max-w-7xl {
+    max-width: var(--container-7xl);
+  }
+  .max-w-md {
+    max-width: var(--container-md);
+  }
+  .max-w-none {
+    max-width: none;
+  }
+  .max-w-sm {
+    max-width: var(--container-sm);
+  }
+  .max-w-xl {
+    max-width: var(--container-xl);
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .resize-none {
+    resize: none;
+  }
+  .list-inside {
+    list-style-position: inside;
+  }
+  .list-disc {
+    list-style-type: disc;
+  }
+  .auto-rows-min {
+    grid-auto-rows: min-content;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-rows-\[auto_auto\] {
+    grid-template-rows: auto auto;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .items-stretch {
+    align-items: stretch;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1 {
+    gap: calc(var(--spacing) * 1);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-2\.5 {
+    gap: calc(var(--spacing) * 2.5);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
+  }
+  .gap-10 {
+    gap: calc(var(--spacing) * 10);
+  }
+  .gap-12 {
+    gap: calc(var(--spacing) * 12);
+  }
+  .space-y-0 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 0) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 0) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-2\.5 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-3 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-5 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-6 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-8 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-12 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .gap-x-6 {
+    column-gap: calc(var(--spacing) * 6);
+  }
+  .space-x-3 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .gap-y-2 {
+    row-gap: calc(var(--spacing) * 2);
+  }
+  .divide-y {
+    :where(& > :not(:last-child)) {
+      --tw-divide-y-reverse: 0;
+      border-bottom-style: var(--tw-border-style);
+      border-top-style: var(--tw-border-style);
+      border-top-width: calc(1px * var(--tw-divide-y-reverse));
+      border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+    }
+  }
+  .divide-zinc-200 {
+    :where(& > :not(:last-child)) {
+      border-color: var(--color-zinc-200);
+    }
+  }
+  .self-center {
+    align-self: center;
+  }
+  .self-start {
+    align-self: flex-start;
+  }
+  .justify-self-end {
+    justify-self: flex-end;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: 0.375rem;
+  }
+  .rounded-md {
+    border-radius: 0.25rem;
+  }
+  .rounded-sm {
+    border-radius: 0.125rem;
+  }
+  .rounded-xl {
+    border-radius: 0.5rem;
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-y {
+    border-block-style: var(--tw-border-style);
+    border-block-width: 1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-t-2 {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 2px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-gray-100 {
+    border-color: var(--gray-100);
+  }
+  .border-primary {
+    border-color: var(--primary);
+  }
+  .border-zinc-200 {
+    border-color: var(--color-zinc-200);
+  }
+  .border-zinc-300 {
+    border-color: var(--color-zinc-300);
+  }
+  .border-zinc-900 {
+    border-color: var(--color-zinc-900);
+  }
+  .bg-muted {
+    background-color: var(--muted);
+  }
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  .bg-primary-700 {
+    background-color: var(--primary-700);
+  }
+  .bg-white {
+    background-color: var(--color-white);
+  }
+  .bg-white\/95 {
+    background-color: color-mix(in srgb, #fff 95%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-white) 95%, transparent);
+    }
+  }
+  .bg-zinc-50 {
+    background-color: var(--color-zinc-50);
+  }
+  .bg-zinc-100 {
+    background-color: var(--color-zinc-100);
+  }
+  .bg-zinc-200 {
+    background-color: var(--color-zinc-200);
+  }
+  .bg-zinc-400 {
+    background-color: var(--color-zinc-400);
+  }
+  .bg-zinc-900 {
+    background-color: var(--color-zinc-900);
+  }
+  .bg-\[linear-gradient\(to_bottom\,transparent\,rgba\(24\,24\,27\,0\.02\)\,transparent\)\] {
+    background-image: linear-gradient(to bottom,transparent,rgba(24,24,27,0.02),transparent);
+  }
+  .bg-\[radial-gradient\(circle_at_10\%_10\%\,rgba\(24\,24\,27\,0\.05\)\,transparent_38\%\)\] {
+    background-image: radial-gradient(circle at 10% 10%,rgba(24,24,27,0.05),transparent 38%);
+  }
+  .bg-\[radial-gradient\(circle_at_20\%_20\%\,rgba\(24\,24\,27\,0\.04\)\,transparent_45\%\)\] {
+    background-image: radial-gradient(circle at 20% 20%,rgba(24,24,27,0.04),transparent 45%);
+  }
+  .object-cover {
+    object-fit: cover;
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .px-7 {
+    padding-inline: calc(var(--spacing) * 7);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  .px-10 {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-2\.5 {
+    padding-block: calc(var(--spacing) * 2.5);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
+  }
+  .py-12 {
+    padding-block: calc(var(--spacing) * 12);
+  }
+  .py-14 {
+    padding-block: calc(var(--spacing) * 14);
+  }
+  .py-16 {
+    padding-block: calc(var(--spacing) * 16);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
+  }
+  .py-32 {
+    padding-block: calc(var(--spacing) * 32);
+  }
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
+  .pt-3 {
+    padding-top: calc(var(--spacing) * 3);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
+  }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
+  }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
+  .pt-16 {
+    padding-top: calc(var(--spacing) * 16);
+  }
+  .pr-4 {
+    padding-right: calc(var(--spacing) * 4);
+  }
+  .pb-1 {
+    padding-bottom: calc(var(--spacing) * 1);
+  }
+  .pb-5 {
+    padding-bottom: calc(var(--spacing) * 5);
+  }
+  .pb-6 {
+    padding-bottom: calc(var(--spacing) * 6);
+  }
+  .pb-10 {
+    padding-bottom: calc(var(--spacing) * 10);
+  }
+  .pl-3 {
+    padding-left: calc(var(--spacing) * 3);
+  }
+  .pl-16 {
+    padding-left: calc(var(--spacing) * 16);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
+  .text-9xl {
+    font-size: var(--text-9xl);
+    line-height: var(--tw-leading, var(--text-9xl--line-height));
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .text-\[5rem\] {
+    font-size: 5rem;
+  }
+  .text-\[10rem\] {
+    font-size: 10rem;
+  }
+  .text-\[11px\] {
+    font-size: 11px;
+  }
+  .text-\[11rem\] {
+    font-size: 11rem;
+  }
+  .leading-\[0\.9\] {
+    --tw-leading: 0.9;
+    line-height: 0.9;
+  }
+  .leading-\[0\.95\] {
+    --tw-leading: 0.95;
+    line-height: 0.95;
+  }
+  .leading-\[1\.06\] {
+    --tw-leading: 1.06;
+    line-height: 1.06;
+  }
+  .leading-none {
+    --tw-leading: 1;
+    line-height: 1;
+  }
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+  }
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
+  }
+  .font-black {
+    --tw-font-weight: var(--font-weight-black);
+    font-weight: var(--font-weight-black);
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-extrabold {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
+  }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tracking-\[0\.2em\] {
+    --tw-tracking: 0.2em;
+    letter-spacing: 0.2em;
+  }
+  .tracking-\[0\.16em\] {
+    --tw-tracking: 0.16em;
+    letter-spacing: 0.16em;
+  }
+  .tracking-\[0\.18em\] {
+    --tw-tracking: 0.18em;
+    letter-spacing: 0.18em;
+  }
+  .tracking-\[0\.22em\] {
+    --tw-tracking: 0.22em;
+    letter-spacing: 0.22em;
+  }
+  .tracking-\[0\.25em\] {
+    --tw-tracking: 0.25em;
+    letter-spacing: 0.25em;
+  }
+  .tracking-\[0\.28em\] {
+    --tw-tracking: 0.28em;
+    letter-spacing: 0.28em;
+  }
+  .tracking-tight {
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  .tracking-tighter {
+    --tw-tracking: var(--tracking-tighter);
+    letter-spacing: var(--tracking-tighter);
+  }
+  .tracking-wide {
+    --tw-tracking: var(--tracking-wide);
+    letter-spacing: var(--tracking-wide);
+  }
+  .tracking-wider {
+    --tw-tracking: var(--tracking-wider);
+    letter-spacing: var(--tracking-wider);
+  }
+  .tracking-widest {
+    --tw-tracking: var(--tracking-widest);
+    letter-spacing: var(--tracking-widest);
+  }
+  .break-all {
+    word-break: break-all;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-current {
+    color: currentcolor;
+  }
+  .text-gray-400 {
+    color: var(--gray-400);
+  }
+  .text-gray-500 {
+    color: var(--gray-500);
+  }
+  .text-gray-700 {
+    color: var(--gray-700);
+  }
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+  .text-primary {
+    color: var(--primary);
+  }
+  .text-primary-foreground {
+    color: var(--primary-foreground);
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .text-zinc-100 {
+    color: var(--color-zinc-100);
+  }
+  .text-zinc-200 {
+    color: var(--color-zinc-200);
+  }
+  .text-zinc-300 {
+    color: var(--color-zinc-300);
+  }
+  .text-zinc-400 {
+    color: var(--color-zinc-400);
+  }
+  .text-zinc-500 {
+    color: var(--color-zinc-500);
+  }
+  .text-zinc-600 {
+    color: var(--color-zinc-600);
+  }
+  .text-zinc-700 {
+    color: var(--color-zinc-700);
+  }
+  .text-zinc-800 {
+    color: var(--color-zinc-800);
+  }
+  .text-zinc-900 {
+    color: var(--color-zinc-900);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .underline-offset-4 {
+    text-underline-offset: 4px;
+  }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-sm {
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .ring {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-zinc-900\/10 {
+    --tw-shadow-color: color-mix(in srgb, oklch(21% 0.006 285.885) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-zinc-900) 10%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .ring-offset-white {
+    --tw-ring-offset-color: var(--color-white);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
+  .blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .filter {
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .backdrop-blur {
+    --tw-backdrop-blur: blur(8px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-shadow {
+    transition-property: box-shadow;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-150 {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .outline-none {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .group-open\:rotate-180 {
+    &:is(:where(.group):is([open], :popover-open, :open) *) {
+      rotate: 180deg;
+    }
+  }
+  .group-hover\:scale-105 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        --tw-scale-x: 105%;
+        --tw-scale-y: 105%;
+        --tw-scale-z: 105%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
+  .group-hover\:border-zinc-900 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        border-color: var(--color-zinc-900);
+      }
+    }
+  }
+  .group-hover\:bg-zinc-900 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: var(--color-zinc-900);
+      }
+    }
+  }
+  .group-hover\:text-primary {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--primary);
+      }
+    }
+  }
+  .group-hover\:text-zinc-200 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-zinc-200);
+      }
+    }
+  }
+  .group-hover\:text-zinc-800 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-zinc-800);
+      }
+    }
+  }
+  .peer-disabled\:cursor-not-allowed {
+    &:is(:where(.peer):disabled ~ *) {
+      cursor: not-allowed;
+    }
+  }
+  .peer-disabled\:opacity-70 {
+    &:is(:where(.peer):disabled ~ *) {
+      opacity: 70%;
+    }
+  }
+  .file\:border-0 {
+    &::file-selector-button {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+  }
+  .file\:bg-transparent {
+    &::file-selector-button {
+      background-color: transparent;
+    }
+  }
+  .file\:text-sm {
+    &::file-selector-button {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
+  .file\:font-medium {
+    &::file-selector-button {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+  .placeholder\:text-zinc-400 {
+    &::placeholder {
+      color: var(--color-zinc-400);
+    }
+  }
+  .hover\:cursor-not-allowed {
+    &:hover {
+      @media (hover: hover) {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .hover\:border-zinc-900 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-zinc-900);
+      }
+    }
+  }
+  .hover\:bg-gray-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--gray-50);
+      }
+    }
+  }
+  .hover\:bg-gray-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--gray-100);
+      }
+    }
+  }
+  .hover\:bg-white {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-white);
+      }
+    }
+  }
+  .hover\:bg-zinc-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-zinc-50);
+      }
+    }
+  }
+  .hover\:bg-zinc-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-zinc-100);
+      }
+    }
+  }
+  .hover\:bg-zinc-800 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-zinc-800);
+      }
+    }
+  }
+  .hover\:bg-zinc-900 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-zinc-900);
+      }
+    }
+  }
+  .hover\:text-primary {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--primary);
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
+  .hover\:text-zinc-500 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-zinc-500);
+      }
+    }
+  }
+  .hover\:text-zinc-600 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-zinc-600);
+      }
+    }
+  }
+  .hover\:text-zinc-900 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-zinc-900);
+      }
+    }
+  }
+  .hover\:no-underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: none;
+      }
+    }
+  }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+  .hover\:shadow-lg {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .focus\:border-zinc-900 {
+    &:focus {
+      border-color: var(--color-zinc-900);
+    }
+  }
+  .focus\:ring-2 {
+    &:focus {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus\:ring-gray-200 {
+    &:focus {
+      --tw-ring-color: var(--gray-200);
+    }
+  }
+  .focus\:ring-zinc-900 {
+    &:focus {
+      --tw-ring-color: var(--color-zinc-900);
+    }
+  }
+  .focus\:outline-none {
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .focus-visible\:border-zinc-900 {
+    &:focus-visible {
+      border-color: var(--color-zinc-900);
+    }
+  }
+  .focus-visible\:ring-1 {
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-visible\:ring-2 {
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-visible\:ring-zinc-900 {
+    &:focus-visible {
+      --tw-ring-color: var(--color-zinc-900);
+    }
+  }
+  .focus-visible\:ring-offset-2 {
+    &:focus-visible {
+      --tw-ring-offset-width: 2px;
+      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    }
+  }
+  .focus-visible\:outline-none {
+    &:focus-visible {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .disabled\:pointer-events-none {
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+  .disabled\:cursor-not-allowed {
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  .disabled\:opacity-50 {
+    &:disabled {
+      opacity: 50%;
+    }
+  }
+  .has-data-\[slot\=card-action\]\:grid-cols-\[1fr_auto\] {
+    &:has(*[data-slot="card-action"]) {
+      grid-template-columns: 1fr auto;
+    }
+  }
+  .data-\[state\=checked\]\:bg-zinc-900 {
+    &[data-state="checked"] {
+      background-color: var(--color-zinc-900);
+    }
+  }
+  .data-\[state\=checked\]\:text-white {
+    &[data-state="checked"] {
+      color: var(--color-white);
+    }
+  }
+  .sm\:mt-12 {
+    @media (width >= 40rem) {
+      margin-top: calc(var(--spacing) * 12);
+    }
+  }
+  .sm\:mt-16 {
+    @media (width >= 40rem) {
+      margin-top: calc(var(--spacing) * 16);
+    }
+  }
+  .sm\:mt-20 {
+    @media (width >= 40rem) {
+      margin-top: calc(var(--spacing) * 20);
+    }
+  }
+  .sm\:mt-24 {
+    @media (width >= 40rem) {
+      margin-top: calc(var(--spacing) * 24);
+    }
+  }
+  .sm\:mb-6 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:mb-8 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\:mb-10 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 10);
+    }
+  }
+  .sm\:mb-12 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 12);
+    }
+  }
+  .sm\:mb-16 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 16);
+    }
+  }
+  .sm\:mb-24 {
+    @media (width >= 40rem) {
+      margin-bottom: calc(var(--spacing) * 24);
+    }
+  }
+  .sm\:block {
+    @media (width >= 40rem) {
+      display: block;
+    }
+  }
+  .sm\:inline {
+    @media (width >= 40rem) {
+      display: inline;
+    }
+  }
+  .sm\:h-16 {
+    @media (width >= 40rem) {
+      height: calc(var(--spacing) * 16);
+    }
+  }
+  .sm\:min-h-55 {
+    @media (width >= 40rem) {
+      min-height: calc(var(--spacing) * 55);
+    }
+  }
+  .sm\:w-12 {
+    @media (width >= 40rem) {
+      width: calc(var(--spacing) * 12);
+    }
+  }
+  .sm\:w-14 {
+    @media (width >= 40rem) {
+      width: calc(var(--spacing) * 14);
+    }
+  }
+  .sm\:w-auto {
+    @media (width >= 40rem) {
+      width: auto;
+    }
+  }
+  .sm\:max-w-none {
+    @media (width >= 40rem) {
+      max-width: none;
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .sm\:grid-cols-4 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .sm\:flex-row {
+    @media (width >= 40rem) {
+      flex-direction: row;
+    }
+  }
+  .sm\:items-center {
+    @media (width >= 40rem) {
+      align-items: center;
+    }
+  }
+  .sm\:gap-4 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:gap-5 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 5);
+    }
+  }
+  .sm\:gap-6 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:gap-8 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\:gap-12 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 12);
+    }
+  }
+  .sm\:gap-16 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 16);
+    }
+  }
+  .sm\:space-y-6 {
+    @media (width >= 40rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .sm\:space-y-8 {
+    @media (width >= 40rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .sm\:space-y-10 {
+    @media (width >= 40rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 10) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 10) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .sm\:space-y-12 {
+    @media (width >= 40rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .sm\:p-6 {
+    @media (width >= 40rem) {
+      padding: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:p-7 {
+    @media (width >= 40rem) {
+      padding: calc(var(--spacing) * 7);
+    }
+  }
+  .sm\:p-8 {
+    @media (width >= 40rem) {
+      padding: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\:px-4 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:px-8 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\:py-10 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 10);
+    }
+  }
+  .sm\:py-14 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 14);
+    }
+  }
+  .sm\:py-16 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 16);
+    }
+  }
+  .sm\:py-20 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 20);
+    }
+  }
+  .sm\:py-24 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 24);
+    }
+  }
+  .sm\:py-32 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 32);
+    }
+  }
+  .sm\:pt-10 {
+    @media (width >= 40rem) {
+      padding-top: calc(var(--spacing) * 10);
+    }
+  }
+  .sm\:pb-8 {
+    @media (width >= 40rem) {
+      padding-bottom: calc(var(--spacing) * 8);
+    }
+  }
+  .sm\:pb-12 {
+    @media (width >= 40rem) {
+      padding-bottom: calc(var(--spacing) * 12);
+    }
+  }
+  .sm\:pl-20 {
+    @media (width >= 40rem) {
+      padding-left: calc(var(--spacing) * 20);
+    }
+  }
+  .sm\:text-2xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+  }
+  .sm\:text-3xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
+  .sm\:text-4xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+    }
+  }
+  .sm\:text-5xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+    }
+  }
+  .sm\:text-6xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .sm\:text-base {
+    @media (width >= 40rem) {
+      font-size: var(--text-base);
+      line-height: var(--tw-leading, var(--text-base--line-height));
+    }
+  }
+  .sm\:text-lg {
+    @media (width >= 40rem) {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  .sm\:text-sm {
+    @media (width >= 40rem) {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
+  .sm\:text-xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .sm\:text-xs {
+    @media (width >= 40rem) {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+  .sm\:text-\[15px\] {
+    @media (width >= 40rem) {
+      font-size: 15px;
+    }
+  }
+  .md\:order-2 {
+    @media (width >= 48rem) {
+      order: 2;
+    }
+  }
+  .md\:col-span-2 {
+    @media (width >= 48rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .md\:mt-0 {
+    @media (width >= 48rem) {
+      margin-top: calc(var(--spacing) * 0);
+    }
+  }
+  .md\:block {
+    @media (width >= 48rem) {
+      display: block;
+    }
+  }
+  .md\:hidden {
+    @media (width >= 48rem) {
+      display: none;
+    }
+  }
+  .md\:inline-flex {
+    @media (width >= 48rem) {
+      display: inline-flex;
+    }
+  }
+  .md\:w-auto {
+    @media (width >= 48rem) {
+      width: auto;
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-4 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:gap-8 {
+    @media (width >= 48rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
+  .md\:space-x-8 {
+    @media (width >= 48rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-x-reverse: 0;
+        margin-inline-start: calc(calc(var(--spacing) * 8) * var(--tw-space-x-reverse));
+        margin-inline-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-x-reverse)));
+      }
+    }
+  }
+  .md\:border-0 {
+    @media (width >= 48rem) {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+  }
+  .md\:bg-transparent {
+    @media (width >= 48rem) {
+      background-color: transparent;
+    }
+  }
+  .md\:p-0 {
+    @media (width >= 48rem) {
+      padding: calc(var(--spacing) * 0);
+    }
+  }
+  .md\:py-24 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 24);
+    }
+  }
+  .md\:text-3xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
+  .md\:text-5xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+    }
+  }
+  .md\:text-6xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .md\:text-7xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-7xl);
+      line-height: var(--tw-leading, var(--text-7xl--line-height));
+    }
+  }
+  .md\:text-sm {
+    @media (width >= 48rem) {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
+  .md\:text-xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .md\:text-\[14rem\] {
+    @media (width >= 48rem) {
+      font-size: 14rem;
+    }
+  }
+  .md\:text-\[15rem\] {
+    @media (width >= 48rem) {
+      font-size: 15rem;
+    }
+  }
+  .md\:font-medium {
+    @media (width >= 48rem) {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+  .md\:text-primary-700 {
+    @media (width >= 48rem) {
+      color: var(--primary-700);
+    }
+  }
+  .md\:text-zinc-900 {
+    @media (width >= 48rem) {
+      color: var(--color-zinc-900);
+    }
+  }
+  .md\:hover\:bg-transparent {
+    @media (width >= 48rem) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  .md\:hover\:text-primary-700 {
+    @media (width >= 48rem) {
+      &:hover {
+        @media (hover: hover) {
+          color: var(--primary-700);
+        }
+      }
+    }
+  }
+  .lg\:sticky {
+    @media (width >= 64rem) {
+      position: sticky;
+    }
+  }
+  .lg\:top-6 {
+    @media (width >= 64rem) {
+      top: calc(var(--spacing) * 6);
+    }
+  }
+  .lg\:block {
+    @media (width >= 64rem) {
+      display: block;
+    }
+  }
+  .lg\:flex {
+    @media (width >= 64rem) {
+      display: flex;
+    }
+  }
+  .lg\:grid-cols-2 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-4 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-\[1\.1fr_0\.9fr\] {
+    @media (width >= 64rem) {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+  .lg\:grid-cols-\[1fr_1\.1fr\] {
+    @media (width >= 64rem) {
+      grid-template-columns: 1fr 1.1fr;
+    }
+  }
+  .lg\:grid-cols-\[96px_1fr_260px\] {
+    @media (width >= 64rem) {
+      grid-template-columns: 96px 1fr 260px;
+    }
+  }
+  .lg\:gap-8 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
+  .lg\:gap-12 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 12);
+    }
+  }
+  .lg\:gap-16 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 16);
+    }
+  }
+  .lg\:space-y-5 {
+    @media (width >= 64rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .lg\:space-y-8 {
+    @media (width >= 64rem) {
+      :where(& > :not(:last-child)) {
+        --tw-space-y-reverse: 0;
+        margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
+        margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
+      }
+    }
+  }
+  .lg\:p-8 {
+    @media (width >= 64rem) {
+      padding: calc(var(--spacing) * 8);
+    }
+  }
+  .lg\:p-10 {
+    @media (width >= 64rem) {
+      padding: calc(var(--spacing) * 10);
+    }
+  }
+  .lg\:py-12 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--spacing) * 12);
+    }
+  }
+  .lg\:py-24 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--spacing) * 24);
+    }
+  }
+  .lg\:py-28 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--spacing) * 28);
+    }
+  }
+  .lg\:pt-10 {
+    @media (width >= 64rem) {
+      padding-top: calc(var(--spacing) * 10);
+    }
+  }
+  .lg\:pb-2 {
+    @media (width >= 64rem) {
+      padding-bottom: calc(var(--spacing) * 2);
+    }
+  }
+  .lg\:pl-8 {
+    @media (width >= 64rem) {
+      padding-left: calc(var(--spacing) * 8);
+    }
+  }
+  .lg\:text-left {
+    @media (width >= 64rem) {
+      text-align: left;
+    }
+  }
+  .lg\:text-4xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+    }
+  }
+  .lg\:text-5xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+    }
+  }
+  .lg\:text-6xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .lg\:text-7xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-7xl);
+      line-height: var(--tw-leading, var(--text-7xl--line-height));
+    }
+  }
+  .lg\:text-8xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-8xl);
+      line-height: var(--tw-leading, var(--text-8xl--line-height));
+    }
+  }
+  .lg\:text-\[18rem\] {
+    @media (width >= 64rem) {
+      font-size: 18rem;
+    }
+  }
+  .lg\:text-\[19rem\] {
+    @media (width >= 64rem) {
+      font-size: 19rem;
+    }
+  }
+  .xl\:grid-cols-4 {
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .xl\:text-9xl {
+    @media (width >= 80rem) {
+      font-size: var(--text-9xl);
+      line-height: var(--tw-leading, var(--text-9xl--line-height));
+    }
+  }
+  .dark\:border-gray-700 {
+    &:is(.dark *) {
+      border-color: var(--gray-700);
+    }
+  }
+  .dark\:bg-gray-800 {
+    &:is(.dark *) {
+      background-color: var(--gray-800);
+    }
+  }
+  .dark\:text-gray-400 {
+    &:is(.dark *) {
+      color: var(--gray-400);
+    }
+  }
+  .dark\:text-gray-600 {
+    &:is(.dark *) {
+      color: var(--gray-600);
+    }
+  }
+  .dark\:text-white {
+    &:is(.dark *) {
+      color: var(--color-white);
+    }
+  }
+  .dark\:hover\:bg-gray-700 {
+    &:is(.dark *) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--gray-700);
+        }
+      }
+    }
+  }
+  .dark\:hover\:text-white {
+    &:is(.dark *) {
+      &:hover {
+        @media (hover: hover) {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+  .dark\:focus\:ring-gray-600 {
+    &:is(.dark *) {
+      &:focus {
+        --tw-ring-color: var(--gray-600);
+      }
+    }
+  }
+  .md\:dark\:hover\:bg-transparent {
+    @media (width >= 48rem) {
+      &:is(.dark *) {
+        &:hover {
+          @media (hover: hover) {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  .md\:dark\:hover\:text-white {
+    @media (width >= 48rem) {
+      &:is(.dark *) {
+        &:hover {
+          @media (hover: hover) {
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+  .\[\.border-b\]\:pb-8 {
+    &:is(.border-b) {
+      padding-bottom: calc(var(--spacing) * 8);
+    }
+  }
+  .\[\.border-t\]\:pt-8 {
+    &:is(.border-t) {
+      padding-top: calc(var(--spacing) * 8);
+    }
+  }
+}
+:root {
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --red-50: #fdf2f2;
+  --red-100: #fde8e8;
+  --red-200: #fbd5d5;
+  --red-300: #f8b4b4;
+  --red-400: #f98080;
+  --red-500: #f05252;
+  --red-600: #e02424;
+  --red-700: #c81e1e;
+  --red-800: #9b1c1c;
+  --red-900: #771d1d;
+  --orange-50: #fff8f1;
+  --orange-100: #feecdc;
+  --orange-200: #fcd9bd;
+  --orange-300: #fdba8c;
+  --orange-400: #ff8a4c;
+  --orange-500: #ff5a1f;
+  --orange-600: #d03801;
+  --orange-700: #b43403;
+  --orange-800: #8a2c0d;
+  --orange-900: #771d1d;
+  --yellow-50: #fdfdea;
+  --yellow-100: #fdf6b2;
+  --yellow-200: #fce96a;
+  --yellow-300: #faca15;
+  --yellow-400: #e3a008;
+  --yellow-500: #c27803;
+  --yellow-600: #9f580a;
+  --yellow-700: #8e4b10;
+  --yellow-800: #723b13;
+  --yellow-900: #633112;
+  --green-50: #f3faf7;
+  --green-100: #def7ec;
+  --green-200: #bcf0da;
+  --green-300: #84e1bc;
+  --green-400: #31c48d;
+  --green-500: #0e9f6e;
+  --green-600: #057a55;
+  --green-700: #046c4e;
+  --green-800: #03543f;
+  --green-900: #014737;
+  --teal-50: #edfafa;
+  --teal-100: #d5f5f6;
+  --teal-200: #afecef;
+  --teal-300: #7edce2;
+  --teal-400: #16bdca;
+  --teal-500: #0694a2;
+  --teal-600: #047481;
+  --teal-700: #036672;
+  --teal-800: #05505c;
+  --teal-900: #014451;
+  --blue-50: #ebf5ff;
+  --blue-100: #e1effe;
+  --blue-200: #c3ddfd;
+  --blue-300: #a4cafe;
+  --blue-400: #76a9fa;
+  --blue-500: #3f83f8;
+  --blue-600: #1c64f2;
+  --blue-700: #1a56db;
+  --blue-800: #1e429f;
+  --blue-900: #233876;
+  --indigo-50: #f0f5ff;
+  --indigo-100: #e5edff;
+  --indigo-200: #cddbfe;
+  --indigo-300: #b4c6fc;
+  --indigo-400: #8da2fb;
+  --indigo-500: #6875f5;
+  --indigo-600: #5850ec;
+  --indigo-700: #5145cd;
+  --indigo-800: #42389d;
+  --indigo-900: #362f78;
+  --purple-50: #f6f5ff;
+  --purple-100: #edebfe;
+  --purple-200: #dcd7fe;
+  --purple-300: #cabffd;
+  --purple-400: #ac94fa;
+  --purple-500: #9061f9;
+  --purple-600: #7e3af2;
+  --purple-700: #6c2bd9;
+  --purple-800: #5521b5;
+  --purple-900: #4a1d96;
+  --pink-50: #fdf2f8;
+  --pink-100: #fce8f3;
+  --pink-200: #fad1e8;
+  --pink-300: #f8b4d9;
+  --pink-400: #f17eb8;
+  --pink-500: #e74694;
+  --pink-600: #d61f69;
+  --pink-700: #bf125d;
+  --pink-800: #99154b;
+  --pink-900: #751a3d;
+  --primary-50: #ebf5ff;
+  --primary-100: #e1effe;
+  --primary-200: #c3ddfd;
+  --primary-300: #a4cafe;
+  --primary-400: #76a9fa;
+  --primary-500: #3f83f8;
+  --primary-600: #1c64f2;
+  --primary-700: #1a56db;
+  --primary-800: #1e429f;
+  --primary-900: #233876;
+}
+@property --tw-animation-delay {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0s;
+}
+@property --tw-animation-direction {
+  syntax: "*";
+  inherits: false;
+  initial-value: normal;
+}
+@property --tw-animation-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-animation-fill-mode {
+  syntax: "*";
+  inherits: false;
+  initial-value: none;
+}
+@property --tw-animation-iteration-count {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-enter-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-enter-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-enter-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-enter-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-enter-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-enter-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-exit-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-exit-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-exit-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-exit-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-exit-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-exit-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+:root {
+  --radius: 0.25rem;
+  --background: #FAFAFA;
+  --foreground: #09090B;
+  --card: #FFFFFF;
+  --card-foreground: #09090B;
+  --popover: #FFFFFF;
+  --popover-foreground: #09090B;
+  --primary: #09090B;
+  --primary-foreground: #FAFAFA;
+  --secondary: #FFFFFF;
+  --secondary-foreground: #09090B;
+  --muted: #F4F4F5;
+  --muted-foreground: #71717A;
+  --accent: #E4E4E7;
+  --accent-foreground: #18181B;
+  --destructive: #18181B;
+  --border: #E4E4E7;
+  --input: #E4E4E7;
+  --ring: #09090B;
+}
+.dark {
+  --background: #09090B;
+  --foreground: #FAFAFA;
+  --card: #18181B;
+  --card-foreground: #FAFAFA;
+  --popover: #18181B;
+  --popover-foreground: #FAFAFA;
+  --primary: #FAFAFA;
+  --primary-foreground: #09090B;
+  --secondary: #27272A;
+  --secondary-foreground: #FAFAFA;
+  --muted: #27272A;
+  --muted-foreground: #A1A1AA;
+  --accent: #3F3F46;
+  --accent-foreground: #FAFAFA;
+  --destructive: #FAFAFA;
+  --border: #27272A;
+  --input: #27272A;
+  --ring: #FAFAFA;
+}
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11", "ss01";
+    font-variant-numeric: tabular-nums;
+  }
+  h1 {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+  }
+  h2, h3 {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--foreground);
+  }
+  p {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+    color: var(--color-zinc-700);
+  }
+  .vision-line {
+    height: calc(var(--spacing) * 16);
+    width: 1px;
+    background-color: var(--color-zinc-900);
+  }
+  .card-minimal {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-zinc-200);
+    background-color: var(--color-white);
+    box-shadow: none;
+  }
+  .btn-primary {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-zinc-900);
+    background-color: var(--color-zinc-900);
+    color: var(--color-white);
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-white);
+    color: var(--color-zinc-900);
+  }
+  .btn-secondary {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-zinc-900);
+    background-color: var(--color-white);
+    color: var(--color-zinc-900);
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-zinc-900);
+    color: var(--color-white);
+  }
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--color-zinc-900);
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-color: var(--color-zinc-900);
+  }
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://rsms.me/inter/font-files/Inter-roman.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://rsms.me/inter/font-files/Inter-italic.var.woff2') format('woff2');
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-x-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-divide-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-space-x-reverse: 0;
+      --tw-divide-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+      --tw-animation-delay: 0s;
+      --tw-animation-direction: normal;
+      --tw-animation-duration: initial;
+      --tw-animation-fill-mode: none;
+      --tw-animation-iteration-count: 1;
+      --tw-enter-blur: 0;
+      --tw-enter-opacity: 1;
+      --tw-enter-rotate: 0;
+      --tw-enter-scale: 1;
+      --tw-enter-translate-x: 0;
+      --tw-enter-translate-y: 0;
+      --tw-exit-blur: 0;
+      --tw-exit-opacity: 1;
+      --tw-exit-rotate: 0;
+      --tw-exit-scale: 1;
+      --tw-exit-translate-x: 0;
+      --tw-exit-translate-y: 0;
+    }
+  }
+}
+</style>
+<style data-vite-dev-id="C:/Trabajos/vin-studio.dev/src/layouts/Layout.astro?astro&#38;type=style&#38;index=0&#38;lang.css">body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}</style><script type="module" src="/@vite/client"></script>
+<script type="module" src="/@fs/C:/Trabajos/vin-studio.dev/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=554293d1"></script>
+<script>window.__astro_dev_toolbar__ = {"root":"C:\\Trabajos\\vin-studio.dev\\","version":"5.18.1","debugInfo":"Astro                    v5.18.1\nNode                     v20.20.1\nSystem                   Windows (x64)\nPackage Manager          npm\nOutput                   server\nAdapter                  @astrojs/vercel\nIntegrations             @astrojs/vercel\n                         @astrojs/react\n                         flowbite-react-plugin\n                         @astrojs/sitemap\n                         astro:copy-vercel-output"}</script>
+<script>
+			window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+			var script = document.createElement('script');
+			script.defer = true;
+			script.src = 'https://cdn.vercel-insights.com/v1/script.debug.js';
+			var head = document.querySelector('head');
+			head.appendChild(script);
+		</script>
+<script type="module" src="/src/styles/global.css"></script>
+<script type="module" src="/src/layouts/Layout.astro?astro&type=style&index=0&lang.css"></script></head> <body class="min-h-screen flex flex-col bg-white" data-astro-cid-sckkx6r4 data-astro-source-file="C:/Trabajos/vin-studio.dev/src/layouts/Layout.astro" data-astro-source-loc="41:55"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var l=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>y(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[h,e]=t;return h in i?i[h](e):void 0},a=t=>t.map(o),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([h,e])=>[h,o(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},p=this.querySelectorAll("template[data-astro-template]");for(let r of p){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let d,m=this.hydrator(this);d=performance.now(),await m(this.Component,u,n,{client:this.getAttribute("client")}),d&&this.setAttribute("client-render-time",(performance.now()-d).toString()),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[p,{default:u}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),d=this.getAttribute("component-export")||"default";if(!d.includes("."))this.Component=p[d];else{this.Component=p;for(let m of d.split("."))this.Component=this.Component[m]}return this.hydrator=u,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="ZXo4ex" prefix="r1" component-url="/src/components/common/NavbarComponent.tsx" component-export="default" renderer-url="/node_modules/.vite/deps/@astrojs_react_client__js.js?v=36dd3b88" props="{}" ssr client="load" before-hydration-url="/@id/astro:scripts/before-hydration.js" opts="{&quot;name&quot;:&quot;NavbarComponent&quot;,&quot;value&quot;:true}" server-render-time="8.893700000000536" await-children><nav class="sm:px-4 dark:border-gray-700 dark:bg-gray-800 bg-white/95 backdrop-blur border-b border-zinc-200 px-4 py-4 sticky top-0 z-50"><div class="mx-auto flex flex-wrap items-center justify-between container"><a class="flex items-center" href="/"><span class="self-center whitespace-nowrap text-2xl font-bold text-zinc-900 tracking-tight">VIN<span class="font-light">Studio</span></span></a><div class="flex md:order-2 gap-2"><a href="/contacto" class="hidden md:inline-flex items-center justify-center h-10 px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">Iniciar Proyecto</a><button data-testid="flowbite-navbar-toggle" class="inline-flex items-center rounded-lg p-2 text-sm focus:outline-none focus:ring-2 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 text-zinc-900 hover:bg-zinc-100 focus:ring-zinc-900"><span class="sr-only">Open main menu</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" stroke="currentColor" stroke-width="0" viewBox="0 0 448 512" aria-hidden="true" class="h-6 w-6 shrink-0"><path stroke="none" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg></button></div><div data-testid="flowbite-navbar-collapse" class="w-full md:block md:w-auto hidden"><ul class="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium md:gap-8"><li><a class="block py-2 pl-3 pr-4 md:p-0 text-sm font-medium transition-colors tracking-wide uppercase border-b border-gray-100 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white text-zinc-600 hover:text-zinc-900" href="/">Inicio</a></li><li><a class="block py-2 pl-3 pr-4 md:p-0 text-sm font-medium transition-colors tracking-wide uppercase border-b border-gray-100 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white text-zinc-600 hover:text-zinc-900" href="/nosotros">Nosotros</a></li><li><a class="block py-2 pl-3 pr-4 md:p-0 text-sm font-medium transition-colors tracking-wide uppercase border-b border-gray-100 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white text-zinc-600 hover:text-zinc-900" href="/servicios">Servicios</a></li><li><a class="block py-2 pl-3 pr-4 md:p-0 text-sm font-medium transition-colors tracking-wide uppercase border-b border-gray-100 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white text-zinc-600 hover:text-zinc-900" href="/cloud">Cloud</a></li><li><a class="block py-2 pl-3 pr-4 md:p-0 text-sm font-medium transition-colors tracking-wide uppercase border-b border-gray-100 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white text-zinc-600 hover:text-zinc-900" href="/portafolio">Portafolio</a></li><li><a class="block py-2 pl-3 pr-4 md:p-0 text-sm font-medium transition-colors tracking-wide uppercase border-b border-gray-100 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white text-zinc-600 hover:text-zinc-900" href="/contacto">Contacto</a></li></ul></div></div></nav><!--astro:end--></astro-island> <main class="flex-1" data-astro-cid-sckkx6r4 data-astro-source-file="C:/Trabajos/vin-studio.dev/src/layouts/Layout.astro" data-astro-source-loc="43:30">  <section class="container mx-auto px-3 sm:px-4 py-8 sm:py-14" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="27:65"> <div class="max-w-7xl mx-auto" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="28:38"> <div class="mb-8 sm:mb-10" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="29:36"> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="30:16"> <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="31:75">Cotizador Interno</h1> <p class="text-zinc-600 max-w-3xl" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="32:48">
+Selecciona plan, extras y obtendrÃ¡s un resumen listo para enviar al cliente.
+</p> </div> </div> <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="38:90"> <div class="border rounded-2xl bg-white p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="39:90"> <h2 class="text-xl font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="40:61">1) Datos del cliente</h2> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="42:64"> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="43:20"> <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteNombre" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="44:97">Nombre</label> <input id="clienteNombre" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="Nombre cliente" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="45:18"> </div> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="47:20"> <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteEmpresa" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="48:98">Empresa</label> <input id="clienteEmpresa" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="Empresa" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="49:18"> </div> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="51:20"> <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteEmail" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="52:96">Email</label> <input id="clienteEmail" type="email" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="email@cliente.com" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="53:18"> </div> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="55:20"> <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteWhatsapp" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="56:99">WhatsApp</label> <input id="clienteWhatsapp" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="+56 9 ..." data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="57:18"> </div> </div> <h2 class="text-xl font-semibold text-zinc-900 pt-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="61:66">2) Plan de implementaciÃ³n</h2> <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="62:64"> <label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="64:109"> <input type="radio" name="plan" value="express" data-plan-price="99990" class="mr-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="65:20"> <span class="font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="66:59">Plan Express</span> <span class="block text-sm text-zinc-600 mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="67:66">99.990 CLP</span> </label><label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="64:109"> <input type="radio" name="plan" value="completa" data-plan-price="249990" class="mr-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="65:20"> <span class="font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="66:59">Plan Completa</span> <span class="block text-sm text-zinc-600 mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="67:66">249.990 CLP</span> </label><label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="64:109"> <input type="radio" name="plan" value="pro" data-plan-price="399990" class="mr-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="65:20"> <span class="font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="66:59">Plan Pro</span> <span class="block text-sm text-zinc-600 mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="67:66">399.990 CLP</span> </label><label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="64:109"> <input type="radio" name="plan" value="elite" data-plan-price="649990" class="mr-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="65:20"> <span class="font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="66:59">Plan Elite</span> <span class="block text-sm text-zinc-600 mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="67:66">649.990 CLP</span> </label> </div> <h2 class="text-xl font-semibold text-zinc-900 pt-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="72:66">3) Extras</h2> <div class="space-y-3" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="73:36"> <label class="flex items-start gap-3 border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="75:132"> <input type="checkbox" value="productos_extra" data-extra-price="50000" class="mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="76:20"> <span data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="77:25"> <span class="block font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="78:67">Carga extra de productos</span> <span class="block text-sm text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="79:63">+ 50.000 CLP</span> </span> </label><label class="flex items-start gap-3 border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="75:132"> <input type="checkbox" value="integracion_adicional" data-extra-price="40000" class="mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="76:20"> <span data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="77:25"> <span class="block font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="78:67">Integraciones adicionales</span> <span class="block text-sm text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="79:63">+ 40.000 CLP</span> </span> </label><label class="flex items-start gap-3 border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="75:132"> <input type="checkbox" value="desarrollo_medida" data-extra-price="80000" class="mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="76:20"> <span data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="77:25"> <span class="block font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="78:67">Desarrollo a medida</span> <span class="block text-sm text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="79:63">+ 80.000 CLP</span> </span> </label><label class="flex items-start gap-3 border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="75:132"> <input type="checkbox" value="fotografia_adicional" data-extra-price="60000" class="mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="76:20"> <span data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="77:25"> <span class="block font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="78:67">Fotografia adicional</span> <span class="block text-sm text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="79:63">+ 60.000 CLP</span> </span> </label> </div> <div class="border rounded-lg p-4 bg-zinc-50" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="85:59"> <label class="flex items-start gap-3 cursor-pointer" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="86:68"> <input id="sinPasarela" type="checkbox" class="mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="87:18"> <span data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="88:23"> <span class="block font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="89:65">Sin pasarela de pago</span> <span class="block text-sm text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="90:61">Aplicar descuento de - $100.000 CLP</span> <span id="sinPasarelaHint" class="block text-xs text-zinc-500 mt-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="91:87">Disponible para Plan Completa, Pro y Elite.</span> </span> </label> </div> <div class="border rounded-lg p-4 bg-white" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="96:57"> <p class="text-sm font-semibold text-zinc-900 mb-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="97:67">Continuidad mensual (opcional en cotizaciÃ³n)</p> <label class="flex items-start gap-3 cursor-pointer" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="98:68"> <input id="incluirSoporte" type="checkbox" class="mt-1" checked data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="99:18"> <span data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="100:23"> <span class="block font-medium text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="101:65">Incluir Soporte+ mensual: $100.000 CLP</span> <span class="block text-sm text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="102:61">Detalle: $65.000 plataforma + $35.000 soporte.</span> </span> </label> </div> <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="107:231">
+Calcular cotizaciÃ³n
+</button> </div> <div id="quoteCapture" class="border rounded-2xl bg-zinc-50 p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm lg:sticky lg:top-6" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="112:129"> <h2 class="text-xl font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="113:61">4) Resumen de cotizaciÃ³n</h2> <div class="space-y-2 text-sm sm:text-base" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="115:57"> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="116:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="116:60">Cliente:</span> <span id="outCliente" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="116:120">-</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="117:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="117:60">Empresa:</span> <span id="outEmpresa" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="117:120">-</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="118:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="118:60">Plan:</span> <span id="outPlan" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="118:114">-</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="119:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="119:60">ImplementaciÃ³n:</span> <span id="outImplementacion" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="119:134">$0 CLP</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="120:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="120:60">Extras:</span> <span id="outExtras" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="120:118">$0 CLP</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="121:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="121:60">Descuento:</span> <span id="outDescuento" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="121:124">$0 CLP</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="122:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="122:60">Motivo descuento:</span> <span id="outMotivoDescuento" class="text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="122:137">-</span></p> <p class="text-lg pt-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="123:40"><span class="font-bold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="123:77">Total inicial:</span> <span id="outTotal" class="font-bold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="123:151">$0 CLP</span></p> </div> <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="126:85"> <p class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="127:54">Alcance y limites del plan</p> <ul id="outScopeList" class="list-disc list-inside space-y-1 text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="128:91"> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="129:21">Selecciona un plan para ver detalle.</li> </ul> <p class="font-semibold text-zinc-900 pt-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="131:59">No incluye este plan</p> <ul id="outExclusionsList" class="list-disc list-inside space-y-1 text-zinc-600" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="132:96"> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="133:21">Selecciona un plan para ver exclusiones.</li> </ul> </div> <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="137:85"> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="138:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="138:60">Continuidad:</span> <span id="outContinuidad" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="138:106">Soporte+ mensual incluido en propuesta: $100.000 CLP/mes</span></p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="139:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="139:60">Detalle mensual:</span> $65.000 plataforma + $35.000 soporte.</p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="140:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="140:60">Importante:</span> durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</p> </div> <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="143:85"> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="144:19"><span class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="144:60">CondiciÃ³n de pago:</span> 50% de implementaciÃ³n al aceptar la cotizaciÃ³n.</p> <p data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="145:18">Luego se realiza revisiÃ³n de conformidad y posteriormente se cancela el 50% restante de implementaciÃ³n + soporte mensual (si fue incluido).</p> </div> <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="148:85"> <p class="font-semibold text-zinc-900" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="149:54">Alcance del Soporte+ (global)</p> <ul class="list-disc list-inside space-y-1" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="150:59"> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="151:21">Soporte tecnico continuo</li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="152:21">Hasta 20 solicitudes de cambio mensuales</li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="153:21">Ajustes operativos (textos, imagenes, estructura simple)</li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="154:21">Capacitacion inicial</li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="155:21">Atencion por WhatsApp (08:30 a 17:30)</li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="156:21">Tiempo de respuesta: hasta 30 minutos</li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="157:21">Supervision basica de funcionamiento</li> </ul> </div> <div class="border-t pt-4" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="161:40"> <p class="text-sm font-semibold text-zinc-900 mb-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="162:67">Texto listo para enviar</p> <textarea id="outputTexto" class="w-full min-h-60 sm:min-h-55 border border-zinc-300 rounded-md p-3 text-sm text-zinc-700" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="163:16"></textarea> <div class="mt-3 grid grid-cols-1 sm:grid-cols-4 gap-2" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="164:71"> <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="165:233">Copiar texto</button> <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="166:221">PDF Pro</button> <button id="btnExportarHtmlPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="167:242">PDF HTML</button> <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/pages/interno/cotizador.astro" data-astro-source-loc="168:221">Limpiar</button> </div> </div> </div> </div> </div> </section> <script type="module" src="/src/scripts/cotizador.ts"></script>  </main> <footer class="border-t border-zinc-200 bg-white" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="5:51"> <div class="container mx-auto px-4 py-14 sm:py-16" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="6:54"> <div class="grid grid-cols-1 md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="7:82"> <div class="md:col-span-2 space-y-5" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="8:44"> <h3 class="text-2xl font-bold text-zinc-900 tracking-tight" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="9:69">
+VIN<span class="font-light" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="10:39">Studio</span> </h3> <p class="text-zinc-500 leading-relaxed max-w-md text-sm sm:text-base" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="12:80">
+Desarrollo web y consultoria tecnologica con precision tecnica.
+          De idea a realidad.
+</p> </div> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="18:12"> <h4 class="font-semibold text-zinc-900 mb-4 text-xs sm:text-sm uppercase tracking-wider" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="19:98">Enlaces</h4> <ul class="space-y-3" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="20:31"> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="21:16"><a href="/nosotros" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="21:103">Nosotros</a></li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="22:16"><a href="/servicios" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="22:104">Servicios</a></li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="23:16"><a href="/cloud" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="23:100">Cloud</a></li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="24:16"><a href="/portafolio" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="24:105">Portafolio</a></li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="25:16"><a href="/contacto" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="25:103">Contacto</a></li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="26:16"><a href="/interno/cotizador" class="text-zinc-500 hover:text-zinc-900 transition-colors text-sm" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="26:112">Cotizador</a></li> </ul> </div> <div data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="30:12"> <h4 class="font-semibold text-zinc-900 mb-4 text-xs sm:text-sm uppercase tracking-wider" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="31:98">Contacto</h4> <ul class="space-y-3 text-sm text-zinc-500" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="32:53"> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="33:15"> <button onclick="navigator.clipboard.writeText('jonathan.guerra@vin-studio.dev').then(() => { this.textContent = 'Copiado'; setTimeout(() => this.textContent = 'jonathan.guerra@vin-studio.dev', 1800); })" class="hover:text-zinc-900 transition-colors cursor-pointer text-left" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="37:14">
+jonathan.guerra@vin-studio.dev
+</button> </li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="41:15"> <a href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20desarrollo%20web.%20Me%20gustaria%20conversar%20sobre%20mi%20proyecto." target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 transition-colors" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="42:287">
++56 9 3898 0598
+</a> </li> <li data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="46:15">Servicios 100% online</li> </ul> </div> </div> <div class="border-t border-zinc-200 mb-6" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="51:6"></div> <div class="flex justify-center items-center" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="53:51"> <p class="text-xs sm:text-sm text-zinc-500 text-center" data-astro-source-file="C:/Trabajos/vin-studio.dev/src/components/common/Footer.astro" data-astro-source-loc="54:63">
+Â© 2026 VIN Studio. Todos los derechos reservados.
+</p> </div> </div> </footer> </body></html>
