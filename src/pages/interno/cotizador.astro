@@ -501,123 +501,38 @@ const extras = [
           'Posterior a la conformidad se cancela el 50% restante de implementación + soporte mensual (si fue incluido).',
         ];
 
-        let jsPDF;
-        let autoTable;
         try {
-          const [{ jsPDF: JsPdfCtor }, { default: autoTableFn }] = await Promise.all([
-            import('jspdf'),
-            import('jspdf-autotable'),
-          ]);
-          jsPDF = JsPdfCtor;
-          autoTable = autoTableFn;
-        } catch {
-          alert('No fue posible cargar el generador de PDF. Intenta nuevamente.');
-          return;
+          const { exportQuotePdf } = await import('@/lib/quotePdf');
+          await exportQuotePdf({
+            fileName: fileTitle,
+            dateText: now.toLocaleDateString('es-CL'),
+            clientName: cliente,
+            companyName: empresa,
+            email: document.getElementById('clienteEmail').value.trim() || '-',
+            whatsapp: document.getElementById('clienteWhatsapp').value.trim() || '-',
+            planName: outPlan,
+            implementation: outImplementacion,
+            extras: outExtras,
+            discount: outDescuento,
+            discountReason: outMotivoDescuento,
+            total: outTotal,
+            continuity: `${outContinuidad}. Detalle mensual: $65.000 plataforma + $35.000 soporte.`,
+            scopeItems,
+            exclusionItems,
+            supportItems,
+            paymentTerms,
+            commercialTerms: [
+              'Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.',
+              'Desde el mes 4, el cliente paga directamente la plataforma.',
+              'La continuidad de Soporte+ es opcional.',
+              'Todo requerimiento fuera de alcance se cotiza por separado.',
+              'Al finalizar el plazo contratado, se entrega acceso a la plataforma.',
+            ],
+          });
+        } catch (error) {
+          console.error(error);
+          alert('No fue posible generar el PDF. Intenta nuevamente.');
         }
-
-        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-        const pageWidth = doc.internal.pageSize.getWidth();
-        const pageHeight = doc.internal.pageSize.getHeight();
-        const marginX = 40;
-        let cursorY = 40;
-        const ensureSpace = (requiredHeight = 30) => {
-          if (cursorY + requiredHeight > pageHeight - 40) {
-            doc.addPage();
-            cursorY = 40;
-          }
-        };
-
-        const addSectionTitle = (title) => {
-          ensureSpace(24);
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(11);
-          doc.text(title, marginX, cursorY);
-          cursorY += 12;
-        };
-
-        const addParagraph = (textValue) => {
-          doc.setFont('helvetica', 'normal');
-          doc.setFontSize(10);
-          const lines = doc.splitTextToSize(textValue, pageWidth - marginX * 2);
-          ensureSpace(lines.length * 12 + 8);
-          doc.text(lines, marginX, cursorY);
-          cursorY += lines.length * 12 + 4;
-        };
-
-        try {
-          const logoResp = await fetch('/favicon.svg');
-          const logoText = await logoResp.text();
-          const logoBase64 = btoa(unescape(encodeURIComponent(logoText)));
-          doc.addImage(`data:image/svg+xml;base64,${logoBase64}`, 'SVG', marginX, cursorY - 8, 26, 26);
-        } catch {}
-
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(16);
-        doc.text('VIN Studio - Cotización Ecommerce', marginX + 34, cursorY + 10);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(10);
-        doc.text(`Fecha: ${now.toLocaleDateString('es-CL')}`, pageWidth - 150, cursorY + 10);
-        cursorY += 38;
-
-        autoTable(doc, {
-          startY: cursorY,
-          margin: { left: marginX, right: marginX },
-          theme: 'grid',
-          styles: { fontSize: 9, cellPadding: 6 },
-          head: [['Cliente', 'Empresa', 'Email', 'WhatsApp']],
-          body: [[
-            cliente,
-            empresa,
-            document.getElementById('clienteEmail').value.trim() || '-',
-            document.getElementById('clienteWhatsapp').value.trim() || '-',
-          ]],
-        });
-        cursorY = doc.lastAutoTable.finalY + 14;
-
-        autoTable(doc, {
-          startY: cursorY,
-          margin: { left: marginX, right: marginX },
-          theme: 'striped',
-          styles: { fontSize: 9, cellPadding: 6 },
-          body: [
-            ['Plan seleccionado', outPlan],
-            ['Implementacion', outImplementacion],
-            ['Extras', outExtras],
-            ['Descuento', outDescuento],
-            ['Motivo descuento', outMotivoDescuento],
-            ['Total inicial', outTotal],
-            ['Continuidad', outContinuidad],
-            ['Detalle mensual soporte', '$65.000 plataforma + $35.000 soporte'],
-          ],
-        });
-        cursorY = doc.lastAutoTable.finalY + 14;
-
-        addSectionTitle('Alcance del plan');
-        (scopeItems.length ? scopeItems : ['Sin detalle de alcance.']).forEach((item) => addParagraph(`• ${item}`));
-        addSectionTitle('No incluye este plan');
-        (exclusionItems.length ? exclusionItems : ['Sin exclusiones definidas.']).forEach((item) => addParagraph(`• ${item}`));
-        addSectionTitle('Alcance Soporte+ (global)');
-        supportItems.forEach((item) => addParagraph(`• ${item}`));
-        addSectionTitle('Condiciones comerciales');
-        [
-          'Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.',
-          'Desde el mes 4, el cliente paga directamente la plataforma.',
-          'La continuidad de Soporte+ es opcional.',
-          'Todo requerimiento fuera de alcance se cotiza por separado.',
-          'Al finalizar el plazo contratado, se entrega acceso a la plataforma.',
-        ].forEach((item) => addParagraph(`• ${item}`));
-        addSectionTitle('Condición de pago');
-        paymentTerms.forEach((item) => addParagraph(`• ${item}`));
-
-        const totalPages = doc.getNumberOfPages();
-        for (let page = 1; page <= totalPages; page += 1) {
-          doc.setPage(page);
-          doc.setFontSize(8);
-          doc.setTextColor(120, 120, 120);
-          doc.text(`Pagina ${page} de ${totalPages}`, pageWidth - 90, pageHeight - 20);
-        }
-
-        doc.save(fileTitle);
       });
 
       document.getElementById('btnLimpiar').addEventListener('click', () => {
