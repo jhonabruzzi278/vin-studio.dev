@@ -11,6 +11,16 @@ const implementationPlans = [
       "Hasta 10 productos cargados",
       "Configuracion general de catalogo y navegacion",
       "Configuracion simple de envios",
+      "Pasarela de pago incluida en la implementacion",
+      "Verificacion de fotografias y apoyo para material visual",
+    ],
+    notIncludedByPlan: [
+      "Compra de dominio y renovaciones",
+      "Costo mensual de plataforma (desde mes 4)",
+      "Servicios de correo corporativo",
+      "Gestion de campanas publicitarias",
+      "Desarrollo personalizado avanzado",
+      "Apps o licencias pagadas de terceros",
     ],
   },
   {
@@ -22,6 +32,15 @@ const implementationPlans = [
       "Estructura optimizada de tienda",
       "Emails automaticos basicos",
       "Navegacion y categorias mejoradas",
+      "Verificacion de fotografias y apoyo para material visual",
+    ],
+    notIncludedByPlan: [
+      "Compra de dominio y renovaciones",
+      "Costo mensual de plataforma (desde mes 4)",
+      "Servicios de correo corporativo",
+      "Gestion de campanas publicitarias",
+      "Integraciones complejas no cotizadas",
+      "Apps o licencias pagadas de terceros",
     ],
     featured: true,
   },
@@ -34,6 +53,15 @@ const implementationPlans = [
       "Configuracion de conversion (carrito y checkout)",
       "Categorias, fichas y estructura comercial optimizada",
       "SEO base de tienda y productos",
+      "Verificacion de fotografias y apoyo para material visual",
+    ],
+    notIncludedByPlan: [
+      "Compra de dominio y renovaciones",
+      "Costo mensual de plataforma (desde mes 4)",
+      "Servicios de correo corporativo",
+      "Gestion publicitaria mensual (Meta/Google)",
+      "Desarrollo de software a medida",
+      "Apps o licencias pagadas de terceros",
     ],
   },
   {
@@ -46,6 +74,15 @@ const implementationPlans = [
       "Landing pages",
       "Fotografia + contenido visual",
       "Integraciones operativas avanzadas",
+      "Verificacion de fotografias y apoyo para material visual",
+    ],
+    notIncludedByPlan: [
+      "Compra de dominio y renovaciones",
+      "Costo mensual de plataforma (desde mes 4)",
+      "Servicios de correo corporativo",
+      "Gestion publicitaria mensual (Meta/Google)",
+      "Automatizaciones avanzadas fuera de alcance",
+      "Apps o licencias pagadas de terceros",
     ],
   },
 ];
@@ -73,7 +110,7 @@ const notIncluded = [
         Modelo de Servicio Ecommerce con Shopify
       </h1>
       <p class="text-lg sm:text-xl text-zinc-600 leading-relaxed">
-        Un modelo claro con dos etapas: implementacion (pago unico) y continuidad operativa. Durante los meses 1 y 2 el costo de la plataforma esta incluido por VIN Studio.
+        Un modelo claro con dos etapas: implementacion (pago unico) y continuidad operativa. Durante los primeros 3 meses el costo de la plataforma esta incluido por VIN Studio.
       </p>
     </div>
 
@@ -86,7 +123,7 @@ const notIncluded = [
       <div class="border rounded-xl p-6 bg-white">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-3">Parte 2</p>
           <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-2">Continuidad (Soporte+ Mensual)</h2>
-          <p class="text-sm sm:text-base text-zinc-600">Operacion mensual con soporte y mantenimiento segun plan. El pago de la plataforma va incluido durante los meses 1 y 2.</p>
+          <p class="text-sm sm:text-base text-zinc-600">Operacion mensual con soporte y mantenimiento segun plan. El pago de la plataforma va incluido durante los primeros 3 meses.</p>
       </div>
     </div>
 
@@ -111,6 +148,17 @@ const notIncluded = [
                 </li>
               ))}
             </ul>
+            <div class="mt-4 pt-4 border-t border-zinc-200">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 mb-2">No incluye</p>
+              <ul class="space-y-1 text-xs text-zinc-500">
+                {plan.notIncludedByPlan.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <a href="/contacto" class="mt-5 inline-flex items-center justify-center h-10 w-full text-sm font-semibold border border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
               Solicitar este plan
             </a>
@@ -126,14 +174,14 @@ const notIncluded = [
         <div class="border rounded-xl bg-white p-6">
           <p class="text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500 mb-3">Precio</p>
           <p class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">$100 USD / mes</p>
-          <p class="text-sm text-zinc-600">Incluye soporte tecnico y operativo + mantenimiento y ajustes. El pago de la plataforma esta incluido durante los meses 1 y 2.</p>
+          <p class="text-sm text-zinc-600">Incluye soporte tecnico y operativo + mantenimiento y ajustes. El pago de la plataforma esta incluido durante los primeros 3 meses.</p>
         </div>
 
         <div class="border rounded-xl bg-white p-6">
           <p class="text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500 mb-3">Funcionamiento</p>
           <ul class="space-y-2 text-sm text-zinc-600">
-            <li><strong class="text-zinc-900">Meses 1 y 2:</strong> pago de plataforma incluido por VIN Studio.</li>
-            <li><strong class="text-zinc-900">Desde mes 3:</strong> el cliente paga directamente la plataforma.</li>
+            <li><strong class="text-zinc-900">Meses 1 a 3:</strong> pago de plataforma incluido por VIN Studio.</li>
+            <li><strong class="text-zinc-900">Desde mes 4:</strong> el cliente paga directamente la plataforma.</li>
             <li><strong class="text-zinc-900">Soporte mensual:</strong> es opcional, el cliente decide si continua con $100 USD/mes.</li>
           </ul>
         </div>
@@ -177,8 +225,8 @@ const notIncluded = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-zinc-600">
         <p>Contrato minimo: 3 meses</p>
         <p>Pago inicial: implementacion</p>
-        <p>Pago de plataforma incluido durante los meses 1 y 2</p>
-        <p>Desde mes 3: cliente paga plataforma y soporte es opcional</p>
+        <p>Pago de plataforma incluido durante los primeros 3 meses</p>
+        <p>Desde mes 4: cliente paga plataforma y soporte es opcional</p>
         <p>Al terminar el plazo contratado se entrega acceso a la plataforma</p>
         <p>Todo lo fuera de alcance se cotiza por separado</p>
         <p>Servicio digital no reembolsable</p>

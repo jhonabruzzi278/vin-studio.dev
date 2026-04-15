@@ -144,6 +144,7 @@ const extras = [
                 <span>
                   <span class="block font-medium text-zinc-900">Sin pasarela de pago</span>
                   <span class="block text-sm text-zinc-600">Aplicar descuento de - $100.000 CLP</span>
+                  <span id="sinPasarelaHint" class="block text-xs text-zinc-500 mt-1">Disponible para Plan Completa, Pro y Elite.</span>
                 </span>
               </label>
             </div>
@@ -172,12 +173,16 @@ const extras = [
               <ul id="outScopeList" class="list-disc list-inside space-y-1 text-zinc-600">
                 <li>Selecciona un plan para ver detalle.</li>
               </ul>
+              <p class="font-semibold text-zinc-900 pt-2">No incluye este plan</p>
+              <ul id="outExclusionsList" class="list-disc list-inside space-y-1 text-zinc-600">
+                <li>Selecciona un plan para ver exclusiones.</li>
+              </ul>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
               <p><span class="font-semibold text-zinc-900">Continuidad:</span> $100 USD / mes (Soporte+)</p>
               <p><span class="font-semibold text-zinc-900">Plataforma:</span> costo referencial $65.000 CLP/mes.</p>
-              <p><span class="font-semibold text-zinc-900">Importante:</span> durante los meses 1 y 2 de contratacion el costo de plataforma lo asumimos nosotros. Desde el 3er mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</p>
+              <p><span class="font-semibold text-zinc-900">Importante:</span> durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</p>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
@@ -198,6 +203,7 @@ const extras = [
               <textarea id="outputTexto" class="w-full min-h-[220px] border border-zinc-300 rounded-md p-3 text-sm text-zinc-700"></textarea>
               <div class="mt-3 flex flex-col sm:flex-row gap-2">
                 <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">Copiar texto</button>
+                <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">Exportar PDF</button>
                 <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors">Limpiar</button>
               </div>
             </div>
@@ -263,6 +269,16 @@ const extras = [
             'Hasta 10 productos cargados',
             'Configuracion general de catalogo y navegacion',
             'Configuracion simple de envios',
+            'Pasarela de pago incluida en la implementacion',
+            'Verificacion de fotografias y apoyo para material visual',
+          ],
+          exclusions: [
+            'Compra de dominio y renovaciones',
+            'Costo mensual de plataforma (desde mes 4)',
+            'Servicios de correo corporativo',
+            'Gestion de campanas publicitarias',
+            'Desarrollo personalizado avanzado',
+            'Apps o licencias pagadas de terceros',
           ],
         },
         completa: {
@@ -273,6 +289,15 @@ const extras = [
             'Estructura optimizada de tienda',
             'Emails automaticos basicos',
             'Navegacion y categorias mejoradas',
+            'Verificacion de fotografias y apoyo para material visual',
+          ],
+          exclusions: [
+            'Compra de dominio y renovaciones',
+            'Costo mensual de plataforma (desde mes 4)',
+            'Servicios de correo corporativo',
+            'Gestion de campanas publicitarias',
+            'Integraciones complejas no cotizadas',
+            'Apps o licencias pagadas de terceros',
           ],
         },
         pro: {
@@ -283,6 +308,15 @@ const extras = [
             'Configuracion de conversion (carrito y checkout)',
             'Categorias, fichas y estructura comercial optimizada',
             'SEO base de tienda y productos',
+            'Verificacion de fotografias y apoyo para material visual',
+          ],
+          exclusions: [
+            'Compra de dominio y renovaciones',
+            'Costo mensual de plataforma (desde mes 4)',
+            'Servicios de correo corporativo',
+            'Gestion publicitaria mensual (Meta/Google)',
+            'Desarrollo de software a medida',
+            'Apps o licencias pagadas de terceros',
           ],
         },
         elite: {
@@ -294,6 +328,15 @@ const extras = [
             'Landing pages',
             'Fotografia + contenido visual',
             'Integraciones operativas avanzadas',
+            'Verificacion de fotografias y apoyo para material visual',
+          ],
+          exclusions: [
+            'Compra de dominio y renovaciones',
+            'Costo mensual de plataforma (desde mes 4)',
+            'Servicios de correo corporativo',
+            'Gestion publicitaria mensual (Meta/Google)',
+            'Automatizaciones avanzadas fuera de alcance',
+            'Apps o licencias pagadas de terceros',
           ],
         },
       };
@@ -310,13 +353,34 @@ const extras = [
         return selected ? selected.value : null;
       };
 
+      const syncPasarelaRules = () => {
+        const selectedPlanKey = getSelectedPlan();
+        const sinPasarela = document.getElementById('sinPasarela');
+        const hint = document.getElementById('sinPasarelaHint');
+        const isExpress = selectedPlanKey === 'express';
+
+        if (isExpress) {
+          sinPasarela.checked = false;
+          sinPasarela.disabled = true;
+          if (hint) {
+            hint.textContent = 'Plan Express requiere pasarela de pago incluida. Esta opcion no aplica.';
+          }
+        } else {
+          sinPasarela.disabled = false;
+          if (hint) {
+            hint.textContent = 'Disponible para Plan Completa, Pro y Elite.';
+          }
+        }
+      };
+
       const getSelectedExtras = () => {
         return Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map((el) => el.value);
       };
 
-      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, planScope, extrasNames, extrasTotal, discountTotal, total }) => {
+      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, planScope, planExclusions, extrasNames, extrasTotal, discountTotal, total }) => {
         const extrasLine = extrasNames.length ? extrasNames.join(', ') : 'Sin extras';
         const scopeLines = (planScope || []).map((line) => `- ${line}`);
+        const exclusionLines = (planExclusions || []).map((line) => `- ${line}`);
         const discountReason = discountTotal > 0 ? 'Descuento por implementacion sin pasarela de pago.' : 'Sin descuento aplicado.';
         return [
           'Cotizacion Ecommerce - VIN Studio',
@@ -331,6 +395,9 @@ const extras = [
           'Alcance del plan:',
           ...scopeLines,
           '',
+          'No incluye este plan:',
+          ...exclusionLines,
+          '',
           `Extras (${extrasLine}): ${formatClp(extrasTotal)}`,
           `Descuento: -${formatClp(discountTotal).replace('$', '$')}`,
           `Motivo descuento: ${discountReason}`,
@@ -340,8 +407,8 @@ const extras = [
           'Continuidad:',
           '$100 USD / mes (Soporte+)',
           'Costo de plataforma referencial: $65.000 CLP/mes.',
-          'Durante los meses 1 y 2 de contratacion el costo de plataforma lo asumimos nosotros.',
-          'A partir del 3er mes el cliente paga la plataforma.',
+          'Durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros.',
+          'A partir del 4to mes el cliente paga la plataforma.',
           'El cliente no esta obligado a mantener el plan de soporte.',
           '',
           'Alcance Soporte+ (global):',
@@ -376,6 +443,10 @@ const extras = [
         }
 
         const selectedPlan = planMap[selectedPlanKey];
+        if (selectedPlanKey === 'express' && document.getElementById('sinPasarela').checked) {
+          alert('El Plan Express requiere pasarela de pago. No se puede aplicar descuento sin pasarela.');
+          return;
+        }
         const selectedExtras = getSelectedExtras();
         let extrasTotal = 0;
         const extrasNames = [];
@@ -410,6 +481,13 @@ const extras = [
           li.textContent = item;
           scopeList.appendChild(li);
         });
+        const exclusionsList = document.getElementById('outExclusionsList');
+        exclusionsList.innerHTML = '';
+        selectedPlan.exclusions.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          exclusionsList.appendChild(li);
+        });
 
         document.getElementById('outputTexto').value = buildOutputText({
           cliente,
@@ -419,6 +497,7 @@ const extras = [
           planName: selectedPlan.name,
           planPrice: selectedPlan.price,
           planScope: selectedPlan.scope,
+          planExclusions: selectedPlan.exclusions,
           extrasNames,
           extrasTotal,
           discountTotal,
@@ -427,6 +506,10 @@ const extras = [
       };
 
       btnCalcular.addEventListener('click', calculate);
+      document.querySelectorAll('input[name="plan"]').forEach((radio) => {
+        radio.addEventListener('change', syncPasarelaRules);
+      });
+      syncPasarelaRules();
 
       document.getElementById('btnCopiar').addEventListener('click', async () => {
         const text = document.getElementById('outputTexto').value;
@@ -442,6 +525,173 @@ const extras = [
         }
       });
 
+      document.getElementById('btnExportarPdf').addEventListener('click', () => {
+        const text = document.getElementById('outputTexto').value;
+        const cliente = document.getElementById('clienteNombre').value.trim() || 'cliente';
+        const empresa = document.getElementById('clienteEmpresa').value.trim() || 'Empresa';
+        if (!text.trim()) {
+          alert('Primero calcula una cotizacion.');
+          return;
+        }
+
+        const sanitizedCompany = empresa
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-zA-Z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .toLowerCase();
+        const fileTitle = `Cotizacion+${sanitizedCompany || 'empresa'}`;
+        const now = new Date();
+
+        const outPlan = document.getElementById('outPlan').textContent.trim() || '-';
+        const outImplementacion = document.getElementById('outImplementacion').textContent.trim() || '$0 CLP';
+        const outExtras = document.getElementById('outExtras').textContent.trim() || '$0 CLP';
+        const outDescuento = document.getElementById('outDescuento').textContent.trim() || '$0 CLP';
+        const outMotivoDescuento = document.getElementById('outMotivoDescuento').textContent.trim() || '-';
+        const outTotal = document.getElementById('outTotal').textContent.trim() || '$0 CLP';
+
+        const scopeItems = Array.from(document.querySelectorAll('#outScopeList li'))
+          .map((li) => li.textContent.trim())
+          .filter(Boolean)
+          .map((item) => `<li>${item}</li>`)
+          .join('');
+        const exclusionItems = Array.from(document.querySelectorAll('#outExclusionsList li'))
+          .map((li) => li.textContent.trim())
+          .filter(Boolean)
+          .map((item) => `<li>${item}</li>`)
+          .join('');
+
+        const escapeHtml = (value) =>
+          value
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
+        const printWindow = window.open('', '_blank', 'width=900,height=1100');
+        if (!printWindow) {
+          alert('No se pudo abrir la ventana para exportar PDF. Revisa si tu navegador bloquea popups.');
+          return;
+        }
+
+        const supportItems = [
+          'Soporte tecnico continuo',
+          'Hasta 20 solicitudes de cambio mensuales',
+          'Ajustes operativos (textos, imagenes, estructura simple)',
+          'Capacitacion inicial',
+          'Atencion por WhatsApp (08:30 a 17:30)',
+          'Tiempo de respuesta: hasta 30 minutos',
+          'Supervision basica de funcionamiento',
+        ]
+          .map((item) => `<li>${item}</li>`)
+          .join('');
+
+        printWindow.document.write(`
+          <!doctype html>
+          <html lang="es">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>${escapeHtml(fileTitle)}</title>
+              <style>
+                body { font-family: Arial, sans-serif; color: #111; margin: 32px; line-height: 1.5; }
+                .header { margin-bottom: 20px; border-bottom: 2px solid #111; padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+                .brand-wrap { display: flex; align-items: center; gap: 12px; }
+                .brand { font-size: 20px; font-weight: 700; letter-spacing: 0.02em; }
+                .logo { width: 38px; height: 38px; object-fit: contain; }
+                .meta { color: #555; font-size: 13px; margin-top: 3px; }
+                .section { border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; margin-top: 12px; }
+                .section h3 { margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: #333; }
+                .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+                .row { display: flex; justify-content: space-between; margin: 4px 0; }
+                .label { color: #444; }
+                .value { font-weight: 700; color: #111; }
+                ul { margin: 6px 0 0 18px; padding: 0; }
+                li { margin: 3px 0; }
+                .total { font-size: 18px; }
+                .small { font-size: 12px; color: #666; margin-top: 10px; }
+                @media print {
+                  body { margin: 16mm; }
+                }
+              </style>
+            </head>
+            <body>
+              <div class="header">
+                <div class="brand-wrap">
+                  <img class="logo" src="${window.location.origin}/favicon.svg" alt="VIN Studio" />
+                  <div>
+                    <div class="brand">VIN Studio</div>
+                    <div class="meta">Cotizacion Comercial Ecommerce</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="meta"><strong>Documento:</strong> ${escapeHtml(`${fileTitle}.pdf`)}</div>
+                  <div class="meta"><strong>Fecha:</strong> ${now.toLocaleDateString('es-CL')}</div>
+                </div>
+              </div>
+
+              <div class="section">
+                <h3>Datos Cliente</h3>
+                <div class="grid">
+                  <div><span class="label">Nombre:</span> ${escapeHtml(cliente)}</div>
+                  <div><span class="label">Empresa:</span> ${escapeHtml(empresa)}</div>
+                  <div><span class="label">Email:</span> ${escapeHtml(document.getElementById('clienteEmail').value.trim() || '-')}</div>
+                  <div><span class="label">WhatsApp:</span> ${escapeHtml(document.getElementById('clienteWhatsapp').value.trim() || '-')}</div>
+                </div>
+              </div>
+
+              <div class="section">
+                <h3>Resumen Economico</h3>
+                <div class="row"><span class="label">Plan seleccionado:</span><span class="value">${escapeHtml(outPlan)}</span></div>
+                <div class="row"><span class="label">Implementacion:</span><span class="value">${escapeHtml(outImplementacion)}</span></div>
+                <div class="row"><span class="label">Extras:</span><span class="value">${escapeHtml(outExtras)}</span></div>
+                <div class="row"><span class="label">Descuento:</span><span class="value">${escapeHtml(outDescuento)}</span></div>
+                <div class="row"><span class="label">Motivo descuento:</span><span>${escapeHtml(outMotivoDescuento)}</span></div>
+                <div class="row total"><span class="label"><strong>Total inicial:</strong></span><span class="value">${escapeHtml(outTotal)}</span></div>
+              </div>
+
+              <div class="section">
+                <h3>Alcance del Plan</h3>
+                <ul>${scopeItems || '<li>Sin detalle de alcance.</li>'}</ul>
+              </div>
+
+              <div class="section">
+                <h3>No Incluye Este Plan</h3>
+                <ul>${exclusionItems || '<li>Sin exclusiones definidas.</li>'}</ul>
+              </div>
+
+              <div class="section">
+                <h3>Alcance Soporte+ (Global)</h3>
+                <ul>${supportItems}</ul>
+              </div>
+
+              <div class="section">
+                <h3>Condiciones Comerciales</h3>
+                <ul>
+                  <li>Costo de plataforma referencial: $65.000 CLP/mes.</li>
+                  <li>Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.</li>
+                  <li>Desde el mes 4, el cliente paga directamente la plataforma.</li>
+                  <li>La continuidad de Soporte+ es opcional.</li>
+                  <li>Todo requerimiento fuera de alcance se cotiza por separado.</li>
+                  <li>Al finalizar el plazo contratado, se entrega acceso a la plataforma.</li>
+                </ul>
+              </div>
+
+              <p class="small">
+                Documento generado por el cotizador interno de VIN Studio. Vigencia y condiciones finales sujetas a propuesta formal.
+              </p>
+            </body>
+          </html>
+        `);
+
+        printWindow.document.close();
+        printWindow.focus();
+        setTimeout(() => {
+          printWindow.print();
+        }, 300);
+      });
+
       document.getElementById('btnLimpiar').addEventListener('click', () => {
         document.getElementById('clienteNombre').value = '';
         document.getElementById('clienteEmpresa').value = '';
@@ -449,6 +699,8 @@ const extras = [
         document.getElementById('clienteWhatsapp').value = '';
         document.querySelectorAll('input[name="plan"]').forEach((el) => (el.checked = false));
         document.querySelectorAll('input[type="checkbox"]').forEach((el) => (el.checked = false));
+        document.getElementById('sinPasarela').disabled = false;
+        document.getElementById('sinPasarelaHint').textContent = 'Disponible para Plan Completa, Pro y Elite.';
         document.getElementById('outCliente').textContent = '-';
         document.getElementById('outEmpresa').textContent = '-';
         document.getElementById('outPlan').textContent = '-';
@@ -458,6 +710,7 @@ const extras = [
         document.getElementById('outMotivoDescuento').textContent = '-';
         document.getElementById('outTotal').textContent = '$0 CLP';
         document.getElementById('outScopeList').innerHTML = '<li>Selecciona un plan para ver detalle.</li>';
+        document.getElementById('outExclusionsList').innerHTML = '<li>Selecciona un plan para ver exclusiones.</li>';
         document.getElementById('outputTexto').value = '';
       });
     })();
