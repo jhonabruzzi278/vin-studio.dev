@@ -108,7 +108,7 @@ const extras = [
             </button>
           </div>
 
-          <div class="border rounded-2xl bg-zinc-50 p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm lg:sticky lg:top-6">
+          <div id="quoteCapture" class="border rounded-2xl bg-zinc-50 p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm lg:sticky lg:top-6">
             <h2 class="text-xl font-semibold text-zinc-900">4) Resumen de cotización</h2>
 
             <div class="space-y-2 text-sm sm:text-base">
@@ -160,9 +160,10 @@ const extras = [
             <div class="border-t pt-4">
               <p class="text-sm font-semibold text-zinc-900 mb-2">Texto listo para enviar</p>
               <textarea id="outputTexto" class="w-full min-h-[240px] sm:min-h-[220px] border border-zinc-300 rounded-md p-3 text-sm text-zinc-700"></textarea>
-              <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div class="mt-3 grid grid-cols-1 sm:grid-cols-4 gap-2">
                 <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">Copiar texto</button>
-                <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">Exportar PDF</button>
+                <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">PDF Pro</button>
+                <button id="btnExportarHtmlPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">PDF HTML</button>
                 <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors">Limpiar</button>
               </div>
             </div>
@@ -173,6 +174,7 @@ const extras = [
 
   <script type="module">
     import { exportQuotePdf } from '../../lib/quotePdf';
+    import { exportHtmlQuotePdf } from '../../lib/quoteHtmlPdf';
 
     (() => {
       const btnCalcular = document.getElementById('btnCalcular');
@@ -456,13 +458,13 @@ const extras = [
         }
       });
 
-      document.getElementById('btnExportarPdf').addEventListener('click', async () => {
+      const collectQuoteData = () => {
         const text = document.getElementById('outputTexto').value;
         const cliente = document.getElementById('clienteNombre').value.trim() || 'cliente';
         const empresa = document.getElementById('clienteEmpresa').value.trim() || 'Empresa';
         if (!text.trim()) {
           alert('Primero calcula una cotización.');
-          return;
+          return null;
         }
 
         const sanitizedCompany = empresa
@@ -503,25 +505,50 @@ const extras = [
           'Posterior a la conformidad se cancela el 50% restante de implementación + soporte mensual (si fue incluido).',
         ];
 
+        return {
+          cliente,
+          empresa,
+          fileTitle,
+          now,
+          outPlan,
+          outImplementacion,
+          outExtras,
+          outDescuento,
+          outMotivoDescuento,
+          outTotal,
+          outContinuidad,
+          scopeItems,
+          exclusionItems,
+          supportItems,
+          paymentTerms,
+          email: document.getElementById('clienteEmail').value.trim() || '-',
+          whatsapp: document.getElementById('clienteWhatsapp').value.trim() || '-',
+        };
+      };
+
+      document.getElementById('btnExportarPdf').addEventListener('click', async () => {
+        const quoteData = collectQuoteData();
+        if (!quoteData) return;
+
         try {
           await exportQuotePdf({
-            fileName: fileTitle,
-            dateText: now.toLocaleDateString('es-CL'),
-            clientName: cliente,
-            companyName: empresa,
-            email: document.getElementById('clienteEmail').value.trim() || '-',
-            whatsapp: document.getElementById('clienteWhatsapp').value.trim() || '-',
-            planName: outPlan,
-            implementation: outImplementacion,
-            extras: outExtras,
-            discount: outDescuento,
-            discountReason: outMotivoDescuento,
-            total: outTotal,
-            continuity: `${outContinuidad}. Detalle mensual: $65.000 plataforma + $35.000 soporte.`,
-            scopeItems,
-            exclusionItems,
-            supportItems,
-            paymentTerms,
+            fileName: quoteData.fileTitle,
+            dateText: quoteData.now.toLocaleDateString('es-CL'),
+            clientName: quoteData.cliente,
+            companyName: quoteData.empresa,
+            email: quoteData.email,
+            whatsapp: quoteData.whatsapp,
+            planName: quoteData.outPlan,
+            implementation: quoteData.outImplementacion,
+            extras: quoteData.outExtras,
+            discount: quoteData.outDescuento,
+            discountReason: quoteData.outMotivoDescuento,
+            total: quoteData.outTotal,
+            continuity: `${quoteData.outContinuidad}. Detalle mensual: $65.000 plataforma + $35.000 soporte.`,
+            scopeItems: quoteData.scopeItems,
+            exclusionItems: quoteData.exclusionItems,
+            supportItems: quoteData.supportItems,
+            paymentTerms: quoteData.paymentTerms,
             commercialTerms: [
               'Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.',
               'Desde el mes 4, el cliente paga directamente la plataforma.',
@@ -533,6 +560,20 @@ const extras = [
         } catch (error) {
           console.error(error);
           alert('No fue posible generar el PDF. Intenta nuevamente.');
+        }
+      });
+
+      document.getElementById('btnExportarHtmlPdf').addEventListener('click', async () => {
+        const quoteData = collectQuoteData();
+        if (!quoteData) return;
+        try {
+          await exportHtmlQuotePdf({
+            elementId: 'quoteCapture',
+            fileName: quoteData.fileTitle.replace('.pdf', '-html.pdf'),
+          });
+        } catch (error) {
+          console.error(error);
+          alert('No fue posible generar el PDF HTML. Intenta nuevamente.');
         }
       });
 

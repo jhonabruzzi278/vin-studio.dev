@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
 const ListSection = ({ title, items }: { title: string; items: string[] }) => (
   <View style={styles.section}>
     <Text style={styles.sectionTitle}>{title}</Text>
-    {(items.length ? items : ['Sin información disponible.']).map((item, idx) => (
+    {(items.length ? items : ['Sin informacion disponible.']).map((item, idx) => (
       <Text key={`${title}-${idx}`} style={styles.listItem}>
-        • {item}
+        - {item}
       </Text>
     ))}
   </View>
