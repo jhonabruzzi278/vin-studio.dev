@@ -486,30 +486,138 @@ const extras = [
         const exclusionItems = Array.from(document.querySelectorAll('#outExclusionsList li'))
           .map((li) => li.textContent.trim())
           .filter(Boolean);
+        const supportItems = [
+          'Soporte técnico continuo',
+          'Hasta 20 solicitudes de cambio mensuales',
+          'Ajustes operativos (textos, imágenes, estructura simple)',
+          'Capacitación inicial',
+          'Atencion por WhatsApp (08:30 a 17:30)',
+          'Tiempo de respuesta: hasta 30 minutos',
+          'Supervisión básica de funcionamiento',
+        ];
+        const paymentTerms = [
+          'Al aceptar la cotización se cancela el 50% de la implementación.',
+          'Luego se realiza una revisión de conformidad.',
+          'Posterior a la conformidad se cancela el 50% restante de implementación + soporte mensual (si fue incluido).',
+        ];
+
+        let jsPDF;
+        let autoTable;
         try {
-          const { downloadQuotePdf } = await import('@/lib/quotePdf');
-          await downloadQuotePdf(
-            {
-              cliente,
-              empresa,
-              email: document.getElementById('clienteEmail').value.trim() || '-',
-              whatsapp: document.getElementById('clienteWhatsapp').value.trim() || '-',
-              fecha: now.toLocaleDateString('es-CL'),
-              plan: outPlan,
-              implementacion: outImplementacion,
-              extras: outExtras,
-              descuento: outDescuento,
-              motivoDescuento: outMotivoDescuento,
-              totalInicial: outTotal,
-              continuidad: outContinuidad,
-              scopeItems,
-              exclusionItems,
-            },
-            fileTitle,
-          );
+          const [{ jsPDF: JsPdfCtor }, { default: autoTableFn }] = await Promise.all([
+            import('jspdf'),
+            import('jspdf-autotable'),
+          ]);
+          jsPDF = JsPdfCtor;
+          autoTable = autoTableFn;
         } catch {
-          alert('No fue posible generar el PDF con React PDF. Intenta nuevamente.');
+          alert('No fue posible cargar el generador de PDF. Intenta nuevamente.');
+          return;
         }
+
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const marginX = 40;
+        let cursorY = 40;
+        const ensureSpace = (requiredHeight = 30) => {
+          if (cursorY + requiredHeight > pageHeight - 40) {
+            doc.addPage();
+            cursorY = 40;
+          }
+        };
+
+        const addSectionTitle = (title) => {
+          ensureSpace(24);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(11);
+          doc.text(title, marginX, cursorY);
+          cursorY += 12;
+        };
+
+        const addParagraph = (textValue) => {
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(10);
+          const lines = doc.splitTextToSize(textValue, pageWidth - marginX * 2);
+          ensureSpace(lines.length * 12 + 8);
+          doc.text(lines, marginX, cursorY);
+          cursorY += lines.length * 12 + 4;
+        };
+
+        try {
+          const logoResp = await fetch('/favicon.svg');
+          const logoText = await logoResp.text();
+          const logoBase64 = btoa(unescape(encodeURIComponent(logoText)));
+          doc.addImage(`data:image/svg+xml;base64,${logoBase64}`, 'SVG', marginX, cursorY - 8, 26, 26);
+        } catch {}
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        doc.text('VIN Studio - Cotización Ecommerce', marginX + 34, cursorY + 10);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.text(`Fecha: ${now.toLocaleDateString('es-CL')}`, pageWidth - 150, cursorY + 10);
+        cursorY += 38;
+
+        autoTable(doc, {
+          startY: cursorY,
+          margin: { left: marginX, right: marginX },
+          theme: 'grid',
+          styles: { fontSize: 9, cellPadding: 6 },
+          head: [['Cliente', 'Empresa', 'Email', 'WhatsApp']],
+          body: [[
+            cliente,
+            empresa,
+            document.getElementById('clienteEmail').value.trim() || '-',
+            document.getElementById('clienteWhatsapp').value.trim() || '-',
+          ]],
+        });
+        cursorY = doc.lastAutoTable.finalY + 14;
+
+        autoTable(doc, {
+          startY: cursorY,
+          margin: { left: marginX, right: marginX },
+          theme: 'striped',
+          styles: { fontSize: 9, cellPadding: 6 },
+          body: [
+            ['Plan seleccionado', outPlan],
+            ['Implementacion', outImplementacion],
+            ['Extras', outExtras],
+            ['Descuento', outDescuento],
+            ['Motivo descuento', outMotivoDescuento],
+            ['Total inicial', outTotal],
+            ['Continuidad', outContinuidad],
+            ['Detalle mensual soporte', '$65.000 plataforma + $35.000 soporte'],
+          ],
+        });
+        cursorY = doc.lastAutoTable.finalY + 14;
+
+        addSectionTitle('Alcance del plan');
+        (scopeItems.length ? scopeItems : ['Sin detalle de alcance.']).forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('No incluye este plan');
+        (exclusionItems.length ? exclusionItems : ['Sin exclusiones definidas.']).forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('Alcance Soporte+ (global)');
+        supportItems.forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('Condiciones comerciales');
+        [
+          'Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.',
+          'Desde el mes 4, el cliente paga directamente la plataforma.',
+          'La continuidad de Soporte+ es opcional.',
+          'Todo requerimiento fuera de alcance se cotiza por separado.',
+          'Al finalizar el plazo contratado, se entrega acceso a la plataforma.',
+        ].forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('Condición de pago');
+        paymentTerms.forEach((item) => addParagraph(`• ${item}`));
+
+        const totalPages = doc.getNumberOfPages();
+        for (let page = 1; page <= totalPages; page += 1) {
+          doc.setPage(page);
+          doc.setFontSize(8);
+          doc.setTextColor(120, 120, 120);
+          doc.text(`Pagina ${page} de ${totalPages}`, pageWidth - 90, pageHeight - 20);
+        }
+
+        doc.save(fileTitle);
       });
 
       document.getElementById('btnLimpiar').addEventListener('click', () => {

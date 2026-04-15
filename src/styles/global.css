@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@plugin "flowbite-react/plugin/tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
 @source "../**/*.{astro,html,js,jsx,ts,tsx,md,mdx}";
 @source "../../.flowbite-react/class-list.json";
 @import "tw-animate-css";
