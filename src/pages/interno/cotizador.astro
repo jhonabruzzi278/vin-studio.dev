@@ -236,12 +236,8 @@ const extras = [
     (() => {
       const pinForm = document.getElementById('pinForm');
       if (pinForm) {
-        pinForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const pinInput = document.getElementById('pinInput');
+        const submitPin = async (pin) => {
           const pinError = document.getElementById('pinError');
-          const pin = pinInput.value.trim();
-
           pinError.classList.add('hidden');
           pinError.textContent = '';
 
@@ -254,17 +250,40 @@ const extras = [
 
             const data = await res.json();
             if (!res.ok || !data.success) {
-            pinError.textContent = data.error || 'No fue posible autenticar.';
+              pinError.textContent = data.error || 'No fue posible autenticar.';
               pinError.classList.remove('hidden');
-              return;
+              return false;
             }
-
-            window.location.reload();
+            return true;
           } catch {
             pinError.textContent = 'Error de conexión. Intenta nuevamente.';
             pinError.classList.remove('hidden');
+            return false;
           }
+        };
+
+        pinForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const pinInput = document.getElementById('pinInput');
+          const pin = pinInput.value.trim();
+          const ok = await submitPin(pin);
+          if (ok) window.location.reload();
         });
+
+        // Permite acceder con /interno/cotizador?pin=XXXXXX y limpia el query despues.
+        const url = new URL(window.location.href);
+        const pinFromQuery = (url.searchParams.get('pin') || '').trim();
+        if (pinFromQuery) {
+          const pinInput = document.getElementById('pinInput');
+          if (pinInput) pinInput.value = pinFromQuery;
+          submitPin(pinFromQuery).then((ok) => {
+            if (!ok) return;
+            url.searchParams.delete('pin');
+            const cleanUrl = `${url.pathname}${url.search ? `?${url.searchParams.toString()}` : ''}${url.hash}`;
+            window.history.replaceState({}, '', cleanUrl);
+            window.location.href = url.pathname;
+          });
+        }
       }
 
       const btnLogout = document.getElementById('btnLogout');
