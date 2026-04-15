@@ -1,6 +1,3 @@
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
-
 type ExportHtmlQuotePdfOptions = {
   elementId: string;
   fileName: string;
@@ -12,40 +9,45 @@ export const exportHtmlQuotePdf = async ({ elementId, fileName }: ExportHtmlQuot
     throw new Error(`Elemento con id "${elementId}" no encontrado.`);
   }
 
-  const canvas = await html2canvas(element, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: '#ffffff',
-    windowWidth: document.documentElement.scrollWidth,
+  const safeName = fileName.endsWith('.pdf') ? fileName : `${fileName}.pdf`;
+  const origin = window.location.origin;
+  const serializedHtml = [
+    '<!doctype html>',
+    '<html lang="es">',
+    '<head>',
+    '<meta charset="utf-8" />',
+    '<meta name="viewport" content="width=device-width, initial-scale=1" />',
+    `<base href="${origin}" />`,
+    document.head.innerHTML,
+    '</head>',
+    '<body style="margin:0;padding:24px;background:#ffffff;">',
+    element.outerHTML,
+    '</body>',
+    '</html>',
+  ].join('');
+
+  const response = await fetch('/api/quote-html-pdf', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      html: serializedHtml,
+      fileName: safeName,
+    }),
   });
 
-  const imageData = canvas.toDataURL('image/png');
-  const pdf = new jsPDF({
-    orientation: 'portrait',
-    unit: 'mm',
-    format: 'a4',
-  });
-
-  const pageWidth = pdf.internal.pageSize.getWidth();
-  const pageHeight = pdf.internal.pageSize.getHeight();
-  const margin = 10;
-  const printableWidth = pageWidth - margin * 2;
-  const printableHeight = pageHeight - margin * 2;
-  const imageHeight = (canvas.height * printableWidth) / canvas.width;
-
-  let heightLeft = imageHeight;
-  let position = margin;
-
-  pdf.addImage(imageData, 'PNG', margin, position, printableWidth, imageHeight, undefined, 'FAST');
-  heightLeft -= printableHeight;
-
-  while (heightLeft > 0) {
-    position = heightLeft - imageHeight + margin;
-    pdf.addPage();
-    pdf.addImage(imageData, 'PNG', margin, position, printableWidth, imageHeight, undefined, 'FAST');
-    heightLeft -= printableHeight;
+  if (!response.ok) {
+    throw new Error('No fue posible generar el PDF HTML con htmldocs.');
   }
 
-  const safeName = fileName.endsWith('.pdf') ? fileName : `${fileName}.pdf`;
-  pdf.save(safeName);
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = safeName;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 };
