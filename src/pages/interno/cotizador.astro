@@ -138,6 +138,16 @@ const extras = [
               ))}
             </div>
 
+            <div class="border rounded-lg p-4 bg-zinc-50">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input id="sinPasarela" type="checkbox" class="mt-1" />
+                <span>
+                  <span class="block font-medium text-zinc-900">Sin pasarela de pago</span>
+                  <span class="block text-sm text-zinc-600">Aplicar descuento de - $100.000 CLP</span>
+                </span>
+              </label>
+            </div>
+
             <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
               Calcular cotizacion
             </button>
@@ -152,7 +162,15 @@ const extras = [
               <p><span class="font-semibold text-zinc-900">Plan:</span> <span id="outPlan" class="text-zinc-600">-</span></p>
               <p><span class="font-semibold text-zinc-900">Implementacion:</span> <span id="outImplementacion" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Extras:</span> <span id="outExtras" class="text-zinc-600">$0 CLP</span></p>
+              <p><span class="font-semibold text-zinc-900">Descuento:</span> <span id="outDescuento" class="text-zinc-600">$0 CLP</span></p>
               <p class="text-lg pt-2"><span class="font-bold text-zinc-900">Total inicial:</span> <span id="outTotal" class="font-bold text-zinc-900">$0 CLP</span></p>
+            </div>
+
+            <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
+              <p class="font-semibold text-zinc-900">Alcance y limites del plan</p>
+              <ul id="outScopeList" class="list-disc list-inside space-y-1 text-zinc-600">
+                <li>Selecciona un plan para ver detalle.</li>
+              </ul>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
@@ -222,10 +240,47 @@ const extras = [
 
       const formatClp = (value) => `$${Number(value || 0).toLocaleString('es-CL')} CLP`;
       const planMap = {
-        express: { name: 'Plan Express', price: 99990 },
-        completa: { name: 'Plan Completa', price: 249990 },
-        pro: { name: 'Plan Pro', price: 399990 },
-        elite: { name: 'Plan Elite', price: 649990 },
+        express: {
+          name: 'Plan Express',
+          price: 99990,
+          scope: [
+            'Tienda funcional basica',
+            'Hasta 10 productos',
+            '1 metodo de pago',
+            'Configuracion simple de tienda',
+          ],
+        },
+        completa: {
+          name: 'Plan Completa',
+          price: 249990,
+          scope: [
+            'Hasta 20 productos',
+            'Estructura optimizada de tienda',
+            'Emails automaticos basicos',
+            'Navegacion mejorada',
+          ],
+        },
+        pro: {
+          name: 'Plan Pro',
+          price: 399990,
+          scope: [
+            'Hasta 50 productos',
+            'Apps de conversion',
+            'Pixel + catalogo Meta',
+            'SEO basico',
+          ],
+        },
+        elite: {
+          name: 'Plan Elite',
+          price: 649990,
+          scope: [
+            'Hasta 100 productos',
+            'Migracion basica',
+            'Landing pages',
+            'Fotografia + contenido visual',
+            'Integraciones avanzadas',
+          ],
+        },
       };
       const extrasMap = {
         productos_extra: { name: 'Carga extra de productos', price: 50000 },
@@ -233,6 +288,7 @@ const extras = [
         desarrollo_medida: { name: 'Desarrollo a medida', price: 80000 },
         fotografia_adicional: { name: 'Fotografia adicional', price: 60000 },
       };
+      const PASARELA_DISCOUNT = 100000;
 
       const getSelectedPlan = () => {
         const selected = document.querySelector('input[name="plan"]:checked');
@@ -243,8 +299,9 @@ const extras = [
         return Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map((el) => el.value);
       };
 
-      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, extrasNames, extrasTotal, total }) => {
+      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, planScope, extrasNames, extrasTotal, discountTotal, total }) => {
         const extrasLine = extrasNames.length ? extrasNames.join(', ') : 'Sin extras';
+        const scopeLines = (planScope || []).map((line) => `- ${line}`);
         return [
           'Cotizacion Ecommerce - VIN Studio',
           '',
@@ -255,7 +312,11 @@ const extras = [
           '',
           `Plan elegido: ${planName}`,
           `Implementacion: ${formatClp(planPrice)}`,
+          'Alcance del plan:',
+          ...scopeLines,
+          '',
           `Extras (${extrasLine}): ${formatClp(extrasTotal)}`,
+          `Descuento: -${formatClp(discountTotal).replace('$', '$')}`,
           '',
           `Total inicial estimado: ${formatClp(total)}`,
           '',
@@ -294,14 +355,26 @@ const extras = [
           }
         });
 
-        const total = selectedPlan.price + extrasTotal;
+        const sinPasarela = document.getElementById('sinPasarela').checked;
+        const discountTotal = sinPasarela ? PASARELA_DISCOUNT : 0;
+        const total = selectedPlan.price + extrasTotal - discountTotal;
 
         document.getElementById('outCliente').textContent = cliente || '-';
         document.getElementById('outEmpresa').textContent = empresa || '-';
         document.getElementById('outPlan').textContent = selectedPlan.name;
         document.getElementById('outImplementacion').textContent = formatClp(selectedPlan.price);
         document.getElementById('outExtras').textContent = formatClp(extrasTotal);
+        document.getElementById('outDescuento').textContent = discountTotal ? `- ${formatClp(discountTotal)}` : '$0 CLP';
         document.getElementById('outTotal').textContent = formatClp(total);
+
+        const scopeList = document.getElementById('outScopeList');
+        scopeList.innerHTML = '';
+        selectedPlan.scope.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          scopeList.appendChild(li);
+        });
+
         document.getElementById('outputTexto').value = buildOutputText({
           cliente,
           empresa,
@@ -309,8 +382,10 @@ const extras = [
           whatsapp,
           planName: selectedPlan.name,
           planPrice: selectedPlan.price,
+          planScope: selectedPlan.scope,
           extrasNames,
           extrasTotal,
+          discountTotal,
           total,
         });
       };
@@ -343,7 +418,9 @@ const extras = [
         document.getElementById('outPlan').textContent = '-';
         document.getElementById('outImplementacion').textContent = '$0 CLP';
         document.getElementById('outExtras').textContent = '$0 CLP';
+        document.getElementById('outDescuento').textContent = '$0 CLP';
         document.getElementById('outTotal').textContent = '$0 CLP';
+        document.getElementById('outScopeList').innerHTML = '<li>Selecciona un plan para ver detalle.</li>';
         document.getElementById('outputTexto').value = '';
       });
     })();
