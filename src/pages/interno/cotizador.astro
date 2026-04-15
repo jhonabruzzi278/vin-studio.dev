@@ -172,6 +172,8 @@ const extras = [
   </section>
 
   <script type="module">
+    import { exportQuotePdf } from '../../lib/quotePdf';
+
     (() => {
       const btnCalcular = document.getElementById('btnCalcular');
       if (!btnCalcular) return;
@@ -502,7 +504,6 @@ const extras = [
         ];
 
         try {
-          const { exportQuotePdf } = await import('@/lib/quotePdf');
           await exportQuotePdf({
             fileName: fileTitle,
             dateText: now.toLocaleDateString('es-CL'),
