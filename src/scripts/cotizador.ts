@@ -1,4 +1,4 @@
-const initCotizador = () => {
+export const initCotizador = () => {
   const btnCalcular = document.getElementById('btnCalcular');
   if (!btnCalcular) return;
   if ((btnCalcular as HTMLButtonElement).dataset.cotizadorBound === '1') return;
@@ -406,11 +406,3 @@ const initCotizador = () => {
     (document.getElementById('outputTexto') as HTMLTextAreaElement).value = '';
   });
 };
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initCotizador, { once: true });
-} else {
-  initCotizador();
-}
-
-document.addEventListener('astro:page-load', initCotizador);

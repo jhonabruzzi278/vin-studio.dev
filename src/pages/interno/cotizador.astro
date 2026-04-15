@@ -1,6 +1,6 @@
 ﻿---
 import Layout from "@/layouts/Layout.astro";
-import cotizadorScriptUrl from "@/scripts/cotizador.ts?url";
+import CotizadorIsland from "@/components/interno/CotizadorIsland.tsx";
 
 export const prerender = false;
 
@@ -172,6 +172,5 @@ const extras = [
         </div>
       </div>
   </section>
-
-  <script type="module" src={cotizadorScriptUrl}></script>
+  <CotizadorIsland client:load />
 </Layout>
