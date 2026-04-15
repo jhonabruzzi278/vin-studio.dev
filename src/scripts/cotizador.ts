@@ -1,6 +1,3 @@
-import { exportQuotePdf } from '../lib/quotePdf';
-import { exportHtmlQuotePdf } from '../lib/quoteHtmlPdf';
-
 (() => {
   const btnCalcular = document.getElementById('btnCalcular');
   if (!btnCalcular) return;
@@ -335,6 +332,7 @@ import { exportHtmlQuotePdf } from '../lib/quoteHtmlPdf';
     const quoteData = collectQuoteData();
     if (!quoteData) return;
     try {
+      const { exportQuotePdf } = await import('../lib/quotePdf');
       await exportQuotePdf({
         fileName: quoteData.fileTitle,
         dateText: quoteData.now.toLocaleDateString('es-CL'),
@@ -371,6 +369,7 @@ import { exportHtmlQuotePdf } from '../lib/quoteHtmlPdf';
     const quoteData = collectQuoteData();
     if (!quoteData) return;
     try {
+      const { exportHtmlQuotePdf } = await import('../lib/quoteHtmlPdf');
       await exportHtmlQuotePdf({
         elementId: 'quoteCapture',
         fileName: quoteData.fileTitle.replace('.pdf', '-html.pdf'),
