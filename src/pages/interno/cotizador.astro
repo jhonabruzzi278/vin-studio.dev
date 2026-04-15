@@ -31,7 +31,7 @@ const extras = [
 
 <Layout
   title="Cotizador Interno | VIN Studio"
-  description="Herramienta interna para generar cotizaciones ecommerce de forma rapida y consistente."
+  description="Herramienta interna para generar cotizaciones ecommerce de forma rápida y consistente."
   noindex={true}
 >
   {!authConfigured && (
@@ -83,7 +83,7 @@ const extras = [
           <div>
             <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">Cotizador Interno</h1>
             <p class="text-zinc-600 max-w-3xl">
-              Selecciona plan, extras y obtendras un resumen listo para enviar al cliente.
+              Selecciona plan, extras y obtendrás un resumen listo para enviar al cliente.
             </p>
           </div>
           <button id="btnLogout" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
@@ -114,7 +114,7 @@ const extras = [
               </div>
             </div>
 
-            <h2 class="text-xl font-semibold text-zinc-900 pt-2">2) Plan de implementacion</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">2) Plan de implementación</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {plans.map((plan) => (
                 <label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors">
@@ -150,7 +150,7 @@ const extras = [
             </div>
 
             <div class="border rounded-lg p-4 bg-white">
-              <p class="text-sm font-semibold text-zinc-900 mb-2">Continuidad mensual (opcional en cotizacion)</p>
+              <p class="text-sm font-semibold text-zinc-900 mb-2">Continuidad mensual (opcional en cotización)</p>
               <label class="flex items-start gap-3 cursor-pointer">
                 <input id="incluirSoporte" type="checkbox" class="mt-1" checked />
                 <span>
@@ -161,18 +161,18 @@ const extras = [
             </div>
 
             <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
-              Calcular cotizacion
+              Calcular cotización
             </button>
           </div>
 
           <div class="border rounded-2xl bg-zinc-50 p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm lg:sticky lg:top-6">
-            <h2 class="text-xl font-semibold text-zinc-900">4) Resumen de cotizacion</h2>
+            <h2 class="text-xl font-semibold text-zinc-900">4) Resumen de cotización</h2>
 
             <div class="space-y-2 text-sm sm:text-base">
               <p><span class="font-semibold text-zinc-900">Cliente:</span> <span id="outCliente" class="text-zinc-600">-</span></p>
               <p><span class="font-semibold text-zinc-900">Empresa:</span> <span id="outEmpresa" class="text-zinc-600">-</span></p>
               <p><span class="font-semibold text-zinc-900">Plan:</span> <span id="outPlan" class="text-zinc-600">-</span></p>
-              <p><span class="font-semibold text-zinc-900">Implementacion:</span> <span id="outImplementacion" class="text-zinc-600">$0 CLP</span></p>
+              <p><span class="font-semibold text-zinc-900">Implementación:</span> <span id="outImplementacion" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Extras:</span> <span id="outExtras" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Descuento:</span> <span id="outDescuento" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Motivo descuento:</span> <span id="outMotivoDescuento" class="text-zinc-600">-</span></p>
@@ -197,8 +197,8 @@ const extras = [
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
-              <p><span class="font-semibold text-zinc-900">Condicion de pago:</span> 50% de implementacion al aceptar la cotizacion.</p>
-              <p>Luego se realiza revision de conformidad y posteriormente se cancela el 50% restante de implementacion + soporte mensual (si fue incluido).</p>
+              <p><span class="font-semibold text-zinc-900">Condición de pago:</span> 50% de implementación al aceptar la cotización.</p>
+              <p>Luego se realiza revisión de conformidad y posteriormente se cancela el 50% restante de implementación + soporte mensual (si fue incluido).</p>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
@@ -254,14 +254,14 @@ const extras = [
 
             const data = await res.json();
             if (!res.ok || !data.success) {
-              pinError.textContent = data.error || 'No fue posible autenticar.';
+            pinError.textContent = data.error || 'No fue posible autenticar.';
               pinError.classList.remove('hidden');
               return;
             }
 
             window.location.reload();
           } catch {
-            pinError.textContent = 'Error de conexion. Intenta nuevamente.';
+            pinError.textContent = 'Error de conexión. Intenta nuevamente.';
             pinError.classList.remove('hidden');
           }
         });
@@ -284,18 +284,18 @@ const extras = [
           name: 'Plan Express',
           price: 99990,
           scope: [
-            'Tienda funcional basica lista para vender',
+            'Tienda funcional básica lista para vender',
             'Hasta 10 productos cargados',
-            'Configuracion general de catalogo y navegacion',
-            'Configuracion simple de envios',
-            'Pasarela de pago incluida en la implementacion',
-            'Verificacion de fotografias y apoyo para material visual',
+            'Configuración general de catálogo y navegación',
+            'Configuración simple de envíos',
+            'Pasarela de pago incluida en la implementación',
+            'Verificación de fotografías y apoyo para material visual',
           ],
           exclusions: [
             'Compra de dominio y renovaciones',
             'Costo mensual de plataforma (desde mes 4)',
             'Servicios de correo corporativo',
-            'Gestion de campanas publicitarias',
+            'Gestión de campañas publicitarias',
             'Desarrollo personalizado avanzado',
             'Apps o licencias pagadas de terceros',
           ],
@@ -306,15 +306,15 @@ const extras = [
           scope: [
             'Hasta 20 productos',
             'Estructura optimizada de tienda',
-            'Emails automaticos basicos',
-            'Navegacion y categorias mejoradas',
-            'Verificacion de fotografias y apoyo para material visual',
+            'Emails automáticos básicos',
+            'Navegación y categorías mejoradas',
+            'Verificación de fotografías y apoyo para material visual',
           ],
           exclusions: [
             'Compra de dominio y renovaciones',
             'Costo mensual de plataforma (desde mes 4)',
             'Servicios de correo corporativo',
-            'Gestion de campanas publicitarias',
+            'Gestión de campañas publicitarias',
             'Integraciones complejas no cotizadas',
             'Apps o licencias pagadas de terceros',
           ],
@@ -324,16 +324,16 @@ const extras = [
           price: 399990,
           scope: [
             'Hasta 50 productos',
-            'Configuracion de conversion (carrito y checkout)',
-            'Categorias, fichas y estructura comercial optimizada',
+            'Configuración de conversión (carrito y checkout)',
+            'Categorías, fichas y estructura comercial optimizada',
             'SEO base de tienda y productos',
-            'Verificacion de fotografias y apoyo para material visual',
+            'Verificación de fotografías y apoyo para material visual',
           ],
           exclusions: [
             'Compra de dominio y renovaciones',
             'Costo mensual de plataforma (desde mes 4)',
             'Servicios de correo corporativo',
-            'Gestion publicitaria mensual (Meta/Google)',
+            'Gestión publicitaria mensual (Meta/Google)',
             'Desarrollo de software a medida',
             'Apps o licencias pagadas de terceros',
           ],
@@ -343,17 +343,17 @@ const extras = [
           price: 649990,
           scope: [
             'Hasta 100 productos',
-            'Migracion basica',
+            'Migración básica',
             'Landing pages',
             'Fotografia + contenido visual',
             'Integraciones operativas avanzadas',
-            'Verificacion de fotografias y apoyo para material visual',
+            'Verificación de fotografías y apoyo para material visual',
           ],
           exclusions: [
             'Compra de dominio y renovaciones',
             'Costo mensual de plataforma (desde mes 4)',
             'Servicios de correo corporativo',
-            'Gestion publicitaria mensual (Meta/Google)',
+            'Gestión publicitaria mensual (Meta/Google)',
             'Automatizaciones avanzadas fuera de alcance',
             'Apps o licencias pagadas de terceros',
           ],
@@ -382,7 +382,7 @@ const extras = [
           sinPasarela.checked = false;
           sinPasarela.disabled = true;
           if (hint) {
-            hint.textContent = 'Plan Express requiere pasarela de pago incluida. Esta opcion no aplica.';
+            hint.textContent = 'Plan Express requiere pasarela de pago incluida. Esta opción no aplica.';
           }
         } else {
           sinPasarela.disabled = false;
@@ -400,12 +400,12 @@ const extras = [
         const extrasLine = extrasNames.length ? extrasNames.join(', ') : 'Sin extras';
         const scopeLines = (planScope || []).map((line) => `- ${line}`);
         const exclusionLines = (planExclusions || []).map((line) => `- ${line}`);
-        const discountReason = discountTotal > 0 ? 'Descuento por implementacion sin pasarela de pago.' : 'Sin descuento aplicado.';
+        const discountReason = discountTotal > 0 ? 'Descuento por implementación sin pasarela de pago.' : 'Sin descuento aplicado.';
         const supportLine = includeSupport
           ? 'Soporte+ mensual incluido en propuesta: $100.000 CLP/mes (detalle: $65.000 plataforma + $35.000 soporte).'
           : 'Soporte+ mensual no incluido en esta cotizacion (opcional).';
         return [
-          'Cotizacion Ecommerce - VIN Studio',
+          'Cotización Ecommerce - VIN Studio',
           '',
           `Cliente: ${cliente || '-'}`,
           `Empresa: ${empresa || '-'}`,
@@ -413,7 +413,7 @@ const extras = [
           `WhatsApp: ${whatsapp || '-'}`,
           '',
           `Plan elegido: ${planName}`,
-          `Implementacion: ${formatClp(planPrice)}`,
+          `Implementación: ${formatClp(planPrice)}`,
           'Alcance del plan:',
           ...scopeLines,
           '',
@@ -432,23 +432,23 @@ const extras = [
           'A partir del 4to mes el cliente paga la plataforma.',
           'El cliente no esta obligado a mantener el plan de soporte.',
           '',
-          'Condicion de pago:',
-          '- Al aceptar la cotizacion se cancela el 50% de la implementacion.',
-          '- Luego se realiza revision de conformidad.',
-          '- Posterior a la conformidad se cancela el 50% restante de implementacion + soporte mensual (si fue incluido).',
+          'Condición de pago:',
+          '- Al aceptar la cotización se cancela el 50% de la implementación.',
+          '- Luego se realiza revisión de conformidad.',
+          '- Posterior a la conformidad se cancela el 50% restante de implementación + soporte mensual (si fue incluido).',
           '',
           'Alcance Soporte+ (global):',
-          '- Soporte tecnico continuo',
+          '- Soporte técnico continuo',
           '- Hasta 20 solicitudes de cambio mensuales',
-          '- Ajustes operativos (textos, imagenes, estructura simple)',
-          '- Capacitacion inicial',
+          '- Ajustes operativos (textos, imágenes, estructura simple)',
+          '- Capacitación inicial',
           '- Atencion por WhatsApp (08:30 a 17:30)',
           '- Tiempo de respuesta: hasta 30 minutos',
-          '- Supervision basica de funcionamiento',
+          '- Supervisión básica de funcionamiento',
           '',
           'Condiciones:',
-          '- Contrato minimo: 3 meses',
-          '- Mientras corre el plazo de suscripcion, la operacion se gestiona bajo este modelo',
+          '- Contrato mínimo: 3 meses',
+          '- Mientras corre el plazo de suscripción, la operación se gestiona bajo este modelo',
           '- Al terminar el plazo, se entrega acceso a la plataforma de desarrollo',
           '- Todo lo que quede fuera del alcance se cotiza por separado',
           '- Funcionalidades a medida se cotizan por separado',
@@ -464,7 +464,7 @@ const extras = [
 
         const selectedPlanKey = getSelectedPlan();
         if (!selectedPlanKey) {
-          alert('Selecciona un plan para calcular la cotizacion.');
+          alert('Selecciona un plan para calcular la cotización.');
           return;
         }
 
@@ -550,7 +550,7 @@ const extras = [
         }
         try {
           await navigator.clipboard.writeText(text);
-          alert('Cotizacion copiada.');
+          alert('Cotización copiada.');
         } catch {
           alert('No se pudo copiar automaticamente.');
         }
@@ -561,7 +561,7 @@ const extras = [
         const cliente = document.getElementById('clienteNombre').value.trim() || 'cliente';
         const empresa = document.getElementById('clienteEmpresa').value.trim() || 'Empresa';
         if (!text.trim()) {
-          alert('Primero calcula una cotizacion.');
+          alert('Primero calcula una cotización.');
           return;
         }
 
@@ -590,18 +590,18 @@ const extras = [
           .filter(Boolean);
 
         const supportItems = [
-          'Soporte tecnico continuo',
+          'Soporte técnico continuo',
           'Hasta 20 solicitudes de cambio mensuales',
-          'Ajustes operativos (textos, imagenes, estructura simple)',
-          'Capacitacion inicial',
+          'Ajustes operativos (textos, imágenes, estructura simple)',
+          'Capacitación inicial',
           'Atencion por WhatsApp (08:30 a 17:30)',
           'Tiempo de respuesta: hasta 30 minutos',
-          'Supervision basica de funcionamiento',
+          'Supervisión básica de funcionamiento',
         ];
         const paymentTerms = [
-          'Al aceptar la cotizacion se cancela el 50% de la implementacion.',
-          'Luego se realiza una revision de conformidad.',
-          'Posterior a la conformidad se cancela el 50% restante de implementacion + soporte mensual (si fue incluido).',
+          'Al aceptar la cotización se cancela el 50% de la implementación.',
+          'Luego se realiza una revisión de conformidad.',
+          'Posterior a la conformidad se cancela el 50% restante de implementación + soporte mensual (si fue incluido).',
         ];
 
         const doc = new jsPDF({ unit: 'pt', format: 'a4' });
@@ -642,7 +642,7 @@ const extras = [
 
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(16);
-        doc.text('VIN Studio - Cotizacion Ecommerce', marginX + 34, cursorY + 10);
+        doc.text('VIN Studio - Cotización Ecommerce', marginX + 34, cursorY + 10);
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
         doc.text(`Fecha: ${now.toLocaleDateString('es-CL')}`, pageWidth - 150, cursorY + 10);
@@ -695,7 +695,7 @@ const extras = [
           'Todo requerimiento fuera de alcance se cotiza por separado.',
           'Al finalizar el plazo contratado, se entrega acceso a la plataforma.',
         ].forEach((item) => addParagraph(`• ${item}`));
-        addSectionTitle('Condicion de pago');
+        addSectionTitle('Condición de pago');
         paymentTerms.forEach((item) => addParagraph(`• ${item}`));
 
         const totalPages = doc.getNumberOfPages();
