@@ -1,0 +1,351 @@
+﻿---
+import Layout from "@/layouts/Layout.astro";
+import {
+  INTERNAL_AUTH_COOKIE,
+  parseCookieValue,
+  verifyAuthToken,
+} from "@/lib/internalAuth";
+
+export const prerender = false;
+
+const authSecret = import.meta.env.INTERNAL_AUTH_SECRET || "";
+const cookieHeader = Astro.request.headers.get("cookie");
+const authToken = parseCookieValue(cookieHeader, INTERNAL_AUTH_COOKIE);
+const isAuthenticated = Boolean(authSecret && authToken && verifyAuthToken(authToken, authSecret));
+const authConfigured = Boolean(import.meta.env.INTERNAL_COTIZADOR_PIN && import.meta.env.INTERNAL_AUTH_SECRET);
+
+const plans = [
+  { id: "express", name: "Plan Express", price: 99990 },
+  { id: "completa", name: "Plan Completa", price: 249990 },
+  { id: "pro", name: "Plan Pro", price: 399990 },
+  { id: "elite", name: "Plan Elite", price: 649990 },
+];
+
+const extras = [
+  { id: "productos_extra", name: "Carga extra de productos", price: 50000 },
+  { id: "integracion_adicional", name: "Integraciones adicionales", price: 40000 },
+  { id: "desarrollo_medida", name: "Desarrollo a medida", price: 80000 },
+  { id: "fotografia_adicional", name: "Fotografia adicional", price: 60000 },
+];
+---
+
+<Layout
+  title="Cotizador Interno | VIN Studio"
+  description="Herramienta interna para generar cotizaciones ecommerce de forma rapida y consistente."
+  noindex={true}
+>
+  {!authConfigured && (
+    <section class="container mx-auto px-4 py-16 sm:py-24">
+      <div class="max-w-xl mx-auto border rounded-xl p-6 sm:p-8 bg-white text-center">
+        <h1 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-3">Cotizador Interno no configurado</h1>
+        <p class="text-zinc-600 text-sm sm:text-base">
+          Configura las variables de entorno <code>INTERNAL_COTIZADOR_PIN</code> y <code>INTERNAL_AUTH_SECRET</code> para habilitar el acceso seguro.
+        </p>
+      </div>
+    </section>
+  )}
+
+  {authConfigured && !isAuthenticated && (
+    <section class="container mx-auto px-4 py-16 sm:py-24">
+      <div class="max-w-md mx-auto border rounded-xl p-6 sm:p-8 bg-white">
+        <h1 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-2">Acceso interno</h1>
+        <p class="text-zinc-600 text-sm sm:text-base mb-6">
+          Ingresa el PIN interno para abrir el cotizador privado.
+        </p>
+
+        <form id="pinForm" class="space-y-4">
+          <div>
+            <label for="pinInput" class="block text-sm font-medium text-zinc-900 mb-2">PIN</label>
+            <input
+              id="pinInput"
+              name="pin"
+              type="password"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              class="w-full h-11 px-3 border border-zinc-300 rounded-md"
+              placeholder="Ingresa PIN"
+              required
+            />
+          </div>
+          <p id="pinError" class="hidden text-sm text-red-600"></p>
+          <button type="submit" class="inline-flex items-center justify-center h-11 w-full text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
+            Entrar
+          </button>
+        </form>
+      </div>
+    </section>
+  )}
+
+  {authConfigured && isAuthenticated && (
+    <section class="container mx-auto px-4 py-10 sm:py-16">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">Cotizador Interno</h1>
+            <p class="text-zinc-600 max-w-3xl">
+              Selecciona plan, extras y obtendras un resumen listo para enviar al cliente.
+            </p>
+          </div>
+          <button id="btnLogout" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
+            Cerrar sesion
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div class="border rounded-xl bg-white p-6 sm:p-8 space-y-6">
+            <h2 class="text-xl font-semibold text-zinc-900">1) Datos del cliente</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteNombre">Nombre</label>
+                <input id="clienteNombre" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="Nombre cliente" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteEmpresa">Empresa</label>
+                <input id="clienteEmpresa" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="Empresa" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteEmail">Email</label>
+                <input id="clienteEmail" type="email" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="email@cliente.com" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteWhatsapp">WhatsApp</label>
+                <input id="clienteWhatsapp" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="+56 9 ..." />
+              </div>
+            </div>
+
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">2) Plan de implementacion</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {plans.map((plan) => (
+                <label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors">
+                  <input type="radio" name="plan" value={plan.id} data-plan-price={plan.price} class="mr-2" />
+                  <span class="font-medium text-zinc-900">{plan.name}</span>
+                  <span class="block text-sm text-zinc-600 mt-1">{plan.price.toLocaleString("es-CL")} CLP</span>
+                </label>
+              ))}
+            </div>
+
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">3) Extras</h2>
+            <div class="space-y-3">
+              {extras.map((extra) => (
+                <label class="flex items-start gap-3 border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors">
+                  <input type="checkbox" value={extra.id} data-extra-price={extra.price} class="mt-1" />
+                  <span>
+                    <span class="block font-medium text-zinc-900">{extra.name}</span>
+                    <span class="block text-sm text-zinc-600">+ {extra.price.toLocaleString("es-CL")} CLP</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
+              Calcular cotizacion
+            </button>
+          </div>
+
+          <div class="border rounded-xl bg-zinc-50 p-6 sm:p-8 space-y-6">
+            <h2 class="text-xl font-semibold text-zinc-900">4) Resumen de cotizacion</h2>
+
+            <div class="space-y-2 text-sm sm:text-base">
+              <p><span class="font-semibold text-zinc-900">Cliente:</span> <span id="outCliente" class="text-zinc-600">-</span></p>
+              <p><span class="font-semibold text-zinc-900">Empresa:</span> <span id="outEmpresa" class="text-zinc-600">-</span></p>
+              <p><span class="font-semibold text-zinc-900">Plan:</span> <span id="outPlan" class="text-zinc-600">-</span></p>
+              <p><span class="font-semibold text-zinc-900">Implementacion:</span> <span id="outImplementacion" class="text-zinc-600">$0 CLP</span></p>
+              <p><span class="font-semibold text-zinc-900">Extras:</span> <span id="outExtras" class="text-zinc-600">$0 CLP</span></p>
+              <p class="text-lg pt-2"><span class="font-bold text-zinc-900">Total inicial:</span> <span id="outTotal" class="font-bold text-zinc-900">$0 CLP</span></p>
+            </div>
+
+            <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
+              <p><span class="font-semibold text-zinc-900">Continuidad:</span> $100 USD / mes (Soporte+)</p>
+              <p><span class="font-semibold text-zinc-900">Importante:</span> el pago de plataforma esta incluido durante los primeros 3 meses.</p>
+            </div>
+
+            <div class="border-t pt-4">
+              <p class="text-sm font-semibold text-zinc-900 mb-2">Texto listo para enviar</p>
+              <textarea id="outputTexto" class="w-full min-h-[220px] border border-zinc-300 rounded-md p-3 text-sm text-zinc-700"></textarea>
+              <div class="mt-3 flex flex-col sm:flex-row gap-2">
+                <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">Copiar texto</button>
+                <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <script is:inline>
+    (() => {
+      const pinForm = document.getElementById('pinForm');
+      if (pinForm) {
+        pinForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const pinInput = document.getElementById('pinInput');
+          const pinError = document.getElementById('pinError');
+          const pin = pinInput.value.trim();
+
+          pinError.classList.add('hidden');
+          pinError.textContent = '';
+
+          try {
+            const res = await fetch('/api/interno-auth', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ pin }),
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+              pinError.textContent = data.error || 'No fue posible autenticar.';
+              pinError.classList.remove('hidden');
+              return;
+            }
+
+            window.location.reload();
+          } catch {
+            pinError.textContent = 'Error de conexion. Intenta nuevamente.';
+            pinError.classList.remove('hidden');
+          }
+        });
+      }
+
+      const btnLogout = document.getElementById('btnLogout');
+      if (btnLogout) {
+        btnLogout.addEventListener('click', async () => {
+          await fetch('/api/interno-auth', { method: 'DELETE' });
+          window.location.reload();
+        });
+      }
+
+      const btnCalcular = document.getElementById('btnCalcular');
+      if (!btnCalcular) return;
+
+      const formatClp = (value) => `$${Number(value || 0).toLocaleString('es-CL')} CLP`;
+      const planMap = {
+        express: { name: 'Plan Express', price: 99990 },
+        completa: { name: 'Plan Completa', price: 249990 },
+        pro: { name: 'Plan Pro', price: 399990 },
+        elite: { name: 'Plan Elite', price: 649990 },
+      };
+      const extrasMap = {
+        productos_extra: { name: 'Carga extra de productos', price: 50000 },
+        integracion_adicional: { name: 'Integraciones adicionales', price: 40000 },
+        desarrollo_medida: { name: 'Desarrollo a medida', price: 80000 },
+        fotografia_adicional: { name: 'Fotografia adicional', price: 60000 },
+      };
+
+      const getSelectedPlan = () => {
+        const selected = document.querySelector('input[name="plan"]:checked');
+        return selected ? selected.value : null;
+      };
+
+      const getSelectedExtras = () => {
+        return Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map((el) => el.value);
+      };
+
+      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, extrasNames, extrasTotal, total }) => {
+        const extrasLine = extrasNames.length ? extrasNames.join(', ') : 'Sin extras';
+        return [
+          'Cotizacion Ecommerce - VIN Studio',
+          '',
+          `Cliente: ${cliente || '-'}`,
+          `Empresa: ${empresa || '-'}`,
+          `Email: ${email || '-'}`,
+          `WhatsApp: ${whatsapp || '-'}`,
+          '',
+          `Plan elegido: ${planName}`,
+          `Implementacion: ${formatClp(planPrice)}`,
+          `Extras (${extrasLine}): ${formatClp(extrasTotal)}`,
+          '',
+          `Total inicial estimado: ${formatClp(total)}`,
+          '',
+          'Continuidad:',
+          '$100 USD / mes (Soporte+)',
+          'Pago de plataforma incluido durante los primeros 3 meses.',
+          '',
+          'Condiciones:',
+          '- Contrato minimo: 3 meses',
+          '- Funcionalidades a medida se cotizan por separado',
+          '- Servicio digital no reembolsable',
+        ].join('\n');
+      };
+
+      const calculate = () => {
+        const cliente = document.getElementById('clienteNombre').value.trim();
+        const empresa = document.getElementById('clienteEmpresa').value.trim();
+        const email = document.getElementById('clienteEmail').value.trim();
+        const whatsapp = document.getElementById('clienteWhatsapp').value.trim();
+
+        const selectedPlanKey = getSelectedPlan();
+        if (!selectedPlanKey) {
+          alert('Selecciona un plan para calcular la cotizacion.');
+          return;
+        }
+
+        const selectedPlan = planMap[selectedPlanKey];
+        const selectedExtras = getSelectedExtras();
+        let extrasTotal = 0;
+        const extrasNames = [];
+
+        selectedExtras.forEach((key) => {
+          if (extrasMap[key]) {
+            extrasTotal += extrasMap[key].price;
+            extrasNames.push(extrasMap[key].name);
+          }
+        });
+
+        const total = selectedPlan.price + extrasTotal;
+
+        document.getElementById('outCliente').textContent = cliente || '-';
+        document.getElementById('outEmpresa').textContent = empresa || '-';
+        document.getElementById('outPlan').textContent = selectedPlan.name;
+        document.getElementById('outImplementacion').textContent = formatClp(selectedPlan.price);
+        document.getElementById('outExtras').textContent = formatClp(extrasTotal);
+        document.getElementById('outTotal').textContent = formatClp(total);
+        document.getElementById('outputTexto').value = buildOutputText({
+          cliente,
+          empresa,
+          email,
+          whatsapp,
+          planName: selectedPlan.name,
+          planPrice: selectedPlan.price,
+          extrasNames,
+          extrasTotal,
+          total,
+        });
+      };
+
+      btnCalcular.addEventListener('click', calculate);
+
+      document.getElementById('btnCopiar').addEventListener('click', async () => {
+        const text = document.getElementById('outputTexto').value;
+        if (!text.trim()) {
+          alert('Primero calcula una cotizacion.');
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(text);
+          alert('Cotizacion copiada.');
+        } catch {
+          alert('No se pudo copiar automaticamente.');
+        }
+      });
+
+      document.getElementById('btnLimpiar').addEventListener('click', () => {
+        document.getElementById('clienteNombre').value = '';
+        document.getElementById('clienteEmpresa').value = '';
+        document.getElementById('clienteEmail').value = '';
+        document.getElementById('clienteWhatsapp').value = '';
+        document.querySelectorAll('input[name="plan"]').forEach((el) => (el.checked = false));
+        document.querySelectorAll('input[type="checkbox"]').forEach((el) => (el.checked = false));
+        document.getElementById('outCliente').textContent = '-';
+        document.getElementById('outEmpresa').textContent = '-';
+        document.getElementById('outPlan').textContent = '-';
+        document.getElementById('outImplementacion').textContent = '$0 CLP';
+        document.getElementById('outExtras').textContent = '$0 CLP';
+        document.getElementById('outTotal').textContent = '$0 CLP';
+        document.getElementById('outputTexto').value = '';
+      });
+    })();
+  </script>
+</Layout>
