@@ -77,8 +77,8 @@ const extras = [
   )}
 
   {authConfigured && isAuthenticated && (
-    <section class="container mx-auto px-4 py-10 sm:py-16">
-      <div class="max-w-6xl mx-auto">
+    <section class="container mx-auto px-3 sm:px-4 py-8 sm:py-14">
+      <div class="max-w-7xl mx-auto">
         <div class="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">Cotizador Interno</h1>
@@ -91,8 +91,8 @@ const extras = [
           </button>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          <div class="border rounded-xl bg-white p-6 sm:p-8 space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
+          <div class="border rounded-2xl bg-white p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm">
             <h2 class="text-xl font-semibold text-zinc-900">1) Datos del cliente</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -149,12 +149,23 @@ const extras = [
               </label>
             </div>
 
-            <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
+            <div class="border rounded-lg p-4 bg-white">
+              <p class="text-sm font-semibold text-zinc-900 mb-2">Continuidad mensual (opcional en cotizacion)</p>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input id="incluirSoporte" type="checkbox" class="mt-1" checked />
+                <span>
+                  <span class="block font-medium text-zinc-900">Incluir Soporte+ mensual: $100.000 CLP</span>
+                  <span class="block text-sm text-zinc-600">Detalle: $65.000 plataforma + $35.000 soporte.</span>
+                </span>
+              </label>
+            </div>
+
+            <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
               Calcular cotizacion
             </button>
           </div>
 
-          <div class="border rounded-xl bg-zinc-50 p-6 sm:p-8 space-y-6">
+          <div class="border rounded-2xl bg-zinc-50 p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm lg:sticky lg:top-6">
             <h2 class="text-xl font-semibold text-zinc-900">4) Resumen de cotizacion</h2>
 
             <div class="space-y-2 text-sm sm:text-base">
@@ -180,9 +191,14 @@ const extras = [
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
-              <p><span class="font-semibold text-zinc-900">Continuidad:</span> $100 USD / mes (Soporte+)</p>
-              <p><span class="font-semibold text-zinc-900">Plataforma:</span> costo referencial $65.000 CLP/mes.</p>
+              <p><span class="font-semibold text-zinc-900">Continuidad:</span> <span id="outContinuidad">Soporte+ mensual incluido en propuesta: $100.000 CLP/mes</span></p>
+              <p><span class="font-semibold text-zinc-900">Detalle mensual:</span> $65.000 plataforma + $35.000 soporte.</p>
               <p><span class="font-semibold text-zinc-900">Importante:</span> durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</p>
+            </div>
+
+            <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
+              <p><span class="font-semibold text-zinc-900">Condicion de pago:</span> 50% de implementacion al aceptar la cotizacion.</p>
+              <p>Luego se realiza revision de conformidad y posteriormente se cancela el 50% restante de implementacion + soporte mensual (si fue incluido).</p>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
@@ -200,8 +216,8 @@ const extras = [
 
             <div class="border-t pt-4">
               <p class="text-sm font-semibold text-zinc-900 mb-2">Texto listo para enviar</p>
-              <textarea id="outputTexto" class="w-full min-h-[220px] border border-zinc-300 rounded-md p-3 text-sm text-zinc-700"></textarea>
-              <div class="mt-3 flex flex-col sm:flex-row gap-2">
+              <textarea id="outputTexto" class="w-full min-h-[240px] sm:min-h-[220px] border border-zinc-300 rounded-md p-3 text-sm text-zinc-700"></textarea>
+              <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">Copiar texto</button>
                 <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">Exportar PDF</button>
                 <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors">Limpiar</button>
@@ -213,7 +229,10 @@ const extras = [
     </section>
   )}
 
-  <script is:inline>
+  <script type="module">
+    import { jsPDF } from 'jspdf';
+    import autoTable from 'jspdf-autotable';
+
     (() => {
       const pinForm = document.getElementById('pinForm');
       if (pinForm) {
@@ -377,11 +396,14 @@ const extras = [
         return Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map((el) => el.value);
       };
 
-      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, planScope, planExclusions, extrasNames, extrasTotal, discountTotal, total }) => {
+      const buildOutputText = ({ cliente, empresa, email, whatsapp, planName, planPrice, planScope, planExclusions, extrasNames, extrasTotal, discountTotal, total, includeSupport }) => {
         const extrasLine = extrasNames.length ? extrasNames.join(', ') : 'Sin extras';
         const scopeLines = (planScope || []).map((line) => `- ${line}`);
         const exclusionLines = (planExclusions || []).map((line) => `- ${line}`);
         const discountReason = discountTotal > 0 ? 'Descuento por implementacion sin pasarela de pago.' : 'Sin descuento aplicado.';
+        const supportLine = includeSupport
+          ? 'Soporte+ mensual incluido en propuesta: $100.000 CLP/mes (detalle: $65.000 plataforma + $35.000 soporte).'
+          : 'Soporte+ mensual no incluido en esta cotizacion (opcional).';
         return [
           'Cotizacion Ecommerce - VIN Studio',
           '',
@@ -405,11 +427,15 @@ const extras = [
           `Total inicial estimado: ${formatClp(total)}`,
           '',
           'Continuidad:',
-          '$100 USD / mes (Soporte+)',
-          'Costo de plataforma referencial: $65.000 CLP/mes.',
+          supportLine,
           'Durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros.',
           'A partir del 4to mes el cliente paga la plataforma.',
           'El cliente no esta obligado a mantener el plan de soporte.',
+          '',
+          'Condicion de pago:',
+          '- Al aceptar la cotizacion se cancela el 50% de la implementacion.',
+          '- Luego se realiza revision de conformidad.',
+          '- Posterior a la conformidad se cancela el 50% restante de implementacion + soporte mensual (si fue incluido).',
           '',
           'Alcance Soporte+ (global):',
           '- Soporte tecnico continuo',
@@ -459,6 +485,7 @@ const extras = [
         });
 
         const sinPasarela = document.getElementById('sinPasarela').checked;
+        const includeSupport = document.getElementById('incluirSoporte').checked;
         const discountTotal = sinPasarela ? PASARELA_DISCOUNT : 0;
         const discountReason = sinPasarela
           ? 'Descuento por implementacion sin pasarela de pago.'
@@ -473,6 +500,9 @@ const extras = [
         document.getElementById('outDescuento').textContent = discountTotal ? `- ${formatClp(discountTotal)}` : '$0 CLP';
         document.getElementById('outMotivoDescuento').textContent = discountReason;
         document.getElementById('outTotal').textContent = formatClp(total);
+        document.getElementById('outContinuidad').textContent = includeSupport
+          ? 'Soporte+ mensual incluido en propuesta: $100.000 CLP/mes'
+          : 'Soporte+ mensual no incluido en esta cotizacion';
 
         const scopeList = document.getElementById('outScopeList');
         scopeList.innerHTML = '';
@@ -502,6 +532,7 @@ const extras = [
           extrasTotal,
           discountTotal,
           total,
+          includeSupport,
         });
       };
 
@@ -525,7 +556,7 @@ const extras = [
         }
       });
 
-      document.getElementById('btnExportarPdf').addEventListener('click', () => {
+      document.getElementById('btnExportarPdf').addEventListener('click', async () => {
         const text = document.getElementById('outputTexto').value;
         const cliente = document.getElementById('clienteNombre').value.trim() || 'cliente';
         const empresa = document.getElementById('clienteEmpresa').value.trim() || 'Empresa';
@@ -540,7 +571,7 @@ const extras = [
           .replace(/[^a-zA-Z0-9]+/g, '-')
           .replace(/^-+|-+$/g, '')
           .toLowerCase();
-        const fileTitle = `Cotizacion+${sanitizedCompany || 'empresa'}`;
+        const fileTitle = `Cotizacion+${sanitizedCompany || 'empresa'}.pdf`;
         const now = new Date();
 
         const outPlan = document.getElementById('outPlan').textContent.trim() || '-';
@@ -549,31 +580,14 @@ const extras = [
         const outDescuento = document.getElementById('outDescuento').textContent.trim() || '$0 CLP';
         const outMotivoDescuento = document.getElementById('outMotivoDescuento').textContent.trim() || '-';
         const outTotal = document.getElementById('outTotal').textContent.trim() || '$0 CLP';
+        const outContinuidad = document.getElementById('outContinuidad').textContent.trim() || '-';
 
         const scopeItems = Array.from(document.querySelectorAll('#outScopeList li'))
           .map((li) => li.textContent.trim())
-          .filter(Boolean)
-          .map((item) => `<li>${item}</li>`)
-          .join('');
+          .filter(Boolean);
         const exclusionItems = Array.from(document.querySelectorAll('#outExclusionsList li'))
           .map((li) => li.textContent.trim())
-          .filter(Boolean)
-          .map((item) => `<li>${item}</li>`)
-          .join('');
-
-        const escapeHtml = (value) =>
-          value
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;');
-
-        const printWindow = window.open('', '_blank', 'width=900,height=1100');
-        if (!printWindow) {
-          alert('No se pudo abrir la ventana para exportar PDF. Revisa si tu navegador bloquea popups.');
-          return;
-        }
+          .filter(Boolean);
 
         const supportItems = [
           'Soporte tecnico continuo',
@@ -583,113 +597,116 @@ const extras = [
           'Atencion por WhatsApp (08:30 a 17:30)',
           'Tiempo de respuesta: hasta 30 minutos',
           'Supervision basica de funcionamiento',
-        ]
-          .map((item) => `<li>${item}</li>`)
-          .join('');
+        ];
+        const paymentTerms = [
+          'Al aceptar la cotizacion se cancela el 50% de la implementacion.',
+          'Luego se realiza una revision de conformidad.',
+          'Posterior a la conformidad se cancela el 50% restante de implementacion + soporte mensual (si fue incluido).',
+        ];
 
-        printWindow.document.write(`
-          <!doctype html>
-          <html lang="es">
-            <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>${escapeHtml(fileTitle)}</title>
-              <style>
-                body { font-family: Arial, sans-serif; color: #111; margin: 32px; line-height: 1.5; }
-                .header { margin-bottom: 20px; border-bottom: 2px solid #111; padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-                .brand-wrap { display: flex; align-items: center; gap: 12px; }
-                .brand { font-size: 20px; font-weight: 700; letter-spacing: 0.02em; }
-                .logo { width: 38px; height: 38px; object-fit: contain; }
-                .meta { color: #555; font-size: 13px; margin-top: 3px; }
-                .section { border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; margin-top: 12px; }
-                .section h3 { margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: #333; }
-                .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
-                .row { display: flex; justify-content: space-between; margin: 4px 0; }
-                .label { color: #444; }
-                .value { font-weight: 700; color: #111; }
-                ul { margin: 6px 0 0 18px; padding: 0; }
-                li { margin: 3px 0; }
-                .total { font-size: 18px; }
-                .small { font-size: 12px; color: #666; margin-top: 10px; }
-                @media print {
-                  body { margin: 16mm; }
-                }
-              </style>
-            </head>
-            <body>
-              <div class="header">
-                <div class="brand-wrap">
-                  <img class="logo" src="${window.location.origin}/favicon.svg" alt="VIN Studio" />
-                  <div>
-                    <div class="brand">VIN Studio</div>
-                    <div class="meta">Cotizacion Comercial Ecommerce</div>
-                  </div>
-                </div>
-                <div>
-                  <div class="meta"><strong>Documento:</strong> ${escapeHtml(`${fileTitle}.pdf`)}</div>
-                  <div class="meta"><strong>Fecha:</strong> ${now.toLocaleDateString('es-CL')}</div>
-                </div>
-              </div>
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const marginX = 40;
+        let cursorY = 40;
+        const ensureSpace = (requiredHeight = 30) => {
+          if (cursorY + requiredHeight > pageHeight - 40) {
+            doc.addPage();
+            cursorY = 40;
+          }
+        };
 
-              <div class="section">
-                <h3>Datos Cliente</h3>
-                <div class="grid">
-                  <div><span class="label">Nombre:</span> ${escapeHtml(cliente)}</div>
-                  <div><span class="label">Empresa:</span> ${escapeHtml(empresa)}</div>
-                  <div><span class="label">Email:</span> ${escapeHtml(document.getElementById('clienteEmail').value.trim() || '-')}</div>
-                  <div><span class="label">WhatsApp:</span> ${escapeHtml(document.getElementById('clienteWhatsapp').value.trim() || '-')}</div>
-                </div>
-              </div>
+        const addSectionTitle = (title) => {
+          ensureSpace(24);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(11);
+          doc.text(title, marginX, cursorY);
+          cursorY += 12;
+        };
 
-              <div class="section">
-                <h3>Resumen Economico</h3>
-                <div class="row"><span class="label">Plan seleccionado:</span><span class="value">${escapeHtml(outPlan)}</span></div>
-                <div class="row"><span class="label">Implementacion:</span><span class="value">${escapeHtml(outImplementacion)}</span></div>
-                <div class="row"><span class="label">Extras:</span><span class="value">${escapeHtml(outExtras)}</span></div>
-                <div class="row"><span class="label">Descuento:</span><span class="value">${escapeHtml(outDescuento)}</span></div>
-                <div class="row"><span class="label">Motivo descuento:</span><span>${escapeHtml(outMotivoDescuento)}</span></div>
-                <div class="row total"><span class="label"><strong>Total inicial:</strong></span><span class="value">${escapeHtml(outTotal)}</span></div>
-              </div>
+        const addParagraph = (textValue) => {
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(10);
+          const lines = doc.splitTextToSize(textValue, pageWidth - marginX * 2);
+          ensureSpace(lines.length * 12 + 8);
+          doc.text(lines, marginX, cursorY);
+          cursorY += lines.length * 12 + 4;
+        };
 
-              <div class="section">
-                <h3>Alcance del Plan</h3>
-                <ul>${scopeItems || '<li>Sin detalle de alcance.</li>'}</ul>
-              </div>
+        try {
+          const logoResp = await fetch('/favicon.svg');
+          const logoText = await logoResp.text();
+          const logoBase64 = btoa(unescape(encodeURIComponent(logoText)));
+          doc.addImage(`data:image/svg+xml;base64,${logoBase64}`, 'SVG', marginX, cursorY - 8, 26, 26);
+        } catch {}
 
-              <div class="section">
-                <h3>No Incluye Este Plan</h3>
-                <ul>${exclusionItems || '<li>Sin exclusiones definidas.</li>'}</ul>
-              </div>
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        doc.text('VIN Studio - Cotizacion Ecommerce', marginX + 34, cursorY + 10);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.text(`Fecha: ${now.toLocaleDateString('es-CL')}`, pageWidth - 150, cursorY + 10);
+        cursorY += 38;
 
-              <div class="section">
-                <h3>Alcance Soporte+ (Global)</h3>
-                <ul>${supportItems}</ul>
-              </div>
+        autoTable(doc, {
+          startY: cursorY,
+          margin: { left: marginX, right: marginX },
+          theme: 'grid',
+          styles: { fontSize: 9, cellPadding: 6 },
+          head: [['Cliente', 'Empresa', 'Email', 'WhatsApp']],
+          body: [[
+            cliente,
+            empresa,
+            document.getElementById('clienteEmail').value.trim() || '-',
+            document.getElementById('clienteWhatsapp').value.trim() || '-',
+          ]],
+        });
+        cursorY = doc.lastAutoTable.finalY + 14;
 
-              <div class="section">
-                <h3>Condiciones Comerciales</h3>
-                <ul>
-                  <li>Costo de plataforma referencial: $65.000 CLP/mes.</li>
-                  <li>Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.</li>
-                  <li>Desde el mes 4, el cliente paga directamente la plataforma.</li>
-                  <li>La continuidad de Soporte+ es opcional.</li>
-                  <li>Todo requerimiento fuera de alcance se cotiza por separado.</li>
-                  <li>Al finalizar el plazo contratado, se entrega acceso a la plataforma.</li>
-                </ul>
-              </div>
+        autoTable(doc, {
+          startY: cursorY,
+          margin: { left: marginX, right: marginX },
+          theme: 'striped',
+          styles: { fontSize: 9, cellPadding: 6 },
+          body: [
+            ['Plan seleccionado', outPlan],
+            ['Implementacion', outImplementacion],
+            ['Extras', outExtras],
+            ['Descuento', outDescuento],
+            ['Motivo descuento', outMotivoDescuento],
+            ['Total inicial', outTotal],
+            ['Continuidad', outContinuidad],
+            ['Detalle mensual soporte', '$65.000 plataforma + $35.000 soporte'],
+          ],
+        });
+        cursorY = doc.lastAutoTable.finalY + 14;
 
-              <p class="small">
-                Documento generado por el cotizador interno de VIN Studio. Vigencia y condiciones finales sujetas a propuesta formal.
-              </p>
-            </body>
-          </html>
-        `);
+        addSectionTitle('Alcance del plan');
+        (scopeItems.length ? scopeItems : ['Sin detalle de alcance.']).forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('No incluye este plan');
+        (exclusionItems.length ? exclusionItems : ['Sin exclusiones definidas.']).forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('Alcance Soporte+ (global)');
+        supportItems.forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('Condiciones comerciales');
+        [
+          'Durante los primeros 3 meses de contratacion, VIN Studio asume el costo de plataforma.',
+          'Desde el mes 4, el cliente paga directamente la plataforma.',
+          'La continuidad de Soporte+ es opcional.',
+          'Todo requerimiento fuera de alcance se cotiza por separado.',
+          'Al finalizar el plazo contratado, se entrega acceso a la plataforma.',
+        ].forEach((item) => addParagraph(`• ${item}`));
+        addSectionTitle('Condicion de pago');
+        paymentTerms.forEach((item) => addParagraph(`• ${item}`));
 
-        printWindow.document.close();
-        printWindow.focus();
-        setTimeout(() => {
-          printWindow.print();
-        }, 300);
+        const totalPages = doc.getNumberOfPages();
+        for (let page = 1; page <= totalPages; page += 1) {
+          doc.setPage(page);
+          doc.setFontSize(8);
+          doc.setTextColor(120, 120, 120);
+          doc.text(`Pagina ${page} de ${totalPages}`, pageWidth - 90, pageHeight - 20);
+        }
+
+        doc.save(fileTitle);
       });
 
       document.getElementById('btnLimpiar').addEventListener('click', () => {
@@ -701,6 +718,7 @@ const extras = [
         document.querySelectorAll('input[type="checkbox"]').forEach((el) => (el.checked = false));
         document.getElementById('sinPasarela').disabled = false;
         document.getElementById('sinPasarelaHint').textContent = 'Disponible para Plan Completa, Pro y Elite.';
+        document.getElementById('incluirSoporte').checked = true;
         document.getElementById('outCliente').textContent = '-';
         document.getElementById('outEmpresa').textContent = '-';
         document.getElementById('outPlan').textContent = '-';
@@ -709,6 +727,7 @@ const extras = [
         document.getElementById('outDescuento').textContent = '$0 CLP';
         document.getElementById('outMotivoDescuento').textContent = '-';
         document.getElementById('outTotal').textContent = '$0 CLP';
+        document.getElementById('outContinuidad').textContent = 'Soporte+ mensual incluido en propuesta: $100.000 CLP/mes';
         document.getElementById('outScopeList').innerHTML = '<li>Selecciona un plan para ver detalle.</li>';
         document.getElementById('outExclusionsList').innerHTML = '<li>Selecciona un plan para ver exclusiones.</li>';
         document.getElementById('outputTexto').value = '';
