@@ -37,6 +37,7 @@ export const initCotizador = () => {
         'Estructura optimizada de tienda',
         'Emails automáticos básicos',
         'Navegación y categorías mejoradas',
+        'Pasarela de pago incluida en la implementación',
         'Verificación de fotografías y apoyo para material visual',
       ],
       exclusions: [
@@ -58,6 +59,7 @@ export const initCotizador = () => {
         'Configuración de conversión (carrito y checkout)',
         'Categorías, fichas y estructura comercial optimizada',
         'SEO base de tienda y productos',
+        'Pasarela de pago incluida en la implementación',
         'Verificación de fotografías y apoyo para material visual',
       ],
       exclusions: [
@@ -78,6 +80,7 @@ export const initCotizador = () => {
         'Integración WhatsApp API + bot de ventas y soporte',
         'Integración Shopify con marketplaces',
         'Integraciones operativas avanzadas',
+        'Pasarela de pago incluida en la implementación',
         'Verificación de fotografías y apoyo para material visual',
       ],
       exclusions: [
