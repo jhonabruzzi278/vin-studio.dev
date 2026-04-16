@@ -87,16 +87,6 @@ const implementationPlans = [
   },
 ];
 
-const notIncluded = [
-  "Desarrollo personalizado incluido en plan base",
-  "Rediseño completo",
-  "Branding",
-  "Copywriting avanzado",
-  "Publicidad (Meta, Google, TikTok)",
-  "Automatizaciones avanzadas",
-  "Integraciones complejas",
-  "Apps pagadas",
-];
 ---
 
 <Layout
@@ -198,25 +188,6 @@ const notIncluded = [
           <p>Tiempo de respuesta: hasta 30 minutos</p>
           <p>Supervisión básica de funcionamiento</p>
         </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto mb-14 sm:mb-16">
-      <div class="border rounded-xl p-6 bg-white">
-        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-4">Funcionalidades a Medida</h2>
-        <p class="text-sm sm:text-base text-zinc-600">Se pueden desarrollar mediante código y se cotizan por separado. No están incluidas en el plan base.</p>
-      </div>
-
-      <div class="border rounded-xl p-6 bg-white">
-        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-4">Qué NO incluye</h2>
-        <ul class="space-y-2 text-sm text-zinc-600">
-          {notIncluded.map((item) => (
-            <li class="flex items-start gap-2">
-              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-900"></span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
 

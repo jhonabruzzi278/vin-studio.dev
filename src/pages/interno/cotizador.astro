@@ -11,11 +11,112 @@ const plans = [
   { id: "elite", name: "Plan Elite", price: 649990 },
 ];
 
-const extras = [
-  { id: "productos_extra", name: "Carga extra de productos", price: 50000 },
-  { id: "integracion_adicional", name: "Integraciones adicionales", price: 40000 },
-  { id: "desarrollo_medida", name: "Desarrollo a medida", price: 80000 },
-  { id: "fotografia_adicional", name: "Fotografia adicional", price: 60000 },
+const extraCategories = [
+  {
+    title: "Catálogo y tienda Shopify",
+    extras: [
+      {
+        id: "productos_extra",
+        name: "Carga extra de productos sin límite + colecciones detalladas, filtros de búsqueda y optimización de navegación",
+        price: 100000,
+        example: "Ejemplo: 180 productos cargados, 12 colecciones y filtros por talla, color y marca.",
+      },
+      {
+        id: "optimizacion_colecciones",
+        name: "Optimización de colecciones, filtros y navegación",
+        price: 80000,
+        example: "Ejemplo: menú por categorías, subcategorías y filtros rápidos en catálogo.",
+      },
+      {
+        id: "fotografia_adicional",
+        name: "Fotografía adicional de productos",
+        price: 60000,
+        example: "Ejemplo: sesión de 25 productos con edición base y fondo uniforme.",
+      },
+      {
+        id: "seo_tecnico",
+        name: "SEO técnico para Shopify",
+        price: 70000,
+        example: "Ejemplo: optimización de metadatos, URLs limpias y sitemap revisado.",
+      },
+    ],
+  },
+  {
+    title: "Marketing y conversión",
+    extras: [
+      {
+        id: "tracking_marketing_full",
+        name: "Configuración GA4, GTM, Meta Pixel y TikTok Pixel",
+        price: 110000,
+        example: "Ejemplo: eventos de compra, add to cart y remarketing configurados en todos los canales.",
+      },
+      {
+        id: "flows_email_marketing",
+        name: "Email marketing flows (bienvenida, abandono, post-compra)",
+        price: 140000,
+        example: "Ejemplo: secuencia de 3 correos de bienvenida y recuperación de carrito en 2 pasos.",
+      },
+      {
+        id: "setup_campanas_landing",
+        name: "Setup de campañas (Meta/Google) + landing page",
+        price: 180000,
+        example: "Ejemplo: campaña de lanzamiento con una landing para producto estrella.",
+      },
+      {
+        id: "capacitacion_equipo",
+        name: "Capacitación comercial para equipo",
+        price: 55000,
+        example: "Ejemplo: sesión de 90 minutos sobre gestión de pedidos y atención comercial.",
+      },
+    ],
+  },
+  {
+    title: "Integraciones y operación",
+    extras: [
+      {
+        id: "integracion_adicional",
+        name: "Integraciones con apps y servicios externos",
+        price: 40000,
+        example: "Ejemplo: conectar Shopify con app de reseñas o app de upselling.",
+      },
+      {
+        id: "integracion_erp_crm",
+        name: "Integración ERP / CRM / facturación",
+        price: 220000,
+        example: "Ejemplo: sincronizar stock y clientes entre Shopify y sistema ERP.",
+      },
+      {
+        id: "marketplace_sync",
+        name: "Sincronización Shopify con marketplace",
+        price: 120000,
+        example: "Ejemplo: publicar catálogo en marketplace y sincronizar inventario.",
+      },
+      {
+        id: "integracion_logistica",
+        name: "Integración logística y couriers",
+        price: 130000,
+        example: "Ejemplo: cálculo de envíos en checkout con seguimiento automático.",
+      },
+      {
+        id: "whatsapp_api_bot",
+        name: "WhatsApp API + bot básico de ventas/soporte",
+        price: 160000,
+        example: "Ejemplo: bot que responde estado de pedido y preguntas frecuentes.",
+      },
+      {
+        id: "email_corporativo",
+        name: "Configuración email corporativo",
+        price: 45000,
+        example: "Ejemplo: creación de ventas@tuempresa.com y soporte@tuempresa.com.",
+      },
+      {
+        id: "desarrollo_medida",
+        name: "Desarrollo Shopify a medida",
+        price: 80000,
+        example: "Ejemplo: personalización de sección de producto con lógica especial.",
+      },
+    ],
+  },
 ];
 ---
 
@@ -24,44 +125,50 @@ const extras = [
   description="Herramienta interna para generar cotizaciones ecommerce de forma rápida y consistente."
   noindex={true}
 >
-  <section class="container mx-auto px-3 sm:px-4 py-8 sm:py-14">
+  <section class="relative isolate overflow-hidden">
+    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-105 bg-linear-to-b from-zinc-100 via-white to-white"></div>
+    <div class="pointer-events-none absolute -left-24 top-24 -z-10 h-72 w-72 rounded-full bg-cyan-100/70 blur-3xl"></div>
+    <div class="pointer-events-none absolute -right-20 top-14 -z-10 h-72 w-72 rounded-full bg-amber-100/70 blur-3xl"></div>
+
+    <div class="container mx-auto px-3 sm:px-4 py-8 sm:py-14">
       <div class="max-w-7xl mx-auto">
-        <div class="mb-8 sm:mb-10">
-          <div>
-            <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">Cotizador Interno</h1>
-            <p class="text-zinc-600 max-w-3xl">
+        <div class="mb-8 sm:mb-10 rounded-3xl border border-zinc-200/70 bg-white/80 backdrop-blur p-5 sm:p-7 shadow-[0_10px_40px_-24px_rgba(0,0,0,0.45)]">
+          <span class="inline-flex items-center rounded-full border border-zinc-300 bg-white px-3 py-1 text-[11px] font-semibold tracking-[0.08em] uppercase text-zinc-700">Uso interno</span>
+          <div class="mt-4">
+            <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2 tracking-tight">Cotizador Interno</h1>
+            <p class="text-zinc-600 max-w-3xl leading-relaxed">
               Selecciona plan, extras y obtendrás un resumen listo para enviar al cliente.
             </p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
-          <div class="border rounded-2xl bg-white p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm">
+          <div class="rounded-3xl border border-zinc-200/80 bg-white p-4 sm:p-6 lg:p-8 space-y-6 shadow-[0_18px_50px_-28px_rgba(0,0,0,0.5)]">
             <h2 class="text-xl font-semibold text-zinc-900">1) Datos del cliente</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteNombre">Nombre</label>
-                <input id="clienteNombre" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="Nombre cliente" />
+                <input id="clienteNombre" type="text" class="w-full h-11 px-3 border border-zinc-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20" placeholder="Nombre cliente" />
               </div>
               <div>
                 <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteEmpresa">Empresa</label>
-                <input id="clienteEmpresa" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="Empresa" />
+                <input id="clienteEmpresa" type="text" class="w-full h-11 px-3 border border-zinc-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20" placeholder="Empresa" />
               </div>
               <div>
                 <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteEmail">Email</label>
-                <input id="clienteEmail" type="email" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="email@cliente.com" />
+                <input id="clienteEmail" type="email" class="w-full h-11 px-3 border border-zinc-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20" placeholder="email@cliente.com" />
               </div>
               <div>
                 <label class="block text-sm font-medium text-zinc-900 mb-2" for="clienteWhatsapp">WhatsApp</label>
-                <input id="clienteWhatsapp" type="text" class="w-full h-10 px-3 border border-zinc-300 rounded-md" placeholder="+56 9 ..." />
+                <input id="clienteWhatsapp" type="text" class="w-full h-11 px-3 border border-zinc-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20" placeholder="+56 9 ..." />
               </div>
             </div>
 
             <h2 class="text-xl font-semibold text-zinc-900 pt-2">2) Plan de implementación</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {plans.map((plan) => (
-                <label class="border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors">
+                <label class="border border-zinc-200 rounded-xl p-4 cursor-pointer bg-zinc-50/70 hover:bg-white hover:border-zinc-900 transition-all duration-200 shadow-sm">
                   <input type="radio" name="plan" value={plan.id} data-plan-price={plan.price} class="mr-2" />
                   <span class="font-medium text-zinc-900">{plan.name}</span>
                   <span class="block text-sm text-zinc-600 mt-1">{plan.price.toLocaleString("es-CL")} CLP</span>
@@ -69,20 +176,28 @@ const extras = [
               ))}
             </div>
 
-            <h2 class="text-xl font-semibold text-zinc-900 pt-2">3) Extras</h2>
-            <div class="space-y-3">
-              {extras.map((extra) => (
-                <label class="flex items-start gap-3 border rounded-lg p-4 cursor-pointer hover:border-zinc-900 transition-colors">
-                  <input type="checkbox" value={extra.id} data-extra-price={extra.price} class="mt-1" />
-                  <span>
-                    <span class="block font-medium text-zinc-900">{extra.name}</span>
-                    <span class="block text-sm text-zinc-600">+ {extra.price.toLocaleString("es-CL")} CLP</span>
-                  </span>
-                </label>
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">3) Extras Shopify</h2>
+            <div class="space-y-4">
+              {extraCategories.map((category) => (
+                <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-3">
+                  <p class="text-sm font-semibold text-zinc-900 mb-2">{category.title}</p>
+                  <div class="space-y-2">
+                    {category.extras.map((extra) => (
+                      <label class="flex items-start gap-2 border border-zinc-200 rounded-lg p-3 cursor-pointer bg-white hover:border-zinc-900 transition-all duration-200 shadow-sm">
+                        <input type="checkbox" value={extra.id} data-extra-price={extra.price} data-extra-option="1" class="mt-0.5" />
+                        <span>
+                          <span class="block text-sm font-medium text-zinc-900">{extra.name}</span>
+                          <span class="block text-xs text-zinc-600">+ {extra.price.toLocaleString("es-CL")} CLP</span>
+                          <span class="block text-xs text-zinc-500 mt-1">{extra.example}</span>
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 
-            <div class="border rounded-lg p-4 bg-zinc-50">
+            <div class="border border-zinc-200 rounded-xl p-4 bg-cyan-50/60">
               <label class="flex items-start gap-3 cursor-pointer">
                 <input id="sinPasarela" type="checkbox" class="mt-1" />
                 <span>
@@ -93,23 +208,38 @@ const extras = [
               </label>
             </div>
 
-            <div class="border rounded-lg p-4 bg-white">
-              <p class="text-sm font-semibold text-zinc-900 mb-2">Continuidad mensual (opcional en cotización)</p>
+            <div class="border border-zinc-200 rounded-xl p-4 bg-amber-50/50">
+              <p class="text-sm font-semibold text-zinc-900 mb-2">Continuidad mensual</p>
               <label class="flex items-start gap-3 cursor-pointer">
                 <input id="incluirSoporte" type="checkbox" class="mt-1" checked />
                 <span>
                   <span class="block font-medium text-zinc-900">Incluir Soporte+ mensual: $100.000 CLP</span>
                   <span class="block text-sm text-zinc-600">Detalle: $65.000 plataforma + $35.000 soporte.</span>
+                  <span id="incluirSoporteHint" class="block text-xs text-zinc-500 mt-1">Obligatorio para planes Tienda Completa, Tienda Pro y Tienda Elite.</span>
                 </span>
               </label>
             </div>
 
-            <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-6 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">
+            <div class="border border-zinc-200 rounded-xl p-4 bg-white">
+              <p class="text-sm font-semibold text-zinc-900 mb-3">4) Firma del cliente</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-zinc-900 mb-2" for="firmaNombre">Nombre de quien firma</label>
+                  <input id="firmaNombre" type="text" class="w-full h-11 px-3 border border-zinc-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20" placeholder="Nombre y apellido" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-zinc-900 mb-2" for="firmaFecha">Fecha de firma</label>
+                  <input id="firmaFecha" type="date" class="w-full h-11 px-3 border border-zinc-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20" />
+                </div>
+              </div>
+            </div>
+
+            <button id="btnCalcular" type="button" class="inline-flex items-center justify-center h-12 w-full sm:w-auto px-7 text-sm font-semibold rounded-xl bg-zinc-900 text-white border border-zinc-900 shadow-lg shadow-zinc-300/50 hover:bg-zinc-800 transition-colors">
               Calcular cotización
             </button>
           </div>
 
-          <div id="quoteCapture" class="border rounded-2xl bg-zinc-50 p-4 sm:p-6 lg:p-8 space-y-6 shadow-sm lg:sticky lg:top-6">
+          <div id="quoteCapture" class="rounded-3xl border border-zinc-200/80 bg-white p-4 sm:p-6 lg:p-8 space-y-6 shadow-[0_18px_50px_-28px_rgba(0,0,0,0.5)] lg:sticky lg:top-8">
             <h2 class="text-xl font-semibold text-zinc-900">4) Resumen de cotización</h2>
 
             <div class="space-y-2 text-sm sm:text-base">
@@ -118,9 +248,12 @@ const extras = [
               <p><span class="font-semibold text-zinc-900">Plan:</span> <span id="outPlan" class="text-zinc-600">-</span></p>
               <p><span class="font-semibold text-zinc-900">Implementación:</span> <span id="outImplementacion" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Extras:</span> <span id="outExtras" class="text-zinc-600">$0 CLP</span></p>
+              <p><span class="font-semibold text-zinc-900">Detalle extras:</span> <span id="outExtrasDetalle" class="text-zinc-600">Sin extras seleccionados.</span></p>
               <p><span class="font-semibold text-zinc-900">Descuento:</span> <span id="outDescuento" class="text-zinc-600">$0 CLP</span></p>
               <p><span class="font-semibold text-zinc-900">Motivo descuento:</span> <span id="outMotivoDescuento" class="text-zinc-600">-</span></p>
-              <p class="text-lg pt-2"><span class="font-bold text-zinc-900">Total inicial:</span> <span id="outTotal" class="font-bold text-zinc-900">$0 CLP</span></p>
+              <div class="mt-3 rounded-xl border border-zinc-300 bg-zinc-900 px-4 py-3">
+                <p class="text-lg"><span class="font-bold text-white">Total inicial:</span> <span id="outTotal" class="font-bold text-white">$0 CLP</span></p>
+              </div>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
@@ -141,8 +274,8 @@ const extras = [
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
-              <p><span class="font-semibold text-zinc-900">Condición de pago:</span> 50% de implementación al aceptar la cotización.</p>
-              <p>Luego se realiza revisión de conformidad y posteriormente se cancela el 50% restante de implementación + soporte mensual (si fue incluido).</p>
+              <p><span class="font-semibold text-zinc-900">Condición de pago:</span> 50% del total inicial al aceptar la cotización.</p>
+              <p>Luego se realiza revisión de conformidad y posteriormente se cancela el 50% restante del total inicial + soporte mensual .</p>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-2">
@@ -160,17 +293,17 @@ const extras = [
 
             <div class="border-t pt-4">
               <p class="text-sm font-semibold text-zinc-900 mb-2">Texto listo para enviar</p>
-              <textarea id="outputTexto" class="w-full min-h-60 sm:min-h-55 border border-zinc-300 rounded-md p-3 text-sm text-zinc-700"></textarea>
-              <div class="mt-3 grid grid-cols-1 sm:grid-cols-4 gap-2">
-                <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">Copiar texto</button>
-                <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">PDF Pro</button>
-                <button id="btnExportarHtmlPdf" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">PDF HTML</button>
-                <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-10 px-4 text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors">Limpiar</button>
+              <textarea id="outputTexto" class="w-full min-h-60 sm:min-h-55 border border-zinc-300 rounded-xl p-3 text-sm text-zinc-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900/20"></textarea>
+              <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <button id="btnCopiar" type="button" class="inline-flex items-center justify-center h-11 px-4 text-sm font-semibold rounded-xl bg-white text-zinc-900 border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">Copiar texto</button>
+                <button id="btnExportarPdf" type="button" class="inline-flex items-center justify-center h-11 px-4 text-sm font-semibold rounded-xl bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors">PDF Pro</button>
+                <button id="btnLimpiar" type="button" class="inline-flex items-center justify-center h-11 px-4 text-sm font-semibold rounded-xl bg-white text-zinc-700 border border-zinc-300 hover:border-zinc-900 transition-colors">Limpiar</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </section>
   <CotizadorIsland client:load />
 </Layout>

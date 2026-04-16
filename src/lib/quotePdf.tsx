@@ -86,9 +86,9 @@ const ListSection = ({ title, items }: { title: string; items: string[] }) => (
 );
 
 const QuotePdfDocument = ({ data }: { data: QuotePdfData }) => (
-  <Document title="Cotizacion Ecommerce - VIN Studio">
+  <Document title="Cotización Ecommerce - VIN Studio">
     <Page size="A4" style={styles.page}>
-      <Text style={styles.title}>VIN Studio - Cotizacion Ecommerce</Text>
+      <Text style={styles.title}>VIN Studio - Cotización Ecommerce</Text>
       <Text style={styles.subtitle}>Fecha: {data.dateText}</Text>
 
       <View style={styles.section}>
