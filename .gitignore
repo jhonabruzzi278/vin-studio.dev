@@ -35,3 +35,6 @@ pnpm-debug.log*
 *.swp
 *.swo
 *.tmp
+
+# local AI/worktree metadata
+.claude/
