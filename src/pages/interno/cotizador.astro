@@ -5,15 +5,15 @@ import CotizadorIsland from "@/components/interno/CotizadorIsland.tsx";
 export const prerender = false;
 
 const plans = [
-  { id: "express", name: "Plan Express", price: 99990 },
-  { id: "completa", name: "Plan Completa", price: 249990 },
-  { id: "pro", name: "Plan Pro", price: 399990 },
-  { id: "elite", name: "Plan Elite", price: 649990 },
+  { id: "express", name: "Plan Tienda Express", price: 99990 },
+  { id: "completa", name: "Plan Tienda Completa", price: 249990 },
+  { id: "pro", name: "Plan Tienda Pro", price: 399990 },
+  { id: "elite", name: "Plan Tienda Elite", price: 649990 },
 ];
 
 const extraCategories = [
   {
-    title: "Catálogo y tienda Shopify",
+    title: "Catálogo y tienda online",
     extras: [
       {
         id: "productos_extra",
@@ -35,7 +35,7 @@ const extraCategories = [
       },
       {
         id: "seo_tecnico",
-        name: "SEO técnico para Shopify",
+        name: "SEO técnico base de la tienda",
         price: 70000,
         example: "Ejemplo: optimización de metadatos, URLs limpias y sitemap revisado.",
       },
@@ -87,7 +87,7 @@ const extraCategories = [
       },
       {
         id: "marketplace_sync",
-        name: "Sincronización Shopify con marketplace",
+        name: "Sincronización con marketplace",
         price: 120000,
         example: "Ejemplo: publicar catálogo en marketplace y sincronizar inventario.",
       },
@@ -111,7 +111,7 @@ const extraCategories = [
       },
       {
         id: "desarrollo_medida",
-        name: "Desarrollo Shopify a medida",
+        name: "Desarrollo a medida",
         price: 80000,
         example: "Ejemplo: personalización de sección de producto con lógica especial.",
       },
@@ -165,18 +165,32 @@ const extraCategories = [
               </div>
             </div>
 
-            <h2 class="text-xl font-semibold text-zinc-900 pt-2">2) Plan de implementación</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">2) Modelo de plataforma</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="border border-zinc-200 rounded-xl p-4 cursor-pointer bg-zinc-50/70 hover:bg-white hover:border-zinc-900 transition-all duration-200 shadow-sm">
+                <input type="radio" name="platformModel" value="shopify" class="mr-2" checked />
+                <span class="font-medium text-zinc-900">Shopify</span>
+                <span class="block text-sm text-zinc-600 mt-1">Implementación estándar y continuidad con soporte + plataforma.</span>
+              </label>
+              <label class="border border-zinc-200 rounded-xl p-4 cursor-pointer bg-zinc-50/70 hover:bg-white hover:border-zinc-900 transition-all duration-200 shadow-sm">
+                <input type="radio" name="platformModel" value="wordpress" class="mr-2" />
+                <span class="font-medium text-zinc-900">Hosting Propio</span>
+                <span class="block text-sm text-zinc-600 mt-1">Mayor configuración técnica para clientes que mantienen su hosting.</span>
+              </label>
+            </div>
+
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">3) Plan de implementación</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {plans.map((plan) => (
                 <label class="border border-zinc-200 rounded-xl p-4 cursor-pointer bg-zinc-50/70 hover:bg-white hover:border-zinc-900 transition-all duration-200 shadow-sm">
                   <input type="radio" name="plan" value={plan.id} data-plan-price={plan.price} class="mr-2" />
                   <span class="font-medium text-zinc-900">{plan.name}</span>
-                  <span class="block text-sm text-zinc-600 mt-1">{plan.price.toLocaleString("es-CL")} CLP</span>
+                  <span class="plan-price block text-sm text-zinc-600 mt-1" data-base-price={plan.price} data-plan-id={plan.id}>{plan.price.toLocaleString("es-CL")} CLP</span>
                 </label>
               ))}
             </div>
 
-            <h2 class="text-xl font-semibold text-zinc-900 pt-2">3) Extras Shopify</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 pt-2">4) Extras del proyecto</h2>
             <div class="space-y-4">
               {extraCategories.map((category) => (
                 <div class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-3">
@@ -203,7 +217,7 @@ const extraCategories = [
                 <span>
                   <span class="block font-medium text-zinc-900">Sin pasarela de pago</span>
                   <span class="block text-sm text-zinc-600">Aplicar descuento de - $100.000 CLP</span>
-                  <span id="sinPasarelaHint" class="block text-xs text-zinc-500 mt-1">Disponible para Plan Completa, Pro y Elite.</span>
+                  <span id="sinPasarelaHint" class="block text-xs text-zinc-500 mt-1">Disponible para Plan Tienda Completa, Tienda Pro y Tienda Elite.</span>
                 </span>
               </label>
             </div>
@@ -213,9 +227,9 @@ const extraCategories = [
               <label class="flex items-start gap-3 cursor-pointer">
                 <input id="incluirSoporte" type="checkbox" class="mt-1" checked />
                 <span>
-                  <span class="block font-medium text-zinc-900">Incluir Soporte+ mensual: $100.000 CLP</span>
-                  <span class="block text-sm text-zinc-600">Detalle: $65.000 plataforma + $35.000 soporte.</span>
-                  <span id="incluirSoporteHint" class="block text-xs text-zinc-500 mt-1">Obligatorio para planes Tienda Completa, Tienda Pro y Tienda Elite.</span>
+                  <span id="incluirSoporteLabel" class="block font-medium text-zinc-900">Incluir Soporte+ mensual: $100.000 CLP</span>
+                  <span id="incluirSoporteDetail" class="block text-sm text-zinc-600">Detalle: $65.000 plataforma + $35.000 soporte.</span>
+                  <span id="incluirSoporteHint" class="block text-xs text-zinc-500 mt-1">Obligatorio para planes Plan Tienda Completa, Plan Tienda Pro y Plan Tienda Elite.</span>
                 </span>
               </label>
             </div>
@@ -269,8 +283,8 @@ const extraCategories = [
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">
               <p><span class="font-semibold text-zinc-900">Continuidad:</span> <span id="outContinuidad">Soporte+ mensual incluido en propuesta: $100.000 CLP/mes</span></p>
-              <p><span class="font-semibold text-zinc-900">Detalle mensual:</span> $65.000 plataforma + $35.000 soporte.</p>
-              <p><span class="font-semibold text-zinc-900">Importante:</span> durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</p>
+              <p><span class="font-semibold text-zinc-900">Detalle mensual:</span> <span id="outContinuidadDetalle">$65.000 plataforma + $35.000 soporte.</span></p>
+              <p><span class="font-semibold text-zinc-900">Importante:</span> <span id="outContinuidadImportante">durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.</span></p>
             </div>
 
             <div class="border-t pt-4 text-sm sm:text-base text-zinc-700 space-y-1">

@@ -1,137 +1,162 @@
-﻿---
+---
 import Layout from "@/layouts/Layout.astro";
 
-const implementationPlans = [
+type Plan = {
+  name: string;
+  price: number;
+  description: string;
+  features: string[];
+  notIncludedByPlan: string[];
+  featured?: boolean;
+};
+
+const formatClp = (amount: number) => `$${amount.toLocaleString("es-CL")} CLP`;
+
+const shopifyPlans: Plan[] = [
   {
-    name: "Plan Express",
-    price: "$99.990 CLP",
-    description: "Entrada rápida para lanzar una tienda funcional.",
+    name: "Plan Tienda Express",
+    price: 99990,
+    description: "Lanzamiento ecommerce rapido.",
     features: [
-      "Tienda funcional básica lista para vender",
-      "Hasta 10 productos cargados",
-      "Configuración general de catálogo y navegación",
-      "Configuración simple de envíos",
-      "Pasarela de pago incluida en la implementación",
-      "Verificación de fotografías y apoyo para material visual",
+      "Productos: hasta 10",
+      "Configuracion de tienda funcional",
+      "Catalogo y navegacion optimizados",
+      "Envios y pasarela de pago configurados",
+      "Verificacion de fotografias y apoyo visual",
     ],
     notIncludedByPlan: [
       "Compra de dominio y renovaciones",
       "Costo mensual de plataforma (desde mes 4)",
       "Servicios de correo corporativo",
-      "Gestión de campañas publicitarias",
+      "Gestion de campanas publicitarias",
       "Desarrollo personalizado avanzado",
       "Apps o licencias pagadas de terceros",
     ],
   },
   {
-    name: "Plan Completa",
-    price: "$249.990 CLP",
-    description: "Estructura más ordenada para comenzar a vender con base sólida.",
+    name: "Plan Tienda Completa",
+    price: 249990,
+    description: "Base ecommerce optimizada para crecer.",
     features: [
-      "Hasta 20 productos",
-      "Estructura optimizada de tienda",
-      "Emails automáticos básicos",
-      "Navegación y categorías mejoradas",
-      "Pasarela de pago incluida en la implementación",
-      "Verificación de fotografías y apoyo para material visual",
+      "Productos: hasta 20",
+      "Estructura ecommerce optimizada",
+      "Emails automaticos base",
+      "Categorias y navegacion mejoradas",
+      "Pasarela de pago incluida",
+      "Configuracion de WhatsApp comercial y formulario de leads",
+      "Recuperacion de carrito basica por email",
+      "Capacitacion operativa inicial para el equipo",
+      "Verificacion de fotografias y apoyo visual",
     ],
     notIncludedByPlan: [
       "Compra de dominio y renovaciones",
       "Costo mensual de plataforma (desde mes 4)",
       "Servicios de correo corporativo",
-      "Gestión de campañas publicitarias",
+      "Gestion de campanas publicitarias",
       "Integraciones complejas no cotizadas",
       "Apps o licencias pagadas de terceros",
     ],
     featured: true,
   },
   {
-    name: "Plan Pro",
-    price: "$399.990 CLP",
-    description: "Para negocios que buscan mayor rendimiento comercial desde el inicio.",
+    name: "Plan Tienda Pro",
+    price: 399990,
+    description: "Enfoque en conversion y operacion comercial.",
     features: [
-      "Hasta 50 productos",
-      "Configuración de conversión (carrito y checkout)",
-      "Categorías, fichas y estructura comercial optimizada",
+      "Productos: hasta 50",
+      "Carrito y checkout orientados a conversion",
+      "Estructura comercial avanzada",
       "SEO base de tienda y productos",
-      "Pasarela de pago incluida en la implementación",
-      "Verificación de fotografías y apoyo para material visual",
+      "Pasarela de pago incluida",
+      "Verificacion de fotografias y apoyo visual",
     ],
     notIncludedByPlan: [
       "Compra de dominio y renovaciones",
       "Costo mensual de plataforma (desde mes 4)",
       "Servicios de correo corporativo",
-      "Gestión publicitaria mensual (Meta/Google)",
+      "Gestion publicitaria mensual (Meta/Google)",
       "Desarrollo de software a medida",
       "Apps o licencias pagadas de terceros",
     ],
   },
   {
-    name: "Plan Elite",
-    price: "$649.990 CLP",
-    description: "Implementación avanzada para operaciones más completas.",
+    name: "Plan Tienda Elite",
+    price: 649990,
+    description: "Operacion ecommerce avanzada y escalable.",
     features: [
-      "Hasta 100 productos",
-      "Migración básica",
-      "Landing pages",
-      "Fotografia + contenido visual",
+      "Productos: hasta 100",
+      "Migracion base y estructura avanzada",
+      "Landing pages comerciales",
       "Integraciones operativas avanzadas",
-      "Pasarela de pago incluida en la implementación",
-      "Verificación de fotografías y apoyo para material visual",
+      "Pasarela de pago incluida",
+      "Automatizaciones de post-compra y fidelizacion",
+      "Dashboard de rendimiento comercial mensual",
+      "Acompanamiento estrategico de mejoras continuas",
+      "Verificacion de fotografias y apoyo visual",
     ],
     notIncludedByPlan: [
       "Compra de dominio y renovaciones",
       "Costo mensual de plataforma (desde mes 4)",
       "Servicios de correo corporativo",
-      "Gestión publicitaria mensual (Meta/Google)",
+      "Gestion publicitaria mensual (Meta/Google)",
       "Automatizaciones avanzadas fuera de alcance",
       "Apps o licencias pagadas de terceros",
     ],
   },
 ];
 
+const wordpressPriceOverrides: Record<string, number> = {
+  "Plan Tienda Completa": 549990,
+  "Plan Tienda Pro": 849990,
+};
+
+const wordpressPlans: Plan[] = shopifyPlans.map((plan) => ({
+  ...plan,
+  price: wordpressPriceOverrides[plan.name] ?? plan.price * 2 + 100000,
+  description: `${plan.description} Implementacion avanzada en hosting propio.`,
+  features: [
+    "Productos: sin limite",
+    ...plan.features
+      .filter((feature) => !feature.toLowerCase().startsWith("productos:"))
+      .map((feature) =>
+      feature
+        .replace("Configuracion de tienda funcional", "Configuracion de tienda funcional en hosting propio")
+        .replace("Estructura ecommerce optimizada", "Estructura ecommerce optimizada en hosting propio")
+        .replace("Pasarela de pago incluida", "Pasarela de pago incluida y validada en hosting propio"),
+    ),
+    "1 servicio a eleccion gratis en la primera implementacion",
+  ],
+  notIncludedByPlan: plan.notIncludedByPlan
+    .filter((item) => !item.toLowerCase().includes("plataforma"))
+    .map((item) => item.replace(/Shopify/gi, "Hosting Propio")),
+}));
 ---
 
 <Layout
-  title="Modelo Ecommerce Shopify | VIN Studio"
-  description="Modelo de servicio ecommerce con Shopify: implementación por única vez y continuidad mensual Soporte+."
-  keywords="shopify chile, implementacion ecommerce, soporte shopify, planes ecommerce"
+  title="Servicios Ecommerce | VIN Studio"
+  description="Modelos ecommerce para Shopify y Hosting Propio: implementacion por plan y continuidad mensual con soporte."
+  keywords="ecommerce chile, shopify chile, hosting propio ecommerce, planes ecommerce"
 >
   <section class="container mx-auto px-4 py-12 sm:py-20">
     <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-        Modelo de Servicio Ecommerce con Shopify
-      </h1>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Servicios Ecommerce: Shopify y Hosting Propio</h1>
       <p class="text-lg sm:text-xl text-zinc-600 leading-relaxed">
-        Un modelo claro con dos etapas: implementación (pago único) y continuidad operativa. Durante los primeros 3 meses, el costo de la plataforma está incluido por VIN Studio.
+        Trabajamos con dos modelos para adaptarnos al nivel operativo de cada cliente. Shopify para salida rapida y un modelo de hosting propio con configuracion avanzada.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto mb-14 sm:mb-16">
-      <div class="border rounded-xl p-6 bg-white">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-3">Parte 1</p>
-        <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-2">Implementación (Pago Único)</h2>
-        <p class="text-sm sm:text-base text-zinc-600">Creación y configuración de la tienda online según el plan elegido.</p>
-      </div>
-      <div class="border rounded-xl p-6 bg-white">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-3">Parte 2</p>
-          <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 mb-2">Continuidad (Soporte+ Mensual)</h2>
-          <p class="text-sm sm:text-base text-zinc-600">Operación mensual con soporte y mantenimiento según plan. El pago de la plataforma va incluido durante los primeros 3 meses.</p>
-      </div>
-    </div>
-
     <div class="mb-14 sm:mb-16">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Planes de Implementación</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Planes Shopify</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
-        {implementationPlans.map((plan) => (
+        {shopifyPlans.map((plan) => (
           <article class={`border rounded-xl p-6 bg-white h-full flex flex-col ${plan.featured ? "border-zinc-900 shadow-lg shadow-zinc-900/10" : "border-zinc-200"}`}>
             {plan.featured && (
               <div class="mb-4">
-                <span class="text-xs font-semibold uppercase tracking-[0.2em] bg-zinc-900 text-white px-3 py-1 rounded-full">Más Recomendado</span>
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] bg-zinc-900 text-white px-3 py-1 rounded-full">Mas Recomendado</span>
               </div>
             )}
             <h3 class="text-xl font-semibold text-zinc-900 mb-2">{plan.name}</h3>
-            <p class="text-3xl font-bold text-zinc-900 leading-none mb-3">{plan.price}</p>
+            <p class="text-3xl font-bold text-zinc-900 leading-none mb-3">{formatClp(plan.price)}</p>
             <p class="text-sm text-zinc-600 mb-4">{plan.description}</p>
             <ul class="space-y-2 text-sm text-zinc-600 flex-1">
               {plan.features.map((item) => (
@@ -160,72 +185,83 @@ const implementationPlans = [
       </div>
     </div>
 
-    <div class="border rounded-xl p-6 sm:p-8 bg-zinc-50 max-w-6xl mx-auto mb-14 sm:mb-16">
-      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-6">Soporte+ (Modelo de Continuidad)</h2>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-        <div class="border rounded-xl bg-white p-6">
-          <p class="text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500 mb-3">Precio</p>
-          <p class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-2">$100.000 CLP / mes</p>
-          <p class="text-sm text-zinc-600">Detalle mensual: $65.000 plataforma + $35.000 soporte. Incluye soporte técnico y operativo, más mantenimiento y ajustes. El pago de la plataforma está incluido durante los primeros 3 meses.</p>
-        </div>
-
-        <div class="border rounded-xl bg-white p-6">
-          <p class="text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500 mb-3">Funcionamiento</p>
-          <ul class="space-y-2 text-sm text-zinc-600">
-            <li><strong class="text-zinc-900">Meses 1 a 3:</strong> pago de plataforma incluido por VIN Studio.</li>
-            <li><strong class="text-zinc-900">Desde mes 4:</strong> el cliente paga directamente la plataforma.</li>
-            <li><strong class="text-zinc-900">Soporte mensual:</strong> es opcional; el cliente decide si continúa con $100.000 CLP/mes (65.000 plataforma + 35.000 soporte).</li>
-          </ul>
-        </div>
+    <div class="border rounded-xl p-6 sm:p-8 bg-zinc-50 max-w-6xl mx-auto mb-16">
+      <h3 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-5">Continuidad Shopify</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-zinc-600">
+        <p><strong class="text-zinc-900">Soporte+ mensual:</strong> $100.000 CLP</p>
+        <p><strong class="text-zinc-900">Detalle:</strong> $65.000 plataforma + $35.000 soporte</p>
+        <p><strong class="text-zinc-900">Contrato:</strong> minimo 3 meses de soporte</p>
+        <p><strong class="text-zinc-900">Meses 1 al 3:</strong> costo de plataforma incluido por VIN Studio</p>
+        <p><strong class="text-zinc-900">Desde mes 4:</strong> cliente paga plataforma; soporte es opcional</p>
       </div>
+    </div>
 
-      <div class="mt-6 border rounded-xl bg-white p-6">
-        <h3 class="text-lg sm:text-xl font-semibold text-zinc-900 mb-4">Qué incluye Soporte+</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-zinc-600">
-          <p>Soporte técnico continuo</p>
-          <p>Hasta 20 solicitudes de cambio mensuales</p>
-          <p>Ajustes operativos (textos, imágenes, estructura simple)</p>
-          <p>Capacitación inicial</p>
-          <p>Atencion por WhatsApp (08:30 a 17:30)</p>
-          <p>Tiempo de respuesta: hasta 30 minutos</p>
-          <p>Supervisión básica de funcionamiento</p>
-        </div>
+    <div class="mb-14 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4">Planes Hosting Propio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
+        {wordpressPlans.map((plan) => (
+          <article class={`border rounded-xl p-6 bg-white h-full flex flex-col ${plan.featured ? "border-zinc-900 shadow-lg shadow-zinc-900/10" : "border-zinc-200"}`}>
+            {plan.featured && (
+              <div class="mb-4">
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] bg-zinc-900 text-white px-3 py-1 rounded-full">Mas Recomendado</span>
+              </div>
+            )}
+            <h3 class="text-xl font-semibold text-zinc-900 mb-2">{plan.name}</h3>
+            <p class="text-3xl font-bold text-zinc-900 leading-none mb-3">{formatClp(plan.price)}</p>
+            <p class="text-sm text-zinc-600 mb-4">{plan.description}</p>
+            <ul class="space-y-2 text-sm text-zinc-600 flex-1">
+              {plan.features.map((item) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-900"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-4 pt-4 border-t border-zinc-200">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 mb-2">No incluye</p>
+              <ul class="space-y-1 text-xs text-zinc-500">
+                {plan.notIncludedByPlan.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-zinc-400"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a href="/contacto" class="mt-5 inline-flex items-center justify-center h-10 w-full text-sm font-semibold border border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
+              Solicitar este plan
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="border rounded-xl p-6 sm:p-8 bg-zinc-50 max-w-6xl mx-auto mb-16">
+      <h3 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-5">Continuidad Hosting Propio</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-zinc-600">
+        <p><strong class="text-zinc-900">Soporte+ mensual:</strong> $35.000 CLP</p>
+        <p><strong class="text-zinc-900">Detalle:</strong> solo soporte (sin cobro de plataforma)</p>
+        <p><strong class="text-zinc-900">Contrato:</strong> minimo 3 meses de soporte</p>
+        <p><strong class="text-zinc-900">Hosting/plataforma:</strong> mantenido y pagado por el cliente</p>
+        <p><strong class="text-zinc-900">Beneficio de implementacion:</strong> 1 servicio a eleccion gratis en la primera implementacion</p>
       </div>
     </div>
 
     <div class="border rounded-xl p-6 sm:p-8 bg-white max-w-6xl mx-auto mb-14 sm:mb-16">
-      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-5">Condiciones del Servicio</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 mb-5">Condiciones Comerciales Generales</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-zinc-600">
-        <p>Contrato mínimo: 3 meses</p>
-        <p>Pago inicial: 50% de implementación al aceptar la cotización</p>
-        <p>Pago de plataforma incluido durante los primeros 3 meses</p>
-        <p>Desde mes 4: cliente paga plataforma y soporte es opcional</p>
-        <p>Al terminar el plazo contratado se entrega acceso a la plataforma</p>
-        <p>Todo lo fuera de alcance se cotiza por separado</p>
+        <p>Pago inicial: 50% de implementacion al aceptar cotizacion</p>
+        <p>Revision de conformidad previo a cierre</p>
+        <p>Pago final: 50% restante + soporte mensual</p>
+        <p>Todo requerimiento fuera de alcance se cotiza por separado</p>
         <p>Servicio digital no reembolsable</p>
+        <p>Al finalizar plazo contratado se entrega acceso operativo correspondiente</p>
       </div>
-      <div class="mt-6 border-t border-zinc-200 pt-5 text-sm sm:text-base text-zinc-600 space-y-2">
-        <p class="font-semibold text-zinc-900">Condición de pago de implementación</p>
-        <p>Al aceptar la cotización se cancela el 50% de la implementación.</p>
-        <p>Luego se realiza una revisión de conformidad.</p>
-        <p>Posterior a la conformidad se cancela el 50% restante de implementación más el soporte mensual (si fue incluido).</p>
-      </div>
-    </div>
-
-    <div class="border border-zinc-900 rounded-xl p-6 sm:p-8 bg-zinc-900 text-white max-w-6xl mx-auto mb-10 sm:mb-12">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Propuesta de Valor</h2>
-      <p class="text-zinc-200 leading-relaxed text-sm sm:text-base mb-4">
-        No vendemos solo una tienda. Vendemos un sistema completo donde el cliente lanza su ecommerce, lo deja funcionando y luego decide si quiere seguir creciendo con acompañamiento.
-      </p>
-      <p class="text-zinc-300 text-sm sm:text-base">
-        Este modelo combina producto (tienda), servicio (soporte) y suscripción (ingreso recurrente) para pasar de vender proyectos a operar ecommerce de clientes de forma continua.
-      </p>
     </div>
 
     <div class="text-center">
       <a
-        href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20quiero%20evaluar%20el%20modelo%20ecommerce%20con%20Shopify."
+        href="https://wa.me/56938980598?text=Hola%20VIN%20Studio%2C%20quiero%20evaluar%20planes%20ecommerce%20Shopify%20y%20Hosting%20Propio."
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center h-11 w-full sm:w-auto px-8 text-sm font-semibold bg-zinc-900 text-white border border-zinc-900 hover:bg-zinc-800 transition-colors"
