@@ -12,17 +12,17 @@ export const initCotizador = () => {
       name: "Plan Tienda Express",
       basePrice: 99990,
       scope: [
-        "Productos: hasta 10",
-        "Configuracion de tienda funcional",
-        "Catalogo y navegacion optimizados",
-        "Envios y pasarela de pago configurados",
-        "Verificacion de fotografias y apoyo visual",
+        "Tienda lista para empezar a vender en poco tiempo",
+        "Catálogo inicial de hasta 10 productos bien presentados",
+        "Navegación clara para que el cliente encuentre rápido lo que busca",
+        "Envíos y pagos configurados para recibir pedidos sin fricción",
+        "Asesoría visual para mostrar productos con mejor percepción de valor",
       ],
       exclusions: [
         "Compra de dominio y renovaciones",
         "Costo mensual de plataforma (desde mes 4)",
         "Servicios de correo corporativo",
-        "Gestion de campanas publicitarias",
+        "Gestión de campañas publicitarias",
         "Desarrollo personalizado avanzado",
         "Apps o licencias pagadas de terceros",
       ],
@@ -31,21 +31,19 @@ export const initCotizador = () => {
       name: "Plan Tienda Completa",
       basePrice: 249990,
       scope: [
-        "Productos: hasta 20",
-        "Estructura ecommerce optimizada",
-        "Emails automaticos base",
-        "Categorias y navegacion mejoradas",
-        "Pasarela de pago incluida",
-        "Configuracion de WhatsApp comercial y formulario de leads",
-        "Recuperacion de carrito basica por email",
-        "Capacitacion operativa inicial para el equipo",
-        "Verificacion de fotografias y apoyo visual",
+        "Tienda profesional preparada para vender y escalar con orden",
+        "Catálogo de hasta 20 productos con categorías y navegación más eficiente",
+        "Emails automáticos para mejorar confianza y seguimiento de compra",
+        "Canal comercial por WhatsApp y formulario para captar oportunidades",
+        "Recuperación básica de carritos para no perder ventas potenciales",
+        "Capacitación inicial para que el equipo opere la tienda con autonomía",
+        "Asesoría visual para elevar la presentación de productos",
       ],
       exclusions: [
         "Compra de dominio y renovaciones",
         "Costo mensual de plataforma (desde mes 4)",
         "Servicios de correo corporativo",
-        "Gestion de campanas publicitarias",
+        "Gestión de campañas publicitarias",
         "Integraciones complejas no cotizadas",
         "Apps o licencias pagadas de terceros",
       ],
@@ -54,17 +52,17 @@ export const initCotizador = () => {
       name: "Plan Tienda Pro",
       basePrice: 399990,
       scope: [
-        "Productos: hasta 50",
-        "Configuracion de conversion (carrito y checkout)",
-        "Estructura comercial optimizada",
-        "SEO base de tienda y productos",
-        "Pasarela de pago incluida",
-        "Verificacion de fotografias y apoyo visual",
+        "Ecommerce orientado a convertir mejor y vender de forma más constante",
+        "Catálogo de hasta 50 productos con estructura comercial optimizada",
+        "Optimización de carrito y checkout para reducir fricción en la compra",
+        "SEO base en tienda y productos para aumentar visibilidad orgánica",
+        "Pagos configurados para operar de forma estable",
+        "Asesoría visual para reforzar confianza y valor percibido",
       ],
       exclusions: [
         "Costo mensual de plataforma (desde mes 4)",
         "Servicios de correo corporativo",
-        "Gestion publicitaria mensual (Meta/Google)",
+        "Gestión publicitaria mensual (Meta/Google)",
         "Apps o licencias pagadas de terceros",
       ],
     },
@@ -72,21 +70,20 @@ export const initCotizador = () => {
       name: "Plan Tienda Elite",
       basePrice: 649990,
       scope: [
-        "Productos: hasta 100",
-        "Migracion base y estructura avanzada",
-        "Landing pages comerciales",
-        "Integraciones operativas avanzadas",
-        "Pasarela de pago incluida",
-        "Automatizaciones de post-compra y fidelizacion",
-        "Dashboard de rendimiento comercial mensual",
-        "Acompanamiento estrategico de mejoras continuas",
-        "Verificacion de fotografias y apoyo visual",
+        "Tienda robusta para operación comercial intensiva y crecimiento sostenido",
+        "Catálogo de hasta 100 productos con estructura avanzada",
+        "Migración base y landing pages enfocadas en campañas y conversión",
+        "Integraciones operativas para mejorar flujo de ventas y postventa",
+        "Automatizaciones de post-compra para fidelizar y aumentar recompra",
+        "Dashboard comercial para monitorear resultados y tomar decisiones",
+        "Acompañamiento estratégico continuo para priorizar mejoras de alto impacto",
+        "Asesoría visual para mantener una imagen de marca más sólida",
       ],
       exclusions: [
         "Compra de dominio y renovaciones",
         "Costo mensual de plataforma (desde mes 4)",
         "Servicios de correo corporativo",
-        "Gestion publicitaria mensual (Meta/Google)",
+        "Gestión publicitaria mensual (Meta/Google)",
         "Automatizaciones avanzadas fuera de alcance",
         "Apps o licencias pagadas de terceros",
       ],
@@ -95,13 +92,13 @@ export const initCotizador = () => {
 
   const extrasMap: Record<string, { name: string; core: string; price: number; detail: string }> = {
     productos_extra: {
-      name: "Carga extra de productos sin limite + colecciones detalladas, filtros de busqueda y optimizacion de navegacion",
+      name: "Carga extra de productos sin límite + colecciones detalladas, filtros de búsqueda y optimización de navegación",
       core: "Carga productos",
       price: 100000,
-      detail: "Carga de productos sin limite con colecciones, filtros y navegacion optimizada.",
+      detail: "Carga de productos sin límite con colecciones, filtros y navegación optimizada.",
     },
     optimizacion_colecciones: {
-      name: "Optimizacion de colecciones, filtros y navegacion",
+      name: "Optimización de colecciones, filtros y navegación",
       core: "Colecciones y filtros",
       price: 80000,
       detail: "Mejora de arquitectura de categorias, colecciones y filtros.",
@@ -113,16 +110,16 @@ export const initCotizador = () => {
       detail: "Conexion con apps o servicios externos compatibles.",
     },
     integracion_erp_crm: {
-      name: "Integracion ERP / CRM / facturacion",
+      name: "Integración ERP / CRM / facturación",
       core: "ERP/CRM",
       price: 220000,
-      detail: "Integracion operativa con ERP/CRM/facturacion.",
+      detail: "Integración operativa con ERP/CRM/facturación.",
     },
     desarrollo_medida: {
       name: "Desarrollo Shopify a medida",
       core: "Dev a medida",
       price: 80000,
-      detail: "Desarrollo personalizado para necesidades especificas del negocio.",
+      detail: "Desarrollo personalizado para necesidades específicas del negocio.",
     },
     fotografia_adicional: {
       name: "Fotografia adicional de productos",
@@ -131,58 +128,58 @@ export const initCotizador = () => {
       detail: "Produccion de fotografias adicionales para catalogo.",
     },
     seo_tecnico: {
-      name: "SEO tecnico para Shopify",
-      core: "SEO tecnico",
+      name: "SEO técnico para Shopify",
+      core: "SEO técnico",
       price: 70000,
-      detail: "Ajustes de SEO tecnico on-site.",
+      detail: "Ajustes de SEO técnico on-site.",
     },
     email_corporativo: {
-      name: "Configuracion email corporativo",
+      name: "Configuración email corporativo",
       core: "Email corporativo",
       price: 45000,
-      detail: "Configuracion de cuentas de correo corporativo.",
+      detail: "Configuración de cuentas de correo corporativo.",
     },
     tracking_marketing_full: {
-      name: "Configuracion GA4, GTM, Meta Pixel y TikTok Pixel",
+      name: "Configuración GA4, GTM, Meta Pixel y TikTok Pixel",
       core: "Tracking",
       price: 110000,
-      detail: "Implementacion de tracking comercial completo.",
+      detail: "Implementación de tracking comercial completo.",
     },
     flows_email_marketing: {
       name: "Email marketing flows (bienvenida, abandono, post-compra)",
       core: "Flows email",
       price: 140000,
-      detail: "Automatizaciones de email para bienvenida, recuperacion y post-compra.",
+      detail: "Automatizaciones de email para bienvenida, recuperación y post-compra.",
     },
     setup_campanas_landing: {
-      name: "Setup de campanas (Meta/Google) + landing page",
-      core: "Setup campanas + landing",
+      name: "Setup de campañas (Meta/Google) + landing page",
+      core: "Setup campañas + landing",
       price: 180000,
-      detail: "Configuracion inicial de campanas con landing.",
+      detail: "Configuración inicial de campañas con landing.",
     },
     marketplace_sync: {
-      name: "Sincronizacion Shopify con marketplace",
+      name: "Sincronización Shopify con marketplace",
       core: "Marketplace",
       price: 120000,
-      detail: "Sincronizacion de catalogo con marketplaces.",
+      detail: "Sincronización de catálogo con marketplaces.",
     },
     integracion_logistica: {
-      name: "Integracion logistica y couriers",
-      core: "Logistica",
+      name: "Integración logística y couriers",
+      core: "Logística",
       price: 130000,
-      detail: "Integracion logistica con couriers para envios y seguimiento.",
+      detail: "Integración logística con couriers para envíos y seguimiento.",
     },
     whatsapp_api_bot: {
-      name: "WhatsApp API + bot basico de ventas/soporte",
+      name: "WhatsApp API + bot básico de ventas/soporte",
       core: "WhatsApp API + bot",
       price: 160000,
-      detail: "Implementacion de WhatsApp API con bot basico.",
+      detail: "Implementación de WhatsApp API con bot básico.",
     },
     capacitacion_equipo: {
-      name: "Capacitacion comercial para equipo",
-      core: "Capacitacion comercial",
+      name: "Capacitación comercial para equipo",
+      core: "Capacitación comercial",
       price: 55000,
-      detail: "Capacitacion practica para equipo comercial.",
+      detail: "Capacitación práctica para equipo comercial.",
     },
   };
 
@@ -206,15 +203,15 @@ export const initCotizador = () => {
     getSelectedPlatform() === "wordpress"
       ? {
           label: "Incluir Soporte+ mensual: $35.000 CLP",
-          continuity: "Soporte+ mensual: $35.000 CLP/mes",
+          continuity: "Soporte+ mensual: $35.000 CLP/mes x 3 meses",
           detail: "$35.000 soporte (sin cobro de plataforma).",
-          note: "Modelo Hosting Propio: el cliente mantiene su hosting, no paga plataforma mensual con VIN Studio y recibe 1 servicio a eleccion gratis en la primera implementacion.",
+          note: "Modelo Hosting Propio: el cliente mantiene su hosting, no paga plataforma mensual con VIN Studio y recibe 1 servicio a elección gratis en la primera implementación.",
         }
       : {
           label: "Incluir Soporte+ mensual: $100.000 CLP",
           continuity: "Soporte+ mensual: $100.000 CLP/mes",
           detail: "$65.000 plataforma + $35.000 soporte.",
-          note: "Durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.",
+          note: "Durante los primeros 3 meses de contratación, el costo de plataforma lo asumimos nosotros. Desde el 4to mes, el cliente paga la plataforma y no está obligado a mantener el plan de soporte.",
         };
 
   const adaptTextForPlatform = (value: string, platform: "shopify" | "wordpress") => {
@@ -222,21 +219,21 @@ export const initCotizador = () => {
     return value
       .replace(/Shopify/g, "Hosting Propio")
       .replace(/shopify/g, "hosting propio")
-      .replace("Productos: hasta 10", "Productos: sin limite")
-      .replace("Productos: hasta 20", "Productos: sin limite")
-      .replace("Productos: hasta 50", "Productos: sin limite")
-      .replace("Productos: hasta 100", "Productos: sin limite")
-      .replace("Configuracion de tienda funcional", "Configuracion avanzada en hosting propio")
-      .replace("Catalogo y navegacion optimizados", "Catalogo y navegacion optimizados")
-      .replace("Envios y pasarela de pago configurados", "Envios y pasarela configurados")
+      .replace("Productos: hasta 10", "Productos: sin límite")
+      .replace("Productos: hasta 20", "Productos: sin límite")
+      .replace("Productos: hasta 50", "Productos: sin límite")
+      .replace("Productos: hasta 100", "Productos: sin límite")
+      .replace("Configuración de tienda funcional", "Configuración avanzada en hosting propio")
+      .replace("Catálogo y navegación optimizados", "Catálogo y navegación optimizados")
+      .replace("Envíos y pasarela de pago configurados", "Envíos y pasarela configurados")
       .replace("Estructura ecommerce optimizada", "Estructura ecommerce optimizada")
-      .replace("Categorias y navegacion mejoradas", "Categorias y navegacion mejoradas")
+      .replace("Categorías y navegación mejoradas", "Categorías y navegación mejoradas")
       .replace("Pasarela de pago incluida", "Pasarela de pago incluida")
       .replace("Estructura comercial optimizada", "Estructura comercial optimizada")
-      .replace("Migracion base y estructura avanzada", "Migracion base y estructura avanzada")
+      .replace("Migración base y estructura avanzada", "Migración base y estructura avanzada")
       .replace("Landing pages comerciales", "Landing pages comerciales")
       .replace("Integraciones operativas avanzadas", "Integraciones operativas avanzadas")
-      .replace("Verificacion de fotografias y apoyo visual", "Verificacion de fotografias y apoyo visual");
+      .replace("Verificación de fotografías y apoyo visual", "Verificación de fotografías y apoyo visual");
   };
 
   const syncPlatformPlanPrices = () => {
@@ -254,7 +251,7 @@ export const initCotizador = () => {
     if (planKey === "express") {
       sinPasarela.checked = false;
       sinPasarela.disabled = true;
-      hint.textContent = "Plan Express requiere pasarela de pago incluida. Esta opcion no aplica.";
+      hint.textContent = "Plan Express requiere pasarela de pago incluida. Esta opción no aplica.";
     } else {
       sinPasarela.disabled = false;
       hint.textContent = "Disponible para Plan Tienda Completa, Tienda Pro y Tienda Elite.";
@@ -274,20 +271,29 @@ export const initCotizador = () => {
     if (mandatory) {
       includeSupport.checked = true;
       includeSupport.disabled = true;
-      hint.textContent = "Obligatorio para planes Tienda Completa, Plan Tienda Pro y Plan Tienda Elite.";
+      hint.textContent = "Obligatorio para planes Tienda Completa, Tienda Pro y Tienda Elite.";
     } else {
       includeSupport.disabled = false;
-      hint.textContent = "Opcional para Plan Tienda Express. Obligatorio para Plan Tienda Completa, Plan Tienda Pro y Plan Tienda Elite.";
+      hint.textContent = "Opcional para Plan Tienda Express. Obligatorio para planes Tienda Completa, Tienda Pro y Tienda Elite.";
     }
   };
 
   const buildExtrasPreview = (extrasCore: string[]) => (extrasCore.length ? extrasCore.join(", ") : "Sin extras seleccionados.");
 
+  const applyNoGatewayScopeRules = (scope: string[]) => {
+    const noGatewayScope = scope.filter((line) => !/(carrito|checkout|pasarela)/i.test(line));
+    const leadLine = "Canal comercial por WhatsApp y formulario para captar oportunidades";
+    if (!noGatewayScope.some((line) => line.toLowerCase().includes("whatsapp") && line.toLowerCase().includes("formulario"))) {
+      noGatewayScope.push(leadLine);
+    }
+    return noGatewayScope;
+  };
+
   const buildOutputText = (params: any) => {
     const support = getSupportInfo();
     const scope = [...params.planScope, ...params.extrasDetails.map((d: string) => `Extra: ${d}`)];
     return [
-      "Cotizacion Ecommerce - VIN Studio",
+      "Cotización Ecommerce - VIN Studio",
       "",
       `Cliente: ${params.cliente || "-"}`,
       `Empresa: ${params.empresa || "-"}`,
@@ -295,8 +301,8 @@ export const initCotizador = () => {
       `WhatsApp: ${params.whatsapp || "-"}`,
       "",
       `Plan elegido: ${params.planName}`,
-      `Implementacion: ${formatClp(params.planPrice)}`,
-      "Alcance del plan:",
+      `Implementación: ${formatClp(params.planPrice)}`,
+      "Lo que conseguirás con este plan:",
       ...scope.map((s) => `- ${s}`),
       "",
       "No incluye este plan:",
@@ -308,15 +314,14 @@ export const initCotizador = () => {
       `Total inicial estimado: ${formatClp(params.total)}`,
       "",
       "Continuidad:",
-      params.includeSupport ? `${support.continuity} (detalle: ${support.detail})` : "Soporte+ mensual no incluido en esta cotizacion.",
-      support.note,
+      params.includeSupport ? support.continuity : "Soporte+ mensual no incluido en esta cotización.",
     ].join("\n");
   };
 
   const calculate = () => {
     const selectedPlanKey = getSelectedPlan();
     if (!selectedPlanKey) {
-      alert("Selecciona un plan para calcular la cotizacion.");
+      alert("Selecciona un plan para calcular la cotización.");
       return;
     }
 
@@ -353,9 +358,12 @@ export const initCotizador = () => {
       platform === "wordpress"
         ? selectedPlan.exclusions.filter((item) => !item.toLowerCase().includes("plataforma"))
         : selectedPlan.exclusions;
-    const adaptedScope = selectedPlan.scope.map((item) => adaptTextForPlatform(item, platform));
+    let adaptedScope = selectedPlan.scope.map((item) => adaptTextForPlatform(item, platform));
+    if (sinPasarela) {
+      adaptedScope = applyNoGatewayScopeRules(adaptedScope);
+    }
     if (platform === "wordpress") {
-      adaptedScope.push("1 servicio a eleccion gratis en la primera implementacion");
+      adaptedScope.push("1 servicio a elección gratis en la primera implementación para acelerar tu lanzamiento");
     }
     const adaptedExclusions = exclusions.map((item) => adaptTextForPlatform(item, platform));
 
@@ -366,9 +374,9 @@ export const initCotizador = () => {
     (document.getElementById("outExtras") as HTMLElement).textContent = formatClp(extrasTotal);
     (document.getElementById("outExtrasDetalle") as HTMLElement).textContent = buildExtrasPreview(extrasCore);
     (document.getElementById("outDescuento") as HTMLElement).textContent = discountTotal ? `- ${formatClp(discountTotal)}` : "$0 CLP";
-    (document.getElementById("outMotivoDescuento") as HTMLElement).textContent = discountTotal ? "Descuento por implementacion sin pasarela de pago." : "-";
+    (document.getElementById("outMotivoDescuento") as HTMLElement).textContent = discountTotal ? "Descuento por implementación sin pasarela de pago." : "-";
     (document.getElementById("outTotal") as HTMLElement).textContent = formatClp(total);
-    (document.getElementById("outContinuidad") as HTMLElement).textContent = includeSupport ? support.continuity : "Soporte+ mensual no incluido en esta cotizacion";
+    (document.getElementById("outContinuidad") as HTMLElement).textContent = includeSupport ? support.continuity : "Soporte+ mensual no incluido en esta cotización";
     (document.getElementById("outContinuidadDetalle") as HTMLElement).textContent = support.detail;
     (document.getElementById("outContinuidadImportante") as HTMLElement).textContent = support.note;
 
@@ -409,7 +417,7 @@ export const initCotizador = () => {
   const collectQuoteData = () => {
     const text = (document.getElementById("outputTexto") as HTMLTextAreaElement).value;
     if (!text.trim()) {
-      alert("Primero calcula una cotizacion.");
+      alert("Primero calcula una cotización.");
       return null;
     }
     const empresa = (document.getElementById("clienteEmpresa") as HTMLInputElement).value.trim() || "Empresa";
@@ -434,17 +442,17 @@ export const initCotizador = () => {
       scopeItems: Array.from(document.querySelectorAll("#outScopeList li")).map((li) => li.textContent?.trim() || "").filter(Boolean),
       exclusionItems: Array.from(document.querySelectorAll("#outExclusionsList li")).map((li) => li.textContent?.trim() || "").filter(Boolean),
       supportItems: [
-        "Soporte tecnico continuo",
+        "Soporte técnico continuo",
         "Hasta 20 solicitudes de cambio mensuales",
-        "Ajustes operativos (textos, imagenes, estructura simple)",
-        "Capacitacion inicial",
-        "Atencion por WhatsApp (08:30 a 17:30)",
+        "Ajustes operativos (textos, imágenes, estructura simple)",
+        "Capacitación inicial",
+        "Atención por WhatsApp (08:30 a 17:30)",
         "Tiempo de respuesta: hasta 30 minutos",
-        "Supervision basica de funcionamiento",
+        "Supervisión básica de funcionamiento",
       ],
       paymentTerms: [
-        "Al aceptar la cotizacion se cancela el 50% del total inicial.",
-        "Luego se realiza una revision de conformidad.",
+        "Al aceptar la cotización se cancela el 50% del total inicial.",
+        "Luego se realiza una revisión de conformidad.",
         "Posterior a la conformidad se cancela el 50% restante del total inicial + soporte mensual.",
       ],
       commercialTerms: [
@@ -471,11 +479,11 @@ export const initCotizador = () => {
   document.getElementById("btnCopiar")?.addEventListener("click", async () => {
     const text = (document.getElementById("outputTexto") as HTMLTextAreaElement).value;
     if (!text.trim()) {
-      alert("Primero calcula una cotizacion.");
+      alert("Primero calcula una cotización.");
       return;
     }
     await navigator.clipboard.writeText(text);
-    alert("Cotizacion copiada.");
+    alert("Cotización copiada.");
   });
 
   document.getElementById("btnExportarPdf")?.addEventListener("click", async () => {
@@ -486,7 +494,7 @@ export const initCotizador = () => {
       return;
     }
     if (quoteData.email === "-" || !EMAIL_REGEX.test(quoteData.email)) {
-      alert("Ingresa un email valido del cliente para enviar la copia firmada.");
+      alert("Ingresa un email válido del cliente para enviar la copia firmada.");
       return;
     }
 
@@ -535,7 +543,7 @@ export const initCotizador = () => {
     (document.getElementById("outContinuidad") as HTMLElement).textContent = "Soporte+ mensual: $100.000 CLP/mes";
     (document.getElementById("outContinuidadDetalle") as HTMLElement).textContent = "$65.000 plataforma + $35.000 soporte.";
     (document.getElementById("outContinuidadImportante") as HTMLElement).textContent =
-      "Durante los primeros 3 meses de contratacion el costo de plataforma lo asumimos nosotros. Desde el 4to mes el cliente paga la plataforma y no esta obligado a mantener el plan de soporte.";
+      "Durante los primeros 3 meses de contratación, el costo de plataforma lo asumimos nosotros. Desde el 4to mes, el cliente paga la plataforma y no está obligado a mantener el plan de soporte.";
     (document.getElementById("incluirSoporteLabel") as HTMLElement).textContent = "Incluir Soporte+ mensual: $100.000 CLP";
     (document.getElementById("incluirSoporteDetail") as HTMLElement).textContent = "Detalle: $65.000 plataforma + $35.000 soporte.";
     (document.getElementById("outScopeList") as HTMLElement).innerHTML = "<li>Selecciona un plan para ver detalle.</li>";

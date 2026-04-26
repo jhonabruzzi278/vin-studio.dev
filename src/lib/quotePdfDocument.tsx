@@ -467,7 +467,7 @@ const QuotePdfDocument = ({ data }: { data: QuotePdfData }) => {
       <Page size="A4" style={styles.pageTwo}>
         <View style={styles.shell}>
           <View style={styles.sectionCard}>
-            <Text style={styles.sectionTitleEs}>Alcance del plan</Text>
+            <Text style={styles.sectionTitleEs}>Lo que conseguirás con este plan</Text>
             {(data.scopeItems.length ? data.scopeItems : ['Sin informacion disponible.']).map((item, idx) => (
               <Text key={`scope-${idx}`} style={styles.sectionItem}>- {item}</Text>
             ))}
